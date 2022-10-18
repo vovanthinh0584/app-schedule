@@ -1,0 +1,58 @@
+﻿<ion-header>
+	<ion-toolbar style="height: 0px">
+	</ion-toolbar>
+</ion-header>
+<ion-content no-padding
+	class="animated fadeIn login auth-page">
+	<div class="login-header"></div>
+	<ion-grid class="login-content">
+		
+		<ion-row >
+			<ion-col size-xs="12" >
+				<div>
+		           <h4 style="text-align: center;">Đăng Nhập</h4>
+	            </div>
+				<div>
+					<ion-item class="username ion-no-padding">
+						<ion-icon src="assets/icon/username.svg"></ion-icon>
+						<ion-input class="id"
+							required
+							[(ngModel)]="selectItem.UserName"
+							type="text"
+							placeholder="Tên truy cập"></ion-input>
+					</ion-item>
+
+					<ion-item class="ion-no-padding">
+						<ion-icon src="assets/icon/password.svg"></ion-icon>
+						<ion-input class="pw"
+							required
+							[(ngModel)]="selectItem.User_Password"
+							type="password"
+							placeholder="Mật khẩu"></ion-input>
+					</ion-item>
+				</div>
+				<div >
+					<ion-button margin-top
+						size="large"
+						(click)="login()"
+						expand="block">Đăng nhập</ion-button>
+				</div>
+			</ion-col>
+			
+			
+		</ion-row>
+		
+	</ion-grid>
+	<ion-grid class="login-footer">
+        <ion-row >
+			<ion-col size-xs="12" >
+				<div class="login-text">
+					© Copyright by vovanthinh 
+					<br>
+					Version 0.0.1
+				</div>
+				
+			</ion-col>
+		</ion-row>	
+	</ion-grid>
+</ion-content>
