@@ -23,31 +23,31 @@
     },
     "android": {
         "debug": {
-            "keystore": "../app-schedule/app-keystore.jks",
+            "keystore": "../app-schedule/app_keystore",
             "storePassword": "123456",
             "alias": "key0",
             "password": "123456",
             "keystoreType": ""
         },
         "release": {
-            "keystore": "../app-schedule/app-keystore.jks",
+            "keystore": "../app-schedule/app_keystore",
             "storePassword": "123456",
             "alias": "key0",
             "password": "123456",
             "keystoreType": ""
         },
         "device": {
-            "keystore": "../build-config/android/xxxxx.keystore",
-            "storePassword": "*******",
-            "alias": "xxxxxx",
-            "password": "*******",
+            "keystore": "../app-schedule/app_keystore",
+            "storePassword": "123456",
+            "alias": "key0",
+            "password": "123456",
             "keystoreType": ""
         },
         "emulator": {
-            "keystore": "../build-config/android/xxxx.keystore",
-            "storePassword": "*******",
-            "alias": "xxxxxx",
-            "password": "*******",
+            "keystore": "../app-schedule/app_keystore",
+            "storePassword": "123456",
+            "alias": "key0",
+            "password": "123456",
             "keystoreType": ""
         }
     }

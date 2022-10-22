@@ -1,11 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { BaseController } from 'src/app/core/baseController';
 
-
-
-
-
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.page.html',

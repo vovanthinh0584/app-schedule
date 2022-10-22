@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
 import { UserServiceModule } from 'src/app/providers/user/user-service.module';
-
+import { SharedModule } from 'src/app/components/shared-module';
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +23,7 @@ const routes: Routes = [
       UserServiceModule,
       RouterModule.forChild(routes)
   ],
-  declarations: [],
+  declarations: [LoginPage],
   entryComponents:[]
 })
 export class LoginPageModule {}
