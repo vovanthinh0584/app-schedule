@@ -7,7 +7,6 @@ export class StorageService{
         else {
           return oValue;
         }
-  
     }
      getObject(key:string){
         const oValue: any = this.get(key);
@@ -16,18 +15,14 @@ export class StorageService{
         } catch (error) {
             data = null;
         }
-  
         return data;
-  
-    }
+      }
      remove(key: string): void {
         localStorage.removeItem(key);
       }
-  
-       clear(): void {
+      clear(): void {
         localStorage.clear();
       }
-
       set(key:string,value:string){
         localStorage.setItem(key, value);
       }
