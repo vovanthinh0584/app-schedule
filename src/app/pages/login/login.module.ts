@@ -8,11 +8,13 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPage } from './login.page';
 import { UserServiceModule } from 'src/app/providers/user/user-service.module';
 import { SharedModule } from 'src/app/components/shared-module';
+import { UserService } from 'src/app/services/user/user.service';
 const routes: Routes = [
   {
     path: '',
     component: LoginPage
-  }
+  },
+  
 ];
 
 @NgModule({
@@ -24,6 +26,9 @@ const routes: Routes = [
       RouterModule.forChild(routes)
   ],
   declarations: [LoginPage],
-  entryComponents:[]
+  entryComponents:[],
+  providers: [
+    UserService 
+  ]
 })
 export class LoginPageModule {}

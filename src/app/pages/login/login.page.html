@@ -4,38 +4,50 @@
 </ion-header>
 <ion-content no-padding
 	class="animated fadeIn login auth-page">
-	<div class="login-header"></div>
+	<div class="login-header">
+		<ion-list>
+			<ion-item>
+			  <ion-select (ionChange)="onChangeLanguage($event.target.value)" [(ngModel)]="selectItem.Language">
+				<ion-select-option *ngFor="let lang of listLanguage" [value]="lang.Lang">{{lang.Name}}</ion-select-option>
+			  </ion-select>
+			</ion-item>
+		  </ion-list>
+	</div>
 	<ion-grid class="login-content">
 		
 		<ion-row >
 			<ion-col size-xs="12" >
 				<div>
-		           <h4 style="text-align: center;">Đăng Nhập</h4>
-	            </div>
-				<div>
 					<ion-item class="username ion-no-padding">
 						<ion-icon src="assets/icon/username.svg"></ion-icon>
 						<ion-input class="id"
 							required
-							[(ngModel)]="selectItem.UserName"
+							[(ngModel)]="selectItem.UserId"
 							type="text"
-							placeholder="Tên truy cập"></ion-input>
+							placeholder="{{Language.UserId}}"
+							></ion-input>
 					</ion-item>
 
 					<ion-item class="ion-no-padding">
 						<ion-icon src="assets/icon/password.svg"></ion-icon>
 						<ion-input class="pw"
 							required
-							[(ngModel)]="selectItem.User_Password"
+							[(ngModel)]="selectItem.Password"
 							type="password"
-							placeholder="Mật khẩu"></ion-input>
+							placeholder="{{Language.Password}}"></ion-input>
 					</ion-item>
+					<ion-item>
+						<ion-icon src="assets/icon/password.svg"></ion-icon>
+						<ion-select [(ngModel)]="selectItem.BusinessUnitID">
+						  <ion-select-option *ngFor="let business of selectItem.listBusiness" [value]="business.BusinessUnitID">{{business.BusinessUnitName}}</ion-select-option>
+						</ion-select>
+					  </ion-item>
 				</div>
 				<div >
 					<ion-button margin-top
 						size="large"
 						(click)="login()"
-						expand="block">Đăng nhập</ion-button>
+						expand="block">{{Language.login}}</ion-button>
 				</div>
 			</ion-col>
 			

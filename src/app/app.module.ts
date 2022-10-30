@@ -7,10 +7,17 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { LoginPageModule } from './pages/login/login.module';
+import { HttpService } from './core/HttpService';
+import { CommonServiceModule } from './core/common-service.module';
+import {HttpClientModule} from '@angular/common/http';
+import { ToastService } from './core/ToastService';
+import { MainComponent } from './pages/main/main.component';
+
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  declarations: [AppComponent,MainComponent],
+  imports: [HttpClientModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule,LoginPageModule,CommonServiceModule],
+  providers: [HttpService,ToastService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
  
 })

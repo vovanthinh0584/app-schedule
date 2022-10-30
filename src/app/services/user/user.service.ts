@@ -5,26 +5,30 @@ import api from '../../core/api';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import {HttpService} from '../../core/HttpService'
+import { CommonServiceModule } from 'src/app/core/common-service.module';
+import { User } from 'src/app/models/user';
 @Injectable({
-    providedIn: UserServiceModule
+    providedIn: CommonServiceModule
 })
 export class UserService {
     api:any;
     constructor(private router: Router,public httpService:HttpService) { 
         this.api=api.api;
     }
-    login(userRequestDTO: any): Observable<any> {
-        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.User_Name + '0000000000000000').substring(0, 16));
-        const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(userRequestDTO.User_Password), keyIv,
+    login(userRequestDTO:User): Observable<any> {
+        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.UserID + '0000000000000000').substring(0, 16));
+        const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(userRequestDTO.Password), keyIv,
             {
                 keySize: 128 / 8,
                 iv: keyIv,
                 mode: CryptoJS.mode.CBC,
                 padding: CryptoJS.pad.Pkcs7
             });
-        var userTmp:any = {};
-        userTmp.User_Name = userRequestDTO.User_Name;
-        userTmp.User_Password = encrypted.toString();
+        var userTmp = new User();
+        userTmp.UserID = userRequestDTO.UserID;
+        userTmp.Password = encrypted.toString();
+        userTmp.BusinessUnitID=userRequestDTO.BusinessUnitID;
+        userTmp.Language=userRequestDTO.Language;
         debugger;
         return this.httpService.post(`${api.api.url}${api.Account.Login}`, userTmp);
     }
@@ -43,7 +47,12 @@ export class UserService {
         // }
         // return this.http.post<boolean>(`${api.url}${api.Account.Logout}`, {});
     }
-
+    getCaptionLanguage(formName:string,language:string):Observable<any>{
+        return this.httpService.get(`${api.api.url}${api.Account.CaptionLanguage}?formName=${formName}&lang=${language}`);
+    }
+    getListBussiness():Observable<any>{
+        return this.httpService.get(`${api.api.url}${api.Account.ListBussiness}`);
+    }
     
     getAppCenterImfomation(modelDTO:any)
      {

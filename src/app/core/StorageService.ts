@@ -1,3 +1,9 @@
+import { Injectable } from "@angular/core";
+import { CommonServiceModule } from "./common-service.module";
+
+@Injectable({
+  providedIn: CommonServiceModule
+})
 export class StorageService{
    get(key:string){
         const oValue: string = localStorage.getItem(key);

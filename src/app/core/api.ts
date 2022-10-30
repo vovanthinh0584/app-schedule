@@ -7,5 +7,7 @@
         "Login": '/api/account/login',
         "Logout": '/api/account/logout',
         "AppCenterInformation": '/api/account/GetAppCenterInformation',
+        'CaptionLanguage':'/api/account/GetCaptionLanguage',
+        'ListBussiness':'/api/account/GetListBussiness'
     }
 }

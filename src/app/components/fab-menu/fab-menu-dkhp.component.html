@@ -1,0 +1,61 @@
+﻿<ion-fab  #fab class="fab" [ngClass]="classFab" (click)="fabClick($event)" vertical="bottom" horizontal="end">
+		
+	<div class="example-boundary">
+		<ion-fab-button cdkDrag cdkDragBoundary=".example-boundary" class="fab-btn" (click)="fabClick($event)">
+			<ion-icon name="add"></ion-icon>
+		</ion-fab-button>
+	</div>
+	<ion-fab-list class="fab-list" side="top">
+
+		<div class="fab-grid">
+			<div class="col-left" (click)="menuClick('y-lenh')">
+				<div>Y lệnh thuốc nội trú</div>
+			</div>
+
+			<ion-fab-button translucent="true" size="small" (click)="menuClick('y-lenh')">
+				<div class="menu-ylenh"></div>
+			</ion-fab-button>
+		</div>
+		<div class="fab-grid">
+			<div class="col-left" (click)="menuClick('can-lam-sang')">
+				<div>Chỉ định dịch vụ</div>
+			</div>
+			<ion-fab-button translucent="true" size="small" (click)="menuClick('can-lam-sang')">
+				<div class="menu-dichvu"></div>
+			</ion-fab-button>
+		</div>
+		<div class="fab-grid">
+			<div class="col-left" (click)="menuClick('phieu-cham-soc')">
+				<div>Phiếu Chăm Sóc</div>
+			</div>
+			<ion-fab-button translucent="true" size="small" (click)="menuClick('phieu-cham-soc')">
+				<div class="menu-chamsoc"></div>
+			</ion-fab-button>
+		</div>
+		
+		<div class="fab-grid">
+			<div class="col-left" (click)="menuClick('danh-sach-ylenh-thuoc')">
+				<div>Ký phiếu công khai</div>
+			</div>
+			<ion-fab-button translucent="true" size="small" (click)="menuClick('danh-sach-ylenh-thuoc')">
+				<div class="menu-ky-phieu-cong-khai"></div>
+			</ion-fab-button>
+		</div>
+		<div class="fab-grid">
+			<div class="col-left" (click)="menuClick('danh-sach-hsba')">
+				<div>Hồ Sơ Bệnh Án</div>
+			</div>
+			<ion-fab-button translucent="true" size="small" (click)="menuClick('danh-sach-hsba')">
+				<div class="menu-hsba"></div>
+			</ion-fab-button>
+		</div>
+		<div class="fab-grid">
+			<div class="col-left" (click)="menuClick('danh-sach-ket-qua-cls-pdf')">
+				<div>Kết quả CLS</div>
+			</div>
+			<ion-fab-button translucent="true" size="small" (click)="menuClick('danh-sach-ket-qua-cls-pdf')">
+				<div class="menu-ketquacls"></div>
+			</ion-fab-button>
+		</div>
+	</ion-fab-list>
+</ion-fab>

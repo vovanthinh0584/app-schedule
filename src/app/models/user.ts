@@ -1,13 +1,11 @@
-export class UserRequestDTO {
-    User_Name: string;
-    User_Password: string;
-   
-}
 export class User {
-    User_Name: string;
-    User_Password: string;
+    UserID: string;
+    Password: string;
     Token: string;
     FullName: string;
-    USERID:number;
-
+    Permissions:any
+    SessionExpires:any;
+    Message:any;
+    BusinessUnitID:any;
+    Language:string;
 }

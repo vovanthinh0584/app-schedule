@@ -1,11 +1,12 @@
+import { Injectable } from '@angular/core';
 import {StorageService} from '../core/StorageService'
-import {ToastService} from '../core/ToastService'
+import { CommonServiceModule } from './common-service.module';
 export class BaseController
 {
    selectKey:any="";
    fromState:string;
    selectItem:any={};
-   toastService=ToastService;
-   storageService=StorageService;
+   Language:any={};
+   fromName:any;
    
 }

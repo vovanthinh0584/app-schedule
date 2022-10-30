@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 //import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AlertController } from '@ionic/angular';
-import { ErrorDialogComponent } from '../components/error-dialog/error-dialog.component';
+
 import { HttpRequest, HttpHandler, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -108,10 +108,6 @@ export class ErrorDialogService {
                 await confirm.present();
             }
         });
-        //dialogRef.afterClosed().subscribe(result => {
-        //    console.log('The dialog was closed');
-        //    let animal;
-        //    animal = result;
-        //});
+        
     }
 }

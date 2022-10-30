@@ -2,13 +2,10 @@ import { Injectable } from '@angular/core';
 import { UserServiceModule } from './user-service.module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserRequestDTO } from 'src/app/dto/request-dto/UseRequestDTO';
-import api from '../api';
-import { User } from 'src/app/model/User';
-import { LoginResponseDTO } from 'src/app/dto/response-dto/LoginResponseDTO';
+import api from '../../core/api';
+import { User } from '../../models/user';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
-import { UserEx,AppCenterParam } from 'src/app/model/news.model';
 
 @Injectable({
     providedIn: UserServiceModule
@@ -19,9 +16,9 @@ export class UserService {
         this.api=api.api;
     }
 
-    login(userRequestDTO: UserRequestDTO): Observable<LoginResponseDTO> {
-        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.User_Name + '0000000000000000').substring(0, 16));
-        const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(userRequestDTO.User_Password), keyIv,
+    login(userRequestDTO: User): Observable<any> {
+        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.UserID + '0000000000000000').substring(0, 16));
+        const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(userRequestDTO.Password), keyIv,
             {
                 keySize: 128 / 8,
                 iv: keyIv,
@@ -29,13 +26,13 @@ export class UserService {
                 padding: CryptoJS.pad.Pkcs7
             });
 
-        const userTmp = new UserRequestDTO();
-        userTmp.User_Name = userRequestDTO.User_Name;
-        userTmp.User_Password = encrypted.toString();
-        userTmp.Hopital_Code = userRequestDTO.Hopital_Code;
+        const userTmp = new User();
+        userTmp.UserID = userRequestDTO.UserID;
+        userTmp.Password = encrypted.toString();
+    
         debugger;
      
-        return this.http.post<LoginResponseDTO>(`${api.api.url}${api.Account.Login}`, userTmp);
+        return this.http.post<any>(`${api.api.url}${api.Account.Login}`, userTmp);
     }
 
     logout(status?: number): Observable<boolean> {
