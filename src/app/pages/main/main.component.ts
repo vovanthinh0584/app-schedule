@@ -10,7 +10,7 @@ export class MainComponent extends BaseController {
     super();
   }
   ngOnInit() {
-    this._route.navigate([`/main/inputDeviceParameter`], { replaceUrl: true });
+    this._route.navigate([`/main/inputRequest`], { replaceUrl: true });
   }
 
 }
