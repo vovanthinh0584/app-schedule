@@ -5,9 +5,9 @@ import { BaseController } from "src/app/core/baseController";
   selector: 'app-main',
   templateUrl: './main.component.html'
 })
-export class MainComponent extends BaseController {
+export class MainComponent{
   constructor(private _route: Router, private activatedRoute: ActivatedRoute) {
-    super();
+    //super();
   }
   ngOnInit() {
     this._route.navigate([`/main/inputRequest`], { replaceUrl: true });

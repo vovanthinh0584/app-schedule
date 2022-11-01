@@ -42,14 +42,14 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     //token: string;
     constructor(public errorDialogService: ErrorDialogService, public loadingDialogService: LoadingDialogService, private userService: UserService,
         private popoverCtrl: PopoverController, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController,
-        public http: HttpClient, public dialog: AlertController, public storage: StorageService, private router: Router) {
+        public http: HttpClient, public dialog: AlertController, private router: Router) {
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (request.headers.has('showSpinner') == false || request.headers.get('showSpinner') != 'false') {
             console.log('showSpinner')
             this.loadingDialogService.onStarted(request);
         }
-        const token: string = this.storage.get('Token');
+        const token: string = StorageService.Storage.get('Token');
         if (token) {
             request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
         }
@@ -68,7 +68,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                     if (event.body) {
                         if (event.body.NewToken != null) {
                             console.log('NewToken');
-                            this.storage.set('Token', event.body.NewToken);
+                            StorageService.Storage.set('Token', event.body.NewToken);
                         } 
                     }
                 }
@@ -78,7 +78,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 console.log('HttpConfigInterceptor catchError', error);
                 if (error.status == 401) {
 
-                    this.storage.remove('Token');
+                    StorageService.Storage.remove('Token');
                     this.userService.logout();
 
                     this.router.navigate(['./login'], { replaceUrl: true });

@@ -13,11 +13,13 @@ import { CommonServiceModule } from './core/common-service.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastService } from './core/ToastService';
 import { MainComponent } from './pages/main/main.component';
+import { StorageService } from './core/StorageService';
+import { BaseController } from './core/baseController';
 
 @NgModule({
   declarations: [AppComponent,MainComponent],
   imports: [HttpClientModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule,LoginPageModule,CommonServiceModule],
-  providers: [HttpService,ToastService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
  
 })

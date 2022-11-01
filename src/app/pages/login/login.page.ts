@@ -1,8 +1,7 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseController } from 'src/app/core/baseController';
-import { StorageService } from 'src/app/core/StorageService';
-import { ToastService } from 'src/app/core/ToastService';
 import { User } from 'src/app/models/user';
 import {UserService} from 'src/app/services/user/user.service'
 
@@ -13,24 +12,27 @@ import {UserService} from 'src/app/services/user/user.service'
 })
 export class LoginPage extends BaseController implements OnInit {
     listLanguage:any=[{Lang:"en-US",Name:"English"},{Lang:"vi-VN",Name:"Việt Nam"}]
-    constructor(private router: Router,private userService:UserService,private toastService:ToastService,private storageService:StorageService) {
+    _toastService:any;
+    constructor(private router: Router,private userService:UserService,public httpClient:HttpClient ) {
         super();
         this.selectItem.Language="vi-VN";
         this.fromName="frmLogin";
-        this.setCaptionLanguage();
+        this.init(httpClient);
+      
     }
     ngOnInit() {
+        this.setCaptionLanguage();
         this.userService.getListBussiness().subscribe((response:any)=>{
             debugger;
             this.selectItem.listBusiness=response.data;
         });
     }
-    setCaptionLanguage(){
-        this.userService.getCaptionLanguage(this.fromName,this.selectItem.Language).subscribe((response:any)=>{
-            debugger;
-            this.Language=response.data;
-        });
-    }
+    // setCaptionLanguage(){
+    //     this.userService.getCaptionLanguage(this.fromName,this.selectItem.Language).subscribe((response:any)=>{
+    //         debugger;
+    //         this.Language=response.data;
+    //     });
+    // }
     login() {
          var user=new User();
          user.UserID="MOBILE_01";//this.selectItem.UserID;
@@ -40,6 +42,7 @@ export class LoginPage extends BaseController implements OnInit {
          this.userService.login(user).subscribe((response:any)=>{
             if(response.code==200)
             {
+                debugger;
                 this.toastService.success(response.data.message);
                 this.storageService.setObject("userInfo",response.data);
                 this.router.navigate([`/main`], { replaceUrl: true });

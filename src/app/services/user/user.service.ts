@@ -12,7 +12,7 @@ import { User } from 'src/app/models/user';
 })
 export class UserService {
     api:any;
-    constructor(private router: Router,public httpService:HttpService) { 
+    constructor(private router: Router) { 
         this.api=api.api;
     }
     login(userRequestDTO:User): Observable<any> {
@@ -30,7 +30,7 @@ export class UserService {
         userTmp.BusinessUnitID=userRequestDTO.BusinessUnitID;
         userTmp.Language=userRequestDTO.Language;
         debugger;
-        return this.httpService.post(`${api.api.url}${api.Account.Login}`, userTmp);
+        return HttpService.Client.post(`${api.api.url}${api.Account.Login}`, userTmp);
     }
 
     logout(status?: number): Observable<boolean> {
@@ -47,18 +47,16 @@ export class UserService {
         // }
         // return this.http.post<boolean>(`${api.url}${api.Account.Logout}`, {});
     }
-    getCaptionLanguage(formName:string,language:string):Observable<any>{
-        return this.httpService.get(`${api.api.url}${api.Account.CaptionLanguage}?formName=${formName}&lang=${language}`);
-    }
+   
     getListBussiness():Observable<any>{
-        return this.httpService.get(`${api.api.url}${api.Account.ListBussiness}`);
+        return HttpService.Client.get(`${api.api.url}${api.Account.ListBussiness}`);
     }
     
     getAppCenterImfomation(modelDTO:any)
      {
         debugger;
         modelDTO.Version=  this.api.version;
-        return this.httpService.post(`${api.api.url}${api.Account.AppCenterInformation}`, modelDTO);
+        return HttpService.Client.post(`${api.api.url}${api.Account.AppCenterInformation}`, modelDTO);
     }
    
 }

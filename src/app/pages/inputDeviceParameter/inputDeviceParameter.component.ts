@@ -7,9 +7,9 @@ import { BaseController } from "src/app/core/baseController";
   selector: 'app-input-device-parameter',
   templateUrl: './inputDeviceParameter.component.html'
 })
-export class InputDeviceParameterComponent extends BaseController {
+export class InputDeviceParameterComponent {
   constructor(private _route: Router, private activatedRoute: ActivatedRoute) {
-    super();
+   // super();
   }
   ngOnInit() {
   }

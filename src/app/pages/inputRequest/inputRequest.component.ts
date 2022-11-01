@@ -7,9 +7,9 @@ import { BaseController } from "src/app/core/baseController";
   selector: 'app-input-request',
   templateUrl: './inputRequest.component.html'
 })
-export class InputRequestComponent extends BaseController {
+export class InputRequestComponent {
   constructor(private _route: Router, private activatedRoute: ActivatedRoute) {
-    super();
+   // super();
   }
   ngOnInit() {
   }
