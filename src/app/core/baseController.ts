@@ -7,9 +7,7 @@ import { CommonServiceModule } from './common-service.module';
 import { HttpService } from './HttpService';
 import { StorageService } from './StorageService';
 import { ToastService } from './ToastService';
-@Injectable({
-   providedIn: CommonServiceModule
-})
+
 export class BaseController
 {
    selectKey:any="";
@@ -25,11 +23,14 @@ export class BaseController
    constructor(){
       debugger;
      this.user=this.storageService.getObject("userInfo");
+     this.selectItem.Language=this.user.Language;
    }
    init(httpClient:HttpClient)
    {
 
       this.httpService.http=httpClient;
+      
+      this.setCaptionLanguage();
    }
    setCaptionLanguage(){
    

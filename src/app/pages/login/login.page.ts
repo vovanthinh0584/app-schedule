@@ -17,11 +17,11 @@ export class LoginPage extends BaseController implements OnInit {
         super();
         this.selectItem.Language="vi-VN";
         this.fromName="frmLogin";
+        
         this.init(httpClient);
       
     }
     ngOnInit() {
-        this.setCaptionLanguage();
         this.userService.getListBussiness().subscribe((response:any)=>{
             debugger;
             this.selectItem.listBusiness=response.data;
