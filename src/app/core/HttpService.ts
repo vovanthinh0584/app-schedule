@@ -10,7 +10,6 @@ export class Client{
     
   }
   public static get(url:string):Observable<any>{
- 
       return this.http.get(url);
     }
     public  static post(url:string,T:any):Observable<any>{

@@ -8,6 +8,11 @@
         "Logout": '/api/account/logout',
         "AppCenterInformation": '/api/account/GetAppCenterInformation',
         'CaptionLanguage':'/api/account/GetCaptionLanguage',
-        'ListBussiness':'/api/account/GetListBussiness'
+        'ListBussiness':'/api/account/GetListBussiness',
+        
+    },
+    "InputDeviceParameter":{
+        'Create':'/api/InputDeviceParameter',
+        'GetInformation':'/api/InputDeviceParameter'
     }
 }

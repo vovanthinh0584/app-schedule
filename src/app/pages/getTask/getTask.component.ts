@@ -7,9 +7,9 @@ import { BaseController } from "src/app/core/baseController";
   selector: 'app-get-task',
   templateUrl: './getTask.component.html'
 })
-export class GetTaskComponent extends BaseController {
+export class GetTaskComponent  {
   constructor(private _route: Router, private activatedRoute: ActivatedRoute) {
-    super();
+   // super();
   }
   ngOnInit() {
   }

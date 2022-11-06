@@ -5,7 +5,7 @@ import { CommonServiceModule } from './common-service.module';
 export namespace ToastService {
 export class Toast {
     static toastController: any;
-    constructor(private nav: NavController, private modalCtrl: ModalController,
+    constructor(private nav: NavController,
         public toastController: ToastController){
     }
     static async success(msg: string, duration: number=1000,position:string="top") {

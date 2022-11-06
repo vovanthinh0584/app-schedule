@@ -12,6 +12,7 @@ export class InputRequestComponent {
    // super();
   }
   ngOnInit() {
+    
   }
 
 }

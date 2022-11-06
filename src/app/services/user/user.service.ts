@@ -7,16 +7,18 @@ import * as CryptoJS from 'crypto-js';
 import {HttpService} from '../../core/HttpService'
 import { CommonServiceModule } from 'src/app/core/common-service.module';
 import { User } from 'src/app/models/user';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: CommonServiceModule
 })
 export class UserService {
     api:any;
-    constructor(private router: Router) { 
+    constructor(private router: Router,private httpClient:HttpClient) { 
         this.api=api.api;
+        HttpService.Client.http=httpClient;
     }
     login(userRequestDTO:User): Observable<any> {
-        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.UserID + '0000000000000000').substring(0, 16));
+        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.userID + '0000000000000000').substring(0, 16));
         const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(userRequestDTO.Password), keyIv,
             {
                 keySize: 128 / 8,
@@ -25,11 +27,11 @@ export class UserService {
                 padding: CryptoJS.pad.Pkcs7
             });
         var userTmp = new User();
-        userTmp.UserID = userRequestDTO.UserID;
+        userTmp.userID = userRequestDTO.userID;
         userTmp.Password = encrypted.toString();
-        userTmp.BusinessUnitID=userRequestDTO.BusinessUnitID;
-        userTmp.Language=userRequestDTO.Language;
-        debugger;
+        userTmp.businessUnitID=userRequestDTO.businessUnitID;
+        userTmp.language=userRequestDTO.language;
+      
         return HttpService.Client.post(`${api.api.url}${api.Account.Login}`, userTmp);
     }
 
@@ -54,7 +56,6 @@ export class UserService {
     
     getAppCenterImfomation(modelDTO:any)
      {
-        debugger;
         modelDTO.Version=  this.api.version;
         return HttpService.Client.post(`${api.api.url}${api.Account.AppCenterInformation}`, modelDTO);
     }

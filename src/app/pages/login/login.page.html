@@ -5,13 +5,7 @@
 <ion-content no-padding
 	class="animated fadeIn login auth-page">
 	<div class="login-header">
-		<ion-list>
-			<ion-item>
-			  <ion-select (ionChange)="onChangeLanguage($event.target.value)" [(ngModel)]="selectItem.Language">
-				<ion-select-option *ngFor="let lang of listLanguage" [value]="lang.Lang">{{lang.Name}}</ion-select-option>
-			  </ion-select>
-			</ion-item>
-		  </ion-list>
+		
 	</div>
 	<ion-grid class="login-content">
 		
@@ -36,10 +30,16 @@
 							type="password"
 							placeholder="{{Language.Password}}"></ion-input>
 					</ion-item>
-					<ion-item>
-						<ion-icon src="assets/icon/password.svg"></ion-icon>
+					<ion-item class="ion-no-padding">
+						<ion-icon name="globe-outline"></ion-icon>
 						<ion-select [(ngModel)]="selectItem.BusinessUnitID">
 						  <ion-select-option *ngFor="let business of selectItem.listBusiness" [value]="business.BusinessUnitID">{{business.BusinessUnitName}}</ion-select-option>
+						</ion-select>
+					  </ion-item>
+					  <ion-item class="ion-no-padding">
+						<ion-icon name="language-outline"></ion-icon>
+						<ion-select (ionChange)="onChangeLanguage($event.target.value)" [(ngModel)]="selectItem.Language">
+						  <ion-select-option *ngFor="let lang of selectItem.listLanguage" [value]="lang.Lang">{{lang.Name}}</ion-select-option>
 						</ion-select>
 					  </ion-item>
 				</div>
