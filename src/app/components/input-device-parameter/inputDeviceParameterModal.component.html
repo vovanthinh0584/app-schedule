@@ -8,34 +8,34 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<ion-label class="title-chuan-doan" position="floating">{{Language.AssetId}}</ion-label>
+			<ion-label class="title-chuan-doan" position="stacked">{{Language.AssetId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.AssetId">
                 <ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">{{asset.AssetName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="floating">{{Language.InputDate}}</ion-label>
+			<ion-label  position="stacked">{{Language.InputDate}}</ion-label>
 			<ion-datetime presentation="date" [(ngModel)]="selectItem.InputDate"></ion-datetime>
             
 		</ion-item>
         <ion-item>
-			<ion-label  position="floating">{{Language.OperatingID}}</ion-label>
+			<ion-label  position="stacked">{{Language.OperatingID}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.OperatingID">
                 <ion-select-option *ngFor="let operating of selectItem.listOperating" [value]="operating.OperatingId">{{operating.OperatingName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="floating">{{Language.UMID}}</ion-label>
+			<ion-label  position="stacked">{{Language.UMID}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.UMID">
                 <ion-select-option *ngFor="let UM of selectItem.listUM" [value]="UM.UMID">{{UM.UMName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="floating">{{Language.Value}}</ion-label>
+			<ion-label  position="stacked">{{Language.Value}}</ion-label>
             <ion-input type="number"   step='0.001' debounce="100" pattern="^\d*(\.\d{0,3})?$" [(ngModel)]="selectItem.Value"></ion-input>
 		</ion-item>
         <ion-item>
-			<ion-label  position="floating">{{Language.Note}}</ion-label>
+			<ion-label  position="stacked">{{Language.Note}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.Note" type="text"></ion-input>
 		</ion-item>
 		
