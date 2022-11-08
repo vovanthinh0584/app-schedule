@@ -2,6 +2,9 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
+import { IonicModule } from "@ionic/angular";
+import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
+import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { InputRequestComponent } from "./inputRequest.component";
 
 const InputRequestRoutes: Routes = [
@@ -14,11 +17,16 @@ const InputRequestRoutes: Routes = [
   exports: [],
   declarations: [
     InputRequestComponent,
+    InputRequestModalComponent
   ],
-  imports: [CommonModule, FormsModule,
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
     RouterModule.forChild(InputRequestRoutes)
   ],
-  providers: []
+  providers: [InputRequestService], 
+  entryComponents:[InputRequestComponent,InputRequestModalComponent]
 })
 
 export class InputRequestModule {

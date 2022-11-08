@@ -14,5 +14,10 @@
     "InputDeviceParameter":{
         'Create':'/api/InputDeviceParameter',
         'GetInformation':'/api/InputDeviceParameter'
-    }
+    } ,
+    "InputRequest":{
+        "Entity":"/api/InputRequest",
+        "QueryWorkShops":"/api/InputRequest/QueryWorkShops",
+        "QueryLocations":"/api/InputRequest/QueryLocations",
+    }   
 }
