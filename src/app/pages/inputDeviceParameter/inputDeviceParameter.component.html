@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <button ion-button end icon-only (click)="seachbar()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item>
+			<ion-label  position="floating">{{Language.AssetId}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.AssetId">
+                <ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">{{asset.AssetName}}</ion-select-option>
+            </ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">{{Language.InputDate}}</ion-label>
+			<ion-datetime presentation="date" [(ngModel)]="selectItem.InputDate"></ion-datetime>
+        </ion-item>
+   </ion-list>
+   <ion-list>
+    <ngx-datatable
+    class="material"
+    [rows]="selectItem.rows"
+    columnMode="force"
+    [headerHeight]="50"
+    [footerHeight]="0"
+    [rowHeight]="50"
+    [scrollbarV]="true"
+    [scrollbarH]="true"
+    [columns]="columns"
+   >
+    <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Actions" sortable="false" prop="name">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <ion-button (click)="onSelectdDatatable(row)">
+          </ion-button> 
+          </ng-template>
+</ngx-datatable-column>
+</ngx-datatable>
+   </ion-list> 
+</ion-content>
+<ion-button (click)="save()">{{Language.Note}}</ion-button>

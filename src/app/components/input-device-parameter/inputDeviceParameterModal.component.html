@@ -9,34 +9,34 @@
 	<ion-list>
 		<ion-item>
 			<ion-label class="title-chuan-doan" position="floating">{{Language.AssetId}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.AssetId">
+			<ion-select [(ngModel)]="selectItem.Item.assetId">
                 <ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">{{asset.AssetName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">{{Language.InputDate}}</ion-label>
-			<ion-datetime presentation="date" [(ngModel)]="selectItem.InputDate"></ion-datetime>
+			<ion-datetime presentation="date" [(ngModel)]="selectItem.Item.inputDate"></ion-datetime>
             
 		</ion-item>
         <ion-item>
 			<ion-label  position="floating">{{Language.OperatingID}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.OperatingID">
+			<ion-select [(ngModel)]="selectItem.Item.operatingID">
                 <ion-select-option *ngFor="let operating of selectItem.listOperating" [value]="operating.OperatingId">{{operating.OperatingName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">{{Language.UMID}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.UMID">
+			<ion-select [(ngModel)]="selectItem.Item.uMID">
                 <ion-select-option *ngFor="let UM of selectItem.listUM" [value]="UM.UMID">{{UM.UMName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">{{Language.Value}}</ion-label>
-            <ion-input type="number"   step='0.001' debounce="100" pattern="^\d*(\.\d{0,3})?$" [(ngModel)]="selectItem.Value"></ion-input>
+            <ion-input type="number"   step='0.001' debounce="100" pattern="^\d*(\.\d{0,3})?$" [(ngModel)]="selectItem.Item.value"></ion-input>
 		</ion-item>
         <ion-item>
 			<ion-label  position="floating">{{Language.Note}}</ion-label>
-			<ion-input  [(ngModel)]="selectItem.Note" type="text"></ion-input>
+			<ion-input  [(ngModel)]="selectItem.Item.note" type="text"></ion-input>
 		</ion-item>
 		
 	</ion-list>

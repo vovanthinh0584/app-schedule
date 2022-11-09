@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { InputDeviceParameterModalComponent } from "src/app/components/input-device-parameter/inputDeviceParameterModal.component";
 import { SharedModule } from "src/app/components/shared-module";
 import { InputDeviceParameterService } from "src/app/services/inputDeviceParameter/input-device-parameter.service";
@@ -20,6 +21,7 @@ const routes: Routes = [
   declarations: [
     InputDeviceParameterComponent,InputDeviceParameterModalComponent ],
   imports: [
+    NgxDatatableModule,
     CommonModule,
     FormsModule,
     IonicModule,

@@ -22,4 +22,7 @@ export class InputDeviceParameterService {
     getInformation():Observable<any>{
         return HttpService.Client.get(`${api.api.url}${api.InputDeviceParameter.GetInformation}`);
     }
+    getParameter(body:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputDeviceParameter.GetParameter}`,body);
+    }
 }

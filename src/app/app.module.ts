@@ -1,4 +1,4 @@
-import { NgModule  } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule  } from '@angular/core';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -20,10 +20,11 @@ import { HttpConfigInterceptor } from './core/httpconfig.interceptor';
 import { IonicGestureConfig } from './core/ionic-gesture-config';
 import { UserServiceModule } from './services/user/user-service.module';
 import { ErrorDialogService } from './core/errordialog.service';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [AppComponent,MenuItemComponent],
-  imports: [HttpClientModule,BrowserModule, IonicModule.forRoot({
+  imports: [NgxDatatableModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
     backButtonText: '',
   }), AppRoutingModule,LoginPageModule,CommonServiceModule,UserServiceModule],
   providers: [ErrorDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -33,7 +34,8 @@ import { ErrorDialogService } from './core/errordialog.service';
     },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
  
 })
 export class AppModule {}

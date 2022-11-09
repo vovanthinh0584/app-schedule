@@ -8,7 +8,8 @@ import api from './api';
 import { HttpService } from './HttpService';
 import { StorageService } from './StorageService';
 import { ToastService } from './ToastService';
-
+import {MessageUS} from './message.us'
+import {MessageVN} from './message.vn'
 export class BaseController
 {
    selectKey:any="";
@@ -21,6 +22,7 @@ export class BaseController
    httpService = HttpService.Client;
    user:User;
    private _route: Router;
+   Message:any={};
    pages:any= [
       {
           title: 'Input Request',
@@ -43,12 +45,10 @@ export class BaseController
     ]
   Permissions:any;
    constructor(){
-
+     
      this.user=this.storageService.getObject("userInfo");
      this.Permissions=[]
      this.selectItem.listLanguage=[{Lang:"en-US",Name:"English"},{Lang:"vi-VN",Name:"Việt Nam"}]
-     
-     //this.selectItem.Language=this.user.Language;
    }
    initializeApp(route:Router,httpClient:HttpClient,toastController:ToastController)
    {
@@ -57,29 +57,35 @@ export class BaseController
       this.toastService.toastController=toastController;
       if(this.user==null)
       {
-         
          this._route.navigate([`/login`], { replaceUrl: true });
+         this.user=new User();
+         this.user=this.selectItem.Language;
       }
       else
       {
-    
-
          this.selectItem.UserID=this.user.userID;
          this.selectItem.BUID=this.user.businessUnitID;
          this.selectItem.Language=this.user.language;
-         for(var permison of this.user.permissions)
-          {
-           
-            var page=this.pages.find(x=>x["code"]==permison);
-            this.Permissions.push(page);
-     
-          }
+         if(this.user.permissions!=null)
+         {
+            for(var permison of this.user.permissions)
+            {
+              var page=this.pages.find(x=>x["code"]==permison);
+              this.Permissions.push(page);
+       
+            }
+         }
+         
    
       }
+      this.setMessage();
       this.setCaptionLanguage();
    }
+   setMessage(){
+      debugger;
+      this.Message=this.selectItem.Language==="vi-VN"?MessageVN:MessageUS;
+   }
    setCaptionLanguage(){
-   
       this.getCaptionLanguage(this.fromName,this.selectItem.Language).subscribe((response)=>{
          this.handleLanguage(response);
       });

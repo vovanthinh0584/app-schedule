@@ -13,6 +13,7 @@
     },
     "InputDeviceParameter":{
         'Create':'/api/InputDeviceParameter',
-        'GetInformation':'/api/InputDeviceParameter'
+        'GetInformation':'/api/InputDeviceParameter',
+        'GetParameter':'/api/InputDeviceParameter/GetParameter'
     }
 }

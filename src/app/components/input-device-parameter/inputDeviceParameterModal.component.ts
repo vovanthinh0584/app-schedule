@@ -9,7 +9,8 @@ import { InputDeviceParameterService } from "src/app/services/inputDeviceParamet
 })
 export class InputDeviceParameterModalComponent implements OnInit{
   @Input() Language;
-  @Input() selectItem;
+  @Input() selectItem:any;
+  @Input() Message;
 
   constructor(private _route: Router, private activatedRoute: ActivatedRoute,private modalCtrl: ModalController,private inputDeviceParameterService:InputDeviceParameterService) {
 
@@ -17,8 +18,33 @@ export class InputDeviceParameterModalComponent implements OnInit{
    
   }
   ngOnInit() {
-
+     debugger 
+     var item=this.selectItem.Item;
   }
+  ValidForm(){
+    debugger;
+    // if(!this.selectItem.AssetId)
+    // {
+    //     this.toastService.warn(this.Message.Login.UserId);
+    //     return false;
+    // }
+    // if(!this.selectItem.OperatingID)
+    // {
+    //     this.toastService.warn(this.Message.Login.Password);
+    //     return false;
+    // }
+    // if(!this.selectItem.BusinessUnitID)
+    // {
+    //     this.toastService.warn(this.Message.Login.BusinessUnitID);
+    //     return false;
+    // }
+    // if(!this.selectItem.Language)
+    // {
+    //     this.toastService.warn(this.Message.Login.Language);
+    //     return false;
+    // }
+    return true;
+}
   save(){
     debugger;
     var body:any={};
@@ -32,10 +58,11 @@ export class InputDeviceParameterModalComponent implements OnInit{
     body.Lang=this.selectItem.Language;
     body.UserId=this.selectItem.UserID;
     body.RecordID=null;
-    this.inputDeviceParameterService.createInputDeviceParameter(body).subscribe(response=>{
-      debugger;
-      var result=response;
-    });
+    this.modalCtrl.dismiss(this.selectItem.Item);
+    // this.inputDeviceParameterService.createInputDeviceParameter(body).subscribe(response=>{
+    //   debugger;
+    //   var result=response;
+    // });
   }
   close(){
     this.modalCtrl.dismiss();
