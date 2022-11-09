@@ -21,15 +21,15 @@ export class InputRequestModalComponent implements OnInit {
     private modalCtrl: ModalController,
     private service: InputRequestService) {
     console.log("InputRequestModalComponent Constructor", this.Language)
-    this.Language = {
-      Exit: "Thoát",
-      LocationId: "Vị trí",
-      Reason: "Lý do",
-      RequestedContent: "Nội dung yêu cầu",
-      Save: "Lưu",
-      WorkerName: "Tên nhân viên",
-      WorkshopId: "Xưởng",
-    }
+    // this.Language = {
+    //   Exit: "Thoát",
+    //   LocationId: "Vị trí",
+    //   Reason: "Lý do",
+    //   RequestedContent: "Nội dung yêu cầu",
+    //   Save: "Lưu",
+    //   WorkerName: "Tên nhân viên",
+    //   WorkshopId: "Xưởng",
+    // }
   }
   ngOnInit() {
     console.log("InputRequestModalComponent ngOnInit", this.Language)
