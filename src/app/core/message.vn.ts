@@ -5,4 +5,12 @@ export module MessageVN {
         BusinessUnitID: "Vui lòng nhập đơn vị kinh doanh!",
         Language: "Vui lòng nhập ngôn ngữ!",
     }
+    export const InputRequest = {
+        WorkshopId: "Vui lòng nhập xưởng",
+        LocationId: "Vui lòng nhập vị trí",
+        WorkerName: "Vui lòng nhập tên nhân viên",
+        RequestedContent: "Vui lòng nhập nội dung",
+        Reason: "Vui lòng nhập lí do",
+
+    }
 }
