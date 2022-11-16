@@ -16,15 +16,15 @@ export class LoginPage extends BaseController implements OnInit {
     constructor(private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
         super();
         this.fromName="frmLogin";
-        this.selectItem.Language="vi-VN";
         this.initializeApp(router,httpClient,toastController);
+        this.selectItem.Language="vi-VN";
         this.selectItem.UserId="MOBILE_01";
         this.selectItem.Password="SAFVIET";
     }
     ngOnInit() {
         this.userService.getListBussiness().subscribe((response:any)=>{
             this.selectItem.BusinessUnitID="SAFVIET";
-            this.selectItem.listBusiness=response.data;
+            this.selectItem.listBusiness=response.Data;
         });
     }
     ValidForm(){
@@ -52,20 +52,21 @@ export class LoginPage extends BaseController implements OnInit {
         return true;
     }
     login() {
-        debugger;
+       
         if(this.ValidForm()==false) return;
          var user=new User();
-         user.userID=this.selectItem.UserId;
+         user.UserID=this.selectItem.UserId;
          user.Password=this.selectItem.Password;
-         user.businessUnitID=this.selectItem.BusinessUnitID;
-         user.language=this.selectItem.Language;
+         user.BusinessUnitID=this.selectItem.BusinessUnitID;
+         user.Language=this.selectItem.Language;
 
          this.userService.login(user).subscribe((response:any)=>{
-            if(response.code==200)
+            
+            if(response.Code==200)
             {
         
-                this.toastService.success(response.data.message);
-                this.storageService.setObject("userInfo",response.data);
+                this.toastService.success(response.Data.message);
+                this.storageService.setObject("userInfo",response.Data);
                 this.router.navigate([`/main`], { replaceUrl: true });
 
             } 

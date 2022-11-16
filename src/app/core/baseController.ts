@@ -25,22 +25,22 @@ export class BaseController
    Message:any={};
    pages:any= [
       {
-          title: 'Input Request',
-          url: '/main/input-request',
-          icon: 'person',
-          code: 'MB001'
+          Title: 'Input Request',
+          Url: '/main/input-request',
+          Icon: 'person',
+          Code: 'MB001'
       },
       {
-          title: 'Get Task',
-          url: '/main/get-task',
-          icon: 'person',
-          code: 'MB002'
+          Title: 'Get Task',
+          Url: '/main/get-task',
+          Icon: 'person',
+          Code: 'MB002'
       },
       {
-         title: 'Input Device Parameter',
-         url: '/main/input-device-parameter',
-         icon: 'person',
-         code: 'MB003'
+         Title: 'Input Device Parameter',
+         Url: '/main/input-device-parameter',
+         Icon: 'person',
+         Code: 'MB003'
       }
     ]
   Permissions:any;
@@ -63,14 +63,15 @@ export class BaseController
       }
       else
       {
-         this.selectItem.UserID=this.user.userID;
-         this.selectItem.BUID=this.user.businessUnitID;
-         this.selectItem.Language=this.user.language;
-         if(this.user.permissions!=null)
+         this.selectItem.UserID=this.user.UserID;
+         this.selectItem.BUID=this.user.BusinessUnitID;
+         this.selectItem.Language=this.user.Language;
+         if(this.user.Permissions!=null)
          {
-            for(var permison of this.user.permissions)
+            for(var permison of this.user.Permissions)
             {
-              var page=this.pages.find(x=>x["code"]==permison);
+       
+              var page=this.pages.find(x=>x["Code"]==permison);
               this.Permissions.push(page);
        
             }
@@ -82,7 +83,7 @@ export class BaseController
       this.setCaptionLanguage();
    }
    setMessage(){
-      debugger;
+   
       this.Message=this.selectItem.Language==="vi-VN"?MessageVN:MessageUS;
    }
    setCaptionLanguage(){
@@ -91,7 +92,7 @@ export class BaseController
       });
    }
    handleLanguage(response){
-        for(var caption of response.data)
+        for(var caption of response.Data)
         {
              this.Language[caption["Caption"]]=caption["Field"];
         }

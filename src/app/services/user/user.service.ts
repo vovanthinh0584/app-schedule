@@ -18,7 +18,7 @@ export class UserService {
         HttpService.Client.http=httpClient;
     }
     login(userRequestDTO:User): Observable<any> {
-        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.userID + '0000000000000000').substring(0, 16));
+        const keyIv = CryptoJS.enc.Utf8.parse((userRequestDTO.UserID + '0000000000000000').substring(0, 16));
         const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(userRequestDTO.Password), keyIv,
             {
                 keySize: 128 / 8,
@@ -27,10 +27,10 @@ export class UserService {
                 padding: CryptoJS.pad.Pkcs7
             });
         var userTmp = new User();
-        userTmp.userID = userRequestDTO.userID;
+        userTmp.UserID = userRequestDTO.UserID;
         userTmp.Password = encrypted.toString();
-        userTmp.businessUnitID=userRequestDTO.businessUnitID;
-        userTmp.language=userRequestDTO.language;
+        userTmp.BusinessUnitID=userRequestDTO.BusinessUnitID;
+        userTmp.Language=userRequestDTO.Language;
       
         return HttpService.Client.post(`${api.api.url}${api.Account.Login}`, userTmp);
     }

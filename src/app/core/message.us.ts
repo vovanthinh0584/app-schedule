@@ -13,4 +13,12 @@ export module MessageUS {
         Reason: "Please enter your Reason",
 
     }
+    export const InputDeviceParameter = {
+        AssetId: "Please enter your AssetId",
+        InputDate: "Please enter your InputDate",
+        OperatingId: "Please enter your OperatingId",
+        UMID: "Please enter your UMID",
+        Value: "Please enter your Value",
+
+    }
 }

@@ -13,4 +13,12 @@ export module MessageVN {
         Reason: "Vui lòng nhập lí do",
 
     }
+    export const InputDeviceParameter = {
+        AssetId: "Vui lòng nhập thiết bị",
+        InputDate: "Vui lòng nhập ngày",
+        OperatingId: "Vui lòng nhập mã tham số",
+        UMID: "Vui lòng nhập lý do",
+        Value: "Vui lòng nhập đ",
+
+    }
 }

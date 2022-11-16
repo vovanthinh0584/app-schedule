@@ -1,11 +1,11 @@
 export class User {
-    userID: string;
+    UserID: string;
     Password: string;
     Token: string;
     FullName: string;
-    permissions:any
+    Permissions:any
     SessionExpires:any;
     Message:any;
-    businessUnitID:any;
-    language:string;
+    BusinessUnitID:any;
+    Language:string;
 }

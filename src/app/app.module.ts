@@ -21,10 +21,11 @@ import { IonicGestureConfig } from './core/ionic-gesture-config';
 import { UserServiceModule } from './services/user/user-service.module';
 import { ErrorDialogService } from './core/errordialog.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent,MenuItemComponent],
-  imports: [NgxDatatableModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
+  imports: [BrowserAnimationsModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
     backButtonText: '',
   }), AppRoutingModule,LoginPageModule,CommonServiceModule,UserServiceModule],
   providers: [ErrorDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

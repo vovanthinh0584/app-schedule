@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController, ToastController } from "@ionic/angular";
+import * as moment from "moment";
 import { InputDeviceParameterModalComponent } from "src/app/components/input-device-parameter/inputDeviceParameterModal.component";
 import { BaseController } from "src/app/core/baseController";
 import { InputDeviceParameterService } from "src/app/services/inputDeviceParameter/input-device-parameter.service";
@@ -9,7 +10,8 @@ import { InputDeviceParameterService } from "src/app/services/inputDeviceParamet
 
 @Component({
   selector: 'app-input-device-parameter',
-  templateUrl: './inputDeviceParameter.component.html'
+  templateUrl: './inputDeviceParameter.component.html',
+  styleUrls: ['./input-device-parameter.scss'],
 })
 export class InputDeviceParameterComponent extends BaseController implements OnInit  {
 
@@ -18,78 +20,76 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
   loadingIndicator: boolean = true;
   reorderable: boolean = true;
   selectedName : string = "";
-  columns = [
-    { name: 'STT',prop: 'STT' },
-    { name: 'AssetId',prop: 'assetId' },
-    { name: 'inputDate',prop: 'inputDate' },
-    { name: 'OperatingId',prop: 'OperatingId'},
-    { name: 'OperatingName',prop: 'OperatingName'},
-    { name: 'UMID',prop: 'uMID' },
-    { name: 'Value',prop: 'value' },
-    { name: 'Note',prop: 'note' }
-  ];
   
-  rows = [];
+datePickerConfig: any = {
+  //inputDate: new Date("2018-12-01");
+  showTodayButton: false, // default true
+  closeOnSelect: true, // default false
+  setLabel: 'Set',  // default 'Set'
+  todayLabel: 'Hôm nay', // default 'Today'
+  closeLabel: 'Đóng', // default 'Close'
+  titleLabel: 'Select a Date', // default null
+  monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+  weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+  dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
+  clearButton: false, // default true
+};
+
+InputDate:any;
   constructor(private inputDeviceParameterService:InputDeviceParameterService,private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController,public httpClient:HttpClient,toastController: ToastController) {
      super();
      this.fromName="frminputDeviceParameter";
      this.initializeApp(route,httpClient,toastController);
-    
+     this.InputDate = moment(new Date()).format('MM/DD/YYYY');
+  
   }
-  seachbar(){
-    debugger;
-    this.selectItem.InputDate=new Date();
-    this.getParameter();
-  }
-  onSelectdDatatable(row){
-    this.selectItem.Item=row;
-    this.openInputDeviceParameterModal();
-  }
+ 
+  
   getInformationInputDeviceParameter(){
     this.inputDeviceParameterService.getInformation().subscribe((response)=>{
       debugger; 
       var result=response.data; 
-      this.selectItem.listAsset= response.data.listAsset;
-      this.selectItem.listOperating= response.data.listOperating;
-      this.selectItem.listUM= response.data.listUM;
-      //this.openInputDeviceParameterModal();
+      this.selectItem.listAsset= response.Data.listAsset;
+      this.selectItem.listOperating= response.Data.listOperating;
+      this.selectItem.listUM= response.Data.listUM;
+      this.selectItem.AssetId=this.selectItem.listAsset[0].AssetID;
+      this.onSearch();
     })
   }
   getParameter(){
-    this.selectItem.rows=[];
+
     this.inputDeviceParameterService.getParameter(this.selectItem).subscribe((response)=>{
-      this.selectItem.rows=response.data;
+     debugger;
+      this.selectItem.ListAssetOperation=response.Data;
     })
   }
-  onPage(event) {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      console.log('paged!', event);
-    }, 100);
-  }
-  getRowHeight(row) {
-    return row.height;
-  }
+  
+  
   onSearch(){
-    this.getParameter();
+      this.selectItem.InputDate=this.InputDate;
+      this.getParameter();
   }
   ngOnInit() {
     this.getInformationInputDeviceParameter();
-
+   }
+  onSelectdData(data){
+    this.openInputDeviceParameterModal(data);
   }
-  async openInputDeviceParameterModal() {
+  async openInputDeviceParameterModal(item:any) {
     const modal = await this.modalCtrl.create({
         component: InputDeviceParameterModalComponent,
         componentProps: {
            Language:this.Language,
            selectItem:this.selectItem,
-           Message:this.Message
+           Message:this.Message,
+           CurrentItem:item,
+           toastService:this.toastService
         }
     });
-    modal.onDidDismiss().then((data) => {
+    modal.onDidDismiss().then((data:any) => {
       debugger; 
-        if (data.data) {
-          
+        if (data.TRANGTHAI==true) {
+          this.onSearch();
         }
     });
     await modal.present();

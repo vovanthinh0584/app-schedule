@@ -1,12 +1,13 @@
 <ion-header>
     <ion-toolbar>
-        <button ion-button end icon-only (click)="seachbar()">
+        <ion-label  position="floating">Tìm kiếm</ion-label>
+        <button ion-button end icon-only (click)="onSearch()">
             <ion-icon name="search"></ion-icon>
         </button>
       </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="dsylenh" scrollY="false">
 	<ion-list>
 		<ion-item>
 			<ion-label  position="floating">{{Language.AssetId}}</ion-label>
@@ -16,30 +17,67 @@
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">{{Language.InputDate}}</ion-label>
-			<ion-datetime presentation="date" [(ngModel)]="selectItem.InputDate"></ion-datetime>
         </ion-item>
+        <li-ionic4-datepicker [(ngModel)]="InputDate"
+        [inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
    </ion-list>
-   <ion-list>
-    <ngx-datatable
-    class="material"
-    [rows]="selectItem.rows"
-    columnMode="force"
-    [headerHeight]="50"
-    [footerHeight]="0"
-    [rowHeight]="50"
-    [scrollbarV]="true"
-    [scrollbarH]="true"
-    [columns]="columns"
-   >
-    <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Actions" sortable="false" prop="name">
-          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-          <ion-button (click)="onSelectdDatatable(row)">
-          </ion-button> 
-          </ng-template>
-</ngx-datatable-column>
-</ngx-datatable>
-   </ion-list> 
+
+    <ion-content class="detail-ylenh ylenh">
+
+		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+			<ion-refresher-content pullingIcon="arrow-dropdown"
+								   pullingText="Lấy dữ liệu mới"
+								   refreshingSpinner="circles">
+			</ion-refresher-content>
+		</ion-refresher>
+
+		<mat-accordion multi="true">
+		<div class="list card ttcd" *ngFor="let item of selectItem.ListAssetOperation" style="    margin-bottom: 10px;">
+			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz>
+				<mat-expansion-panel-header  style="height: 48px;"   >
+					<mat-panel-title>
+						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+							<p class="dichvu">{{ item.AssetId }}</p>
+						</mat-panel-title>
+						<mat-panel-description class="more-popover">
+							<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)"></ion-icon>
+						</mat-panel-description>
+				</mat-expansion-panel-header>
+				
+					
+			<div class="item item-text-wrap">
+            {{Language.OperatingID}}
+				<span class="item-note">{{ item.OperatingId }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				<span>{{Language.OperatingName}}</span>
+				<span class="item-note">{{ item.OperatingName }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.InputDate}}
+					<span class="item-note">{{ item.InputDate  | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
+				</div>
+			<div class="item item-text-wrap">
+				{{Language.UMID}}
+				<span class="item-note">{{ item.UMID }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.Value}}
+				<span class="item-note">{{ item.Value }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.Note}}
+				<span class="item-note">{{ item.Note }}</span>
+			</div>
+
+			</mat-expansion-panel>
+		</div>
+		</mat-accordion>
+		<!--<ion-infinite-scroll (ionInfinite)="doLoadmore($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>-->
+	</ion-content>
+
 </ion-content>
-<ion-button (click)="save()">{{Language.Note}}</ion-button>
+<ion-button (click)="save()">{{Language.Save}}</ion-button>

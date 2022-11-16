@@ -8,7 +8,7 @@ import { GetTaskComponent } from "../getTask/getTask.component";
 import { InputDeviceParameterComponent } from "../inputDeviceParameter/inputDeviceParameter.component";
 import { InputRequestComponent } from "../inputRequest/inputRequest.component";
 import { MainComponent } from "./main.component";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export const mainRoutes: Routes = [
   {
     //localhost:4200/main
