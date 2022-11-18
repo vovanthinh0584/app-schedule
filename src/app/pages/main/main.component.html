@@ -5,7 +5,7 @@
       <ion-title>Danh mục</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
+  <ion-content no-padding>
     <ion-list>
       <ion-menu-toggle auto-hide="false" *ngFor="let link of Permissions">
         <ion-item lines="none" [routerLink]="link.Url" [class.active-item]="link.Active" routerDirection="root">

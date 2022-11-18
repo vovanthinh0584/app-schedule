@@ -34,6 +34,8 @@
 
 
 .li-ionic4-datePicker {
+
+  margin-left: 10px;
     .modal-wrapper {
       height: 75%;
       width: 310px;
@@ -41,6 +43,7 @@
       @media (min-width: 768px) {
          width: 350px;
          height: 65%;
+         margin-left: 10px;
       }
     }
   }
