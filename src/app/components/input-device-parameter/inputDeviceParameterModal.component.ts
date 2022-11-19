@@ -34,11 +34,11 @@ export class InputDeviceParameterModalComponent implements OnInit{
    
   }
   ngOnInit() {
-    debugger;
+    
     this.CurrentItem.InputDate = moment(this.CurrentItem.InputDate).format('MM/DD/YYYY');
   }
   ValidForm(){
-    debugger;
+   
    
 
     if(!this.CurrentItem.AssetId)
@@ -69,7 +69,7 @@ export class InputDeviceParameterModalComponent implements OnInit{
     return true;
 }
   save(){
-    debugger;
+   
     if(!this.ValidForm()) return;
     var body:any={};
     body.BUID=this.selectItem.BUID;

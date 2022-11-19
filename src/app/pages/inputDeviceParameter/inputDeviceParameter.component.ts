@@ -47,7 +47,7 @@ InputDate:any;
   
   getInformationInputDeviceParameter(){
     this.inputDeviceParameterService.getInformation().subscribe((response)=>{
-      debugger; 
+      
       var result=response.data; 
       this.selectItem.listAsset= response.Data.listAsset;
       this.selectItem.listOperating= response.Data.listOperating;
@@ -59,7 +59,7 @@ InputDate:any;
   getParameter(){
 
     this.inputDeviceParameterService.getParameter(this.selectItem).subscribe((response)=>{
-     debugger;
+   
       this.selectItem.ListAssetOperation=response.Data;
     })
   }
@@ -87,7 +87,7 @@ InputDate:any;
         }
     });
     modal.onDidDismiss().then((data:any) => {
-      debugger; 
+    
         if (data.TRANGTHAI==true) {
           this.onSearch();
         }
