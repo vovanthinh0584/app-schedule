@@ -11,6 +11,7 @@ import { InputDeviceParameterService } from "src/app/services/inputDeviceParamet
 import { InputDeviceParameterComponent } from "./inputDeviceParameter.component";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MomentModule } from 'ngx-moment';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 const routes: Routes = [
   //localhost:4200/main/user
   { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
     MatExpansionModule,
     Ionic4DatepickerModule,
     MomentModule,
+    ScrollingModule,
     RouterModule.forChild(routes)
   ],
   providers: [InputDeviceParameterService],
