@@ -21,4 +21,9 @@ export module MessageUS {
         Value: "Please enter your Value",
 
     }
+    export const GetTask = {
+        Status: "Please enter status!",
+        SmallStatus: "The Status must be small than the current status!",
+        CreateSuccessfully: "Create GetTask Successfully!",
+    }
 }
