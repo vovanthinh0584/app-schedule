@@ -20,5 +20,8 @@
         "Entity":"/api/InputRequest",
         "QueryWorkShops":"/api/InputRequest/QueryWorkShops",
         "QueryLocations":"/api/InputRequest/QueryLocations",
-    }   
+    }   ,
+    "GetTask":{
+        "Entity":"/api/GetTask",
+    }
 }

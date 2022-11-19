@@ -1,1 +1,65 @@
 <h1>Get Task</h1>
+<ion-content class="dsylenh" scrollY="false">
+    <ion-content class="detail-ylenh ylenh">
+
+        <ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Lấy dữ liệu mới"
+                refreshingSpinner="circles">
+            </ion-refresher-content>
+        </ion-refresher>
+
+        <mat-accordion multi="true">
+            <div class="list card ttcd" *ngFor="let item of selectItem.GetTasks" style="    margin-bottom: 10px;">
+                <mat-expansion-panel class="mat-panel" hideToggle="true" #xyz>
+                    <mat-expansion-panel-header style="height: 48px;">
+                        <mat-panel-title>
+                            <ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
+                                src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+                            <ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
+                                src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+                            <p class="dichvu"> AssetId</p>
+                        </mat-panel-title>
+                        <mat-panel-description class="more-popover">
+                            <ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)">
+                            </ion-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div class="item item-text-wrap">
+                        <span>Language.WorkNo</span>
+                        <span class="item-note">{{ item.WorkNo }}</span>
+                    </div>
+
+                    <div class="item item-text-wrap">
+                        <span>Language.WorkDate</span>
+                        <span class="item-note">{{ item.WorkDate }}</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <span>Language.RequestOrPlanNo</span>
+                        <span class="item-note">{{ item.RequestOrPlanNo }}</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <span>Language.WorkType</span>
+                        <span class="item-note">{{item.WorkTypeName}}</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <span>Language.Status</span>
+                        <span class="item-note">{{ item.StatusName }}</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <span>Language.Level</span>
+                        <span class="item-note">{{ item.LevelName }}</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <span>Language.RequestedContent</span>
+                        <span class="item-note">{{ item.RequestedContent }}</span>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+        </mat-accordion>
+        <!--<ion-infinite-scroll (ionInfinite)="doLoadmore($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>-->
+    </ion-content>
+
+</ion-content>

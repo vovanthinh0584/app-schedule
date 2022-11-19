@@ -21,4 +21,9 @@ export module MessageVN {
         Value: "Vui lòng nhập đ",
 
     }
+    export const GetTask = {
+        Status: "Vui lòng nhập trạng thái",
+        SmallStatus: "Không được phép chọn giá trị nhỏ hơn",
+        CreateSuccessfully: "Thêm GetTask thành công!",
+    }
 }
