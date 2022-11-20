@@ -2,82 +2,86 @@
 	<ion-toolbar>
 		<div (click)="onSearch()" style="float:right">
 			<!-- <ion-label  position="floating">Tìm kiếm</ion-label> -->
-			<ion-icon name="search" ></ion-icon>
+			<ion-icon name="search"></ion-icon>
 		</div>
-        
+
 	</ion-toolbar>
-	
+
 </ion-header>
 <ion-content>
-	
+
 	<ion-list no-padding>
-		
+
 		<ion-item>
-			<ion-label  position="floating">{{Language.AssetId}}</ion-label>
+			<ion-label position="floating">{{Language.AssetId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.AssetId">
-                <ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">{{asset.AssetName}}</ion-select-option>
-            </ion-select>
+				<ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">
+					{{asset.AssetName}}</ion-select-option>
+			</ion-select>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="floating">{{Language.InputDate}}</ion-label>
-        </ion-item>
-        <li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px"
-        [inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
-   </ion-list>
+			<ion-label position="floating">{{Language.InputDate}}</ion-label>
+		</ion-item>
+		<li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px" [inputDateConfig]="datePickerConfig">
+		</li-ionic4-datepicker>
+	</ion-list>
 
-    <ion-content class="detail-ylenh ylenh" scrollY="false">
+	<ion-content class="detail-ylenh ylenh" scrollY="false">
 
 		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
-			<ion-refresher-content pullingIcon="arrow-dropdown"
-								   pullingText="Lấy dữ liệu mới"
-								   refreshingSpinner="circles">
+			<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Lấy dữ liệu mới"
+				refreshingSpinner="circles">
 			</ion-refresher-content>
 		</ion-refresher>
 
 		<mat-accordion multi="true">
-	<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-		<div class="list card ttcd" *cdkVirtualFor="let item of selectItem.ListAssetOperation" style="margin-bottom: 10px;">
-			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz>
-				<mat-expansion-panel-header  style="height: 48px;"   >
-					<mat-panel-title>
-						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
-						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
-							<p class="dichvu">{{ item.AssetId }}</p>
-						</mat-panel-title>
-						<mat-panel-description class="more-popover">
-							<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)" style="margin-top: 12px;"></ion-icon>
-						</mat-panel-description>
-				</mat-expansion-panel-header>
-				
-					
-			<div class="item item-text-wrap">
-            {{Language.OperatingID}}
-				<span class="item-note">{{ item.OperatingId }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				<span>{{Language.OperatingName}}</span>
-				<span class="item-note">{{ item.OperatingName }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				{{Language.InputDate}}
-					<span class="item-note">{{ item.InputDate  | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
-				</div>
-			<div class="item item-text-wrap">
-				{{Language.UMID}}
-				<span class="item-note">{{ item.UMID }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				{{Language.Value}}
-				<span class="item-note">{{ item.Value }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				{{Language.Note}}
-				<span class="item-note">{{ item.Note }}</span>
-			</div>
+			<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+				<div class="list card ttcd" *cdkVirtualFor="let item of selectItem.ListAssetOperation"
+					style="margin-bottom: 10px;">
+					<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz>
+						<mat-expansion-panel-header style="height: 48px;">
+							<mat-panel-title>
+								<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
+									src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+								<ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
+									src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+								<p class="dichvu">{{ item.AssetId }}</p>
+							</mat-panel-title>
+							<mat-panel-description class="more-popover">
+								<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)"
+									style="margin-top: 12px;"></ion-icon>
+							</mat-panel-description>
+						</mat-expansion-panel-header>
 
-			</mat-expansion-panel>
-		</div>
-	</cdk-virtual-scroll-viewport>
+
+						<div class="item item-text-wrap">
+							{{Language.OperatingID}}
+							<span class="item-note">{{ item.OperatingId }}</span>
+						</div>
+						<div class="item item-text-wrap">
+							<span>{{Language.OperatingName}}</span>
+							<span class="item-note">{{ item.OperatingName }}</span>
+						</div>
+						<div class="item item-text-wrap">
+							{{Language.InputDate}}
+							<span class="item-note">{{ item.InputDate | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
+						</div>
+						<div class="item item-text-wrap">
+							{{Language.UMID}}
+							<span class="item-note">{{ item.UMID }}</span>
+						</div>
+						<div class="item item-text-wrap">
+							{{Language.Value}}
+							<span class="item-note">{{ item.Value }}</span>
+						</div>
+						<div class="item item-text-wrap">
+							{{Language.Note}}
+							<span class="item-note">{{ item.Note }}</span>
+						</div>
+
+					</mat-expansion-panel>
+				</div>
+			</cdk-virtual-scroll-viewport>
 		</mat-accordion>
 		<!--<ion-infinite-scroll (ionInfinite)="doLoadmore($event)">
 		<ion-infinite-scroll-content></ion-infinite-scroll-content>

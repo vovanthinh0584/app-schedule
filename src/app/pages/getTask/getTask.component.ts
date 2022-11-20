@@ -112,8 +112,8 @@ export class GetTaskComponent extends BaseController implements OnInit {
         statuses: this.statuses
       }
     });
-    modal.onDidDismiss().then((data: any) => {
-      debugger;
+    modal.onDidDismiss().then((data: any) => { 
+      
       if (data.data == true) {
         this.loadData();
       }

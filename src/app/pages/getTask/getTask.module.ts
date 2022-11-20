@@ -1,15 +1,16 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { Ionic4DatepickerModule } from "@logisticinfotech/ionic4-datepicker";
+
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MomentModule } from 'ngx-moment';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { GetTaskComponent } from "./getTask.component";
-import { GetTaskService } from "src/app/services/getTask/get-task.service";
 import { GetTaskModalComponent } from "src/app/components/get-task/getTaskModal.component";
+import { GetTaskService } from "src/app/services/getTask/get-task.service";
 
 const routes: Routes = [
   //localhost:4200/main/user
@@ -20,7 +21,7 @@ const routes: Routes = [
 @NgModule({
   exports: [],
   declarations: [
-    GetTaskComponent,GetTaskModalComponent
+    GetTaskComponent, GetTaskModalComponent
   ],
   imports: [
     CommonModule,
@@ -29,13 +30,17 @@ const routes: Routes = [
     MatExpansionModule,
     Ionic4DatepickerModule,
     MomentModule,
-    RouterModule.forChild(routes)
+
+    RouterModule.forChild(routes),
+    ScrollingModule,
   ],
   providers: [GetTaskService],
+  entryComponents: [GetTaskComponent, GetTaskModalComponent]
 })
 
-export class InputRequestModule {
+export class GetTaskModule {
   constructor() {
   }
 
 }
+
