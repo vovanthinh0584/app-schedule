@@ -12,7 +12,7 @@ export class Toast {
        const toast = await this.toastController.create({
            message: msg,
            duration: duration,
-           position: 'top',
+           position: 'bottom',
            cssClass:"success-toast"
        });
        toast.present();
@@ -21,7 +21,7 @@ export class Toast {
         const toast = await this.toastController.create({
             message: msg,
             duration: duration,
-            position: 'top',
+            position: 'bottom',
             cssClass:"error-toast"
         });
         toast.present();
@@ -30,7 +30,7 @@ export class Toast {
         const toast = await this.toastController.create({
             message: msg,
             duration: duration,
-            position: 'top',
+            position: 'bottom',
             cssClass:"warn-toast"
         });
         toast.present();

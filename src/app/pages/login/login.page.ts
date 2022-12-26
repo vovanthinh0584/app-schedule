@@ -28,7 +28,7 @@ export class LoginPage extends BaseController implements OnInit {
         });
     }
     ValidForm(){
-        debugger;
+       
         if(!this.selectItem.UserId)
         {
             this.toastService.warn(this.Message.Login.UserId);
@@ -65,7 +65,7 @@ export class LoginPage extends BaseController implements OnInit {
             if(response.Code==200)
             {
         
-                this.toastService.success(response.Data.message);
+                this.toastService.success(response.Data.Message);
                 this.storageService.setObject("userInfo",response.Data);
                 this.router.navigate([`/main`], { replaceUrl: true });
 

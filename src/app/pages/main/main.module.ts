@@ -18,6 +18,7 @@ export const mainRoutes: Routes = [
       { path: 'input-request', loadChildren: () => import('../inputRequest/inputRequest.module').then( m => m.InputRequestModule)},
       { path: 'get-task', loadChildren: () => import('../getTask/getTask.module').then( m => m.InputRequestModule)},
       { path: 'input-device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then( m => m.InputDeviceParameterModule)},
+      { path: 'sheet033-boiler', loadChildren: () => import('../Sheet033Boiler/sheet033Boiler.module').then( m => m.Sheet033BoilerModule)},
     ]
   }
 

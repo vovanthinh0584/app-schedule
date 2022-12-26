@@ -16,9 +16,10 @@ export class InputRequestComponent extends BaseController implements OnInit {
     super();
     this.fromName = "frmInputRequest";
     this.initializeApp(route, httpClient, toastController);
-
+ 
   }
   ngOnInit() {
+    
     this.getInformationInputRequest();
   }
   getInformationInputRequest() {

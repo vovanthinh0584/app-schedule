@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-toolbar>
 		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
-		<ion-title slot="start">Input Request</ion-title>
+		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -10,14 +10,14 @@
 		<ion-item>
 			<ion-label class="title-chuan-doan" position="stacked">{{Language.WorkshopId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.WorkshopId">
-                <ion-select-option *ngFor="let workshop of WorkShops" [value]="workshop.workShopId">{{workshop.workShopName}}</ion-select-option>
+                <ion-select-option *ngFor="let workshop of WorkShops" [value]="workshop.WorkShopId">{{workshop.WorkShopName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
 		
 		<ion-item>
 			<ion-label class="title-chuan-doan" position="stacked">{{Language.LocationId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.LocationId">
-                <ion-select-option *ngFor="let location of Locations" [value]="location.locationID">{{location.locationName}}</ion-select-option>
+                <ion-select-option *ngFor="let location of Locations" [value]="location.LocationID">{{location.LocationName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
 

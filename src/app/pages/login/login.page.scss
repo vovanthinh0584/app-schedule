@@ -10,7 +10,10 @@
     background-color: green;
 }
 .login-header{
-  height:150px ;
+    height: 150px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 .login-footer{
     height:40px ;
@@ -18,3 +21,24 @@
 .with-100{
     width: 100%;
 }
+
+
+
+
+.bg-img {
+    /* The image used */
+    background-image: url(~src/assets/background_login.png) ;
+  
+    width: 100%;
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: -20px;
+  }
+  
+  /* Add styles to the form container */
+  

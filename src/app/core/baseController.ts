@@ -10,16 +10,21 @@ import { StorageService } from './StorageService';
 import { ToastService } from './ToastService';
 import {MessageUS} from './message.us'
 import {MessageVN} from './message.vn'
+import { EventEmitterName } from './event-emitter-service';
+
+
 export class BaseController
 {
+   eventEmitterService=EventEmitterName.EventEmitterService;
    selectKey:any="";
    fromState:string;
    selectItem:any={};
-   Language:any={};
+   Language:any={Title:""};
    fromName:any;
    toastService = ToastService.Toast;
    storageService = StorageService.Storage;
    httpService = HttpService.Client;
+
    user:User;
    private _route: Router;
    Message:any={};
@@ -27,20 +32,34 @@ export class BaseController
       {
           Title: 'Input Request',
           Url: '/main/input-request',
-          Icon: 'person',
-          Code: 'MB001'
+          Icon: 'aperture-outline',
+          Code: 'MB001',
+          Title_VN:"Nhập yêu cầu",
+          Title_US:"Input Request",
       },
       {
           Title: 'Get Task',
           Url: '/main/get-task',
-          Icon: 'person',
-          Code: 'MB002'
+          Icon: 'nutrition-outline',
+          Code: 'MB002',
+          Title_VN:"Nhận phân công",
+          Title_US:"Get Task",
       },
       {
          Title: 'Input Device Parameter',
          Url: '/main/input-device-parameter',
-         Icon: 'person',
-         Code: 'MB003'
+         Icon: 'file-tray-full-outline',
+         Code: 'MB003',
+         Title_VN:"Nhập thiết bị tham số",
+         Title_US:"Input Device Parameter",
+      },
+      {
+         Title: 'Sheet 033 Boiler',
+         Url: '/main/sheet033-boiler',
+         Icon: 'file-tray-full-outline',
+         Code: 'MB004',
+         Title_VN:"Sheet 033 Boiler",
+         Title_US:"Sheet 033 Boiler",
       }
     ]
   Permissions:any;
@@ -70,15 +89,14 @@ export class BaseController
          {
             for(var permison of this.user.Permissions)
             {
-       
               var page=this.pages.find(x=>x["Code"]==permison);
+              page.Title=this.selectItem.Language=='vi-VN'?page.Title_VN:page.Title_US;
               this.Permissions.push(page);
        
             }
          }
          
-   
-      }
+     }
       this.setMessage();
       this.setCaptionLanguage();
    }
@@ -92,10 +110,13 @@ export class BaseController
       });
    }
    handleLanguage(response){
+        
         for(var caption of response.Data)
-        {
+        {   
              this.Language[caption["Caption"]]=caption["Field"];
         }
+        
+      this.eventEmitterService.changeTitle.emit(this.Language["Title"]);
    }
    getCaptionLanguage(formName:string,language:string):Observable<any>{
       return this.httpService.get(`${api.api.url}${api.Account.CaptionLanguage}?formName=${formName}&lang=${language}`);

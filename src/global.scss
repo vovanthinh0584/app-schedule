@@ -1,15 +1,4 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
 
-/* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -25,17 +14,23 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-@import '~@swimlane/ngx-datatable/index.css';
-@import '~@swimlane/ngx-datatable/themes/bootstrap.css';
-@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+
 .material {
     height: 550px
+
 }
 
-
+body {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+}
 .li-ionic4-datePicker {
 
-  margin-left: 10px;
+
     .modal-wrapper {
       height: 75%;
       width: 310px;
@@ -47,3 +42,40 @@
       }
     }
   }
+  .success-toast{
+    color: #28a745!important;
+  }
+  .error-toast{
+    color: red;
+  }
+  .warn-toast{
+     color: orange;
+  }
+  body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  .toast-bg {
+    background-color:red;
+  }
+.modal-title{
+  padding-inline: 0px !important;
+  
+}
+
+.back-button{
+ z-index: 999999;
+}
+.background-main ion-router-outlet{
+    background-image: url(~src/assets/background_home.jpg) ;
+
+    background-position: center;
+    background-repeat: no-repeat;
+ 
+   
+  }
+
+  .checkbox-icon { zoom : 0.6;}

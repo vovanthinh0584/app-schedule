@@ -1,70 +1,55 @@
-﻿<ion-header>
-	<ion-toolbar style="height: 0px">
-	</ion-toolbar>
-</ion-header>
-<ion-content no-padding
-	class="animated fadeIn login auth-page">
-	<div class="login-header">
-		  <!-- <h1>đăng nhập</h1> -->
-	</div>
-	<ion-grid class="login-content">
+﻿
+	<ion-content no-padding	>
+		<div class="bg-img">
 		
-		<ion-row >
-			<ion-col size-xs="12" >
-				<div>
-					<ion-item class="username ion-no-padding">
-						<ion-icon src="assets/icon/username.svg"></ion-icon>
-						<ion-input class="id"
-							required
-							[(ngModel)]="selectItem.UserId"
-							type="text"
-							placeholder="{{Language.UserId}}"
-							></ion-input>
-					</ion-item>
-
-					<ion-item class="ion-no-padding">
-						<ion-icon src="assets/icon/password.svg"></ion-icon>
-						<ion-input class="pw"
-							required
-							[(ngModel)]="selectItem.Password"
-							type="password"
-							placeholder="{{Language.Password}}"></ion-input>
-					</ion-item>
-					<ion-item class="ion-no-padding">
-						<ion-icon name="globe-outline"></ion-icon>
-						<ion-select [(ngModel)]="selectItem.BusinessUnitID" class="with-100">
-						  <ion-select-option *ngFor="let business of selectItem.listBusiness" [value]="business.BusinessUnitID">{{business.BusinessUnitName}}</ion-select-option>
-						</ion-select>
-					  </ion-item>
-					  <ion-item class="ion-no-padding">
-						<ion-icon name="language-outline"></ion-icon>
-						<ion-select (ionChange)="onChangeLanguage($event.target.value)" [(ngModel)]="selectItem.Language" class="with-100">
-						  <ion-select-option *ngFor="let lang of selectItem.listLanguage" [value]="lang.Lang">{{lang.Name}}</ion-select-option>
-						</ion-select>
-					  </ion-item>
-				</div>
-				<div >
-					<ion-button margin-top
-						size="large"
-						(click)="login()"
-						expand="block">{{Language.login}}</ion-button>
-				</div>
-			</ion-col>
-			
-			
-		</ion-row>
+		  <h1 class="login-header" style=" text-align: center;">{{Language.Login}}</h1> 
 		
-	</ion-grid>
-	<ion-grid class="login-footer">
-        <ion-row >
-			<ion-col size-xs="12" >
-				<div class="login-text">
-					© Copyright by 
-					<br>
-					Version 0.0.1
-				</div>
+			<ion-grid class="login-content">
 				
-			</ion-col>
-		</ion-row>	
-	</ion-grid>
-</ion-content>
+				<ion-row >
+					<ion-col size-xs="12" >
+						<div>
+							<ion-item class="username ion-no-padding">
+								<ion-icon src="assets/icon/username.svg"></ion-icon>
+								<ion-input class="id"
+									required
+									[(ngModel)]="selectItem.UserId"
+									type="text"
+									placeholder="{{Language.UserId}}"
+									></ion-input>
+							</ion-item>
+		
+							<ion-item class="ion-no-padding">
+								<ion-icon src="assets/icon/password.svg"></ion-icon>
+								<ion-input class="pw"
+									required
+									[(ngModel)]="selectItem.Password"
+									type="password"
+									placeholder="{{Language.Password}}"></ion-input>
+							</ion-item>
+							<ion-item class="ion-no-padding">
+								<ion-icon name="globe-outline"></ion-icon>
+								<ion-select [(ngModel)]="selectItem.BusinessUnitID" class="with-100">
+								<ion-select-option *ngFor="let business of selectItem.listBusiness" [value]="business.BusinessUnitID">{{business.BusinessUnitName}}</ion-select-option>
+								</ion-select>
+							</ion-item>
+							<ion-item class="ion-no-padding">
+								<ion-icon name="language-outline"></ion-icon>
+								<ion-select (ionChange)="onChangeLanguage($event.target.value)" [(ngModel)]="selectItem.Language" class="with-100">
+								<ion-select-option *ngFor="let lang of selectItem.listLanguage" [value]="lang.Lang">{{lang.Name}}</ion-select-option>
+								</ion-select>
+							</ion-item>
+						</div>
+						<div style="margin-top:20px">
+							<ion-button margin-top
+								size="large"
+								(click)="login()"
+								expand="block">{{Language.Login}}</ion-button>
+						</div>
+					</ion-col>
+				</ion-row>
+				
+			</ion-grid>
+		</div>
+	</ion-content>
+

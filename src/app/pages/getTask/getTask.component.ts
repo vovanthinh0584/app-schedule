@@ -17,7 +17,7 @@ export class GetTaskComponent extends BaseController implements OnInit {
   statuses: any
   constructor(private getTaskService: GetTaskService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
-    this.fromName = "frminputDeviceParameter";
+    this.fromName = "frmGetTask";
     this.initializeApp(route, httpClient, toastController);
 
   }

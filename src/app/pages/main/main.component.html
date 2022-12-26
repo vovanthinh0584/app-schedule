@@ -2,7 +2,7 @@
   <ion-menu  no-padding contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Danh mục</ion-title>
+      <ion-title>{{Language.MenuTitle}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content no-padding>
@@ -15,7 +15,7 @@
       </ion-menu-toggle>
       <ion-item lines="none" (click)="logout()">
         <ion-icon name="log-out" slot="start"></ion-icon>
-        <ion-label>Đăng xuất</ion-label>
+        <ion-label>{{Language.LogoutTitle}}</ion-label>
       </ion-item>
     </ion-list>
   </ion-content>
@@ -23,14 +23,16 @@
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar>
+      <!-- <ion-icon name="home-outline" slot="start" style="padding-left:5px" (click)="onHome()"></ion-icon> -->
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title></ion-title>
+      <ion-title style="padding-inline: 0px !important" >{{Language.Title}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
-    <ion-router-outlet main></ion-router-outlet>
+  <ion-content  padding class="background-main ion-padding">
+    <ion-router-outlet 
+    ></ion-router-outlet>
   </ion-content>
 </div>
 

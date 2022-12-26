@@ -26,4 +26,8 @@ export module MessageUS {
         SmallStatus: "The Status must be small than the current status!",
         CreateSuccessfully: "Create GetTask Successfully!",
     }
+    export const Sheet033Boiler = {
+        Save: "Save success",
+        CheckList: "Checking list emty",
+    }
 }

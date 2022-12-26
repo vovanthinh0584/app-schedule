@@ -26,4 +26,8 @@ export module MessageVN {
         SmallStatus: "Không được phép chọn giá trị nhỏ hơn",
         CreateSuccessfully: "Thêm GetTask thành công!",
     }
+    export const Sheet033Boiler = {
+        Save: "Lưu thành công",
+        CheckList: "Danh sách checking list rỗng",
+    }
 }

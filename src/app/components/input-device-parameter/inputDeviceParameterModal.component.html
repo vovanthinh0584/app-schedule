@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-toolbar>
 		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
-		<ion-title slot="start">Input Device parameter</ion-title>
+		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -43,4 +43,4 @@
 		
 	</ion-list>
 </ion-content>
-<ion-button (click)="save()">{{Language.Save}}</ion-button>
+<ion-button (click)="save()">{{Language.btnSave}}</ion-button>

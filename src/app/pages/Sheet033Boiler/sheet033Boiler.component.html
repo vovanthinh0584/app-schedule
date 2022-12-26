@@ -1,0 +1,72 @@
+<ion-content no-padding class="dsylenh" scrollY="false">
+
+
+	<div class="view-1 filter-dsylenh-top">
+		<div class="view-h-scroll-ylenh filter-dsylenh scroll-view ionic-scroll">
+			<div class="scroll-ylenh overflow-scroll-ylenh scroll-x-ylenh">
+				<button class="btn-1-ylenh ylenh-btn-md text-center btn-add-new" (click)="onSave()">
+					{{Language.Save}}
+				</button>
+				<button class="btn-1-ylenh ylenh-btn-md text-center btn-add-new">
+					{{Language.CheckAll}}
+					<ion-checkbox class="checkbox-icon" (ionChange)="onCheckingAll($event)"></ion-checkbox>
+				</button>
+				<button class="btn-1-ylenh ylenh-btn-md" *ngFor="let item of selectItem.CheckList; index as i">
+					<ion-grid class="ylenh-top-grid" no-padding>
+						<ion-row align-items-center class="ylenh-top-row" no-padding>
+							<ion-col size="10" no-padding>
+								<p class="title">{{item.ChecklistID}}</p>
+								<p>
+									{{Language.Value}}
+								   <ion-checkbox [(ngModel)]="item.Value" class="checkbox-icon"></ion-checkbox>
+															
+								</p>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</button>
+
+			</div>
+		</div>
+	</div>
+	<ion-list no-padding>
+		<ion-item>
+			<ion-label  position="floating">{{Language.WorkId}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.CurrentWorker" (ionChange)="onChangeWork($event)">
+				<ion-select-option *ngFor="let item of selectItem.ListWorks" [value]="item">{{item.WorkerId}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.WorkDate}}</ion-label>
+		</ion-item>
+		<li-ionic4-datepicker [(ngModel)]="WorkDate" style="margin-left:15px"
+		[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
+	
+		<ion-item>
+			<ion-label  position="stacked">{{Language.AssetId}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.AssetId" type="text" [readonly]="true"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.AreaId}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.AreaId" type="text" [readonly]="true"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.ShiftId}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.ShiftId" type="text" [readonly]="true"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label  position="floating">{{Language.Time}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.Time">
+				<ion-select-option *ngFor="let item of selectItem.listSheetAtime" [value]="item.Id">{{item.Attime}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-button (click)="onSearch()" class="search">{{Language.GetCheckinglist}}</ion-button>
+	</ion-list>
+</ion-content>
+
+
+
+
+
+
