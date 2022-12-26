@@ -1,4 +1,3 @@
-<h1>Get Task</h1>
 <ion-content class="dsylenh" scrollY="false">
     <ion-content class="detail-ylenh ylenh">
 
@@ -9,8 +8,8 @@
         </ion-refresher>
 
         <mat-accordion multi="true">
-            <div class="list card ttcd" *ngFor="let item of selectItem.GetTasks" style="    margin-bottom: 10px;">
-                <mat-expansion-panel class="mat-panel" hideToggle="true" #xyz>
+            <div class="list card ttcd" *ngFor="let item of selectItem.GetTasks" style="margin-bottom: 10px;">
+                <mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true">
                     <mat-expansion-panel-header style="height: 48px;">
                         <mat-panel-title>
                             <ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"

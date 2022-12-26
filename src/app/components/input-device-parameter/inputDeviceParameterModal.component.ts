@@ -28,7 +28,10 @@ export class InputDeviceParameterModalComponent implements OnInit{
     dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
     clearButton: false, // default true
   };
-  constructor(private _route: Router, private activatedRoute: ActivatedRoute,private modalCtrl: ModalController,private inputDeviceParameterService:InputDeviceParameterService) {
+  constructor(private _route: Router, 
+    private activatedRoute: ActivatedRoute,
+    private modalCtrl: ModalController,
+    private inputDeviceParameterService:InputDeviceParameterService) {
 
   
    

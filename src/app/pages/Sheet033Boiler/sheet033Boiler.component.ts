@@ -60,6 +60,7 @@ WorkDate:any;
     });
   }
   onChangeWork(event){
+    debugger;
     this.selectItem.ShiftId=this.selectItem.CurrentWorker.ShiftId;
     this.selectItem.AssetId=this.selectItem.CurrentWorker.AssetId;
     this.selectItem.WorkDate=this.selectItem.CurrentWorker.WorkDate;
