@@ -20,10 +20,12 @@ export class LoginPage extends BaseController implements OnInit {
         this.selectItem.Language="vi-VN";
         this.selectItem.UserId="MOBILE_01";
         this.selectItem.Password="SAFVIET";
+        this.onChangeLanguage( this.selectItem.Language);
     }
     ngOnInit() {
+   
         this.userService.getListBussiness().subscribe((response:any)=>{
-            this.selectItem.BusinessUnitID="SAFVIET";
+           this.selectItem.BusinessUnitID="SAFVIET";
             this.selectItem.listBusiness=response.Data;
         });
     }

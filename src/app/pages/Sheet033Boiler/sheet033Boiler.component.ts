@@ -65,6 +65,8 @@ WorkDate:any;
     this.selectItem.AssetId=this.selectItem.CurrentWorker.AssetId;
     this.selectItem.WorkDate=this.selectItem.CurrentWorker.WorkDate;
     this.selectItem.AreaId=this.selectItem.CurrentWorker.AreaId;
+    this.selectItem.Time=null;
+    this.selectItem.listSheetAtime=[];
     this.getListSheet();
  
   }

@@ -31,15 +31,11 @@ import 'rxjs/add/operator/concat';
 import { StorageService } from './StorageService';
 
 import { UserService } from '../services/user/user.service';
+import { EventEmitterName } from './event-emitter-service';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    //getRandomArbitrary(min, max) {
-    //    return Math.random() * (max - min) + min;
-    //}
-    animal: string;
-    name: string;
-    //token: string;
+    eventEmitterService=EventEmitterName.EventEmitterService;
     constructor(public errorDialogService: ErrorDialogService, public loadingDialogService: LoadingDialogService, private userService: UserService,
         private popoverCtrl: PopoverController, private modalCtrl: ModalController, private actionSheetCtrl: ActionSheetController,
         public http: HttpClient, public dialog: AlertController, private router: Router) {
@@ -50,7 +46,14 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             console.log('showSpinner')
             this.loadingDialogService.onStarted(request);
         }
-        const token: string = StorageService.Storage.get('Token');
+      
+  
+        var user:any= StorageService.Storage.getObject('userInfo');
+        var token="";
+        if(user)
+        {
+            token =user.TOKEN;
+        }
         if (token) {
             request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
         }
@@ -96,7 +99,9 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                
                 return throwError(error);
             }), 
-        ).finally(() => { console.log('[debug] funally'); this.loadingDialogService.onFinished(request); });
+        ).finally(() => { 
+            this.eventEmitterService.changeFinishLoading.emit({result:false});
+            console.log('[debug] funally'); this.loadingDialogService.onFinished(request); });
         
     }
 

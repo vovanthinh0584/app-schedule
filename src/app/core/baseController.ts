@@ -24,7 +24,7 @@ export class BaseController
    toastService = ToastService.Toast;
    storageService = StorageService.Storage;
    httpService = HttpService.Client;
-
+   isLoading=true;
    user:User;
    private _route: Router;
    Message:any={};
@@ -74,6 +74,7 @@ export class BaseController
       this._route=route;
       this.httpService.http=httpClient;
       this.toastService.toastController=toastController;
+      this.eventEmitterService.changeStartLoading.emit({});
       if(this.user==null)
       {
          this._route.navigate([`/login`], { replaceUrl: true });
