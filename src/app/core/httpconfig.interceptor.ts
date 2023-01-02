@@ -63,6 +63,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
          request = request.clone({ headers: request.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE') });
         request = request.clone({ headers: request.headers.set('Access-Control-Allow-Origin', '*') });
         console.log('HttpConfigInterceptor', request);
+        this.eventEmitterService.changeStartLoading.emit({});
         return next.handle(request).pipe(
             timeout(150000),
             

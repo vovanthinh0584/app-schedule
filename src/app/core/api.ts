@@ -20,6 +20,10 @@
         "Entity":"/api/InputRequest",
         "QueryWorkShops":"/api/InputRequest/QueryWorkShops",
         "QueryLocations":"/api/InputRequest/QueryLocations",
+        "GetRequests":"/api/InputRequest/GetRequests",
+        "GetZoneList":"/api/InputRequest/QueryListZone",
+        "ComFirmRequest":"/api/InputRequest/ComFirmRequest",
+        "GetAdminMTN":"/api/InputRequest/AdminMTN",
     }   ,
     "GetTask":{
         "Entity":"/api/GetTask",

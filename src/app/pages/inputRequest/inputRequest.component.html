@@ -1,0 +1,51 @@
+<ion-content  class="dsylenh"  scrollY="false">
+	<ion-content class="detail-ylenh ylenh">
+		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+			<ion-refresher-content pullingIcon="arrow-dropdown"
+								   pullingText="Lấy dữ liệu mới"
+								   refreshingSpinner="circles">
+			</ion-refresher-content>
+		</ion-refresher>
+		<mat-accordion multi="true">
+		<div class="list card ttcd" *ngFor="let item of selectItem.ListRequest" style="margin-bottom: 10px;">
+			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true"> 
+				<mat-expansion-panel-header  style="height: 48px;"   >
+					<mat-panel-title>
+						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+						</mat-panel-title>
+						<mat-panel-description class="more-popover">
+							<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)" style="margin-top: 12px;"></ion-icon>
+						</mat-panel-description>
+				</mat-expansion-panel-header>
+			<div class="item item-text-wrap">
+            {{Language.MTNRequestNum}}
+				<span class="item-note">{{ item.MTNRequestNum}}</span>
+			</div>
+			<div class="item item-text-wrap">
+				<span>{{Language.MTNRequestDateTime}}</span>
+				<span class="item-note">{{ item.MTNRequestDateTime  | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
+			</div>
+			
+			<div class="item item-text-wrap">
+				{{Language.Descriptionrequest}}
+				<span class="item-note">{{ item.Descriptionrequest }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.Interventionactions}}
+				<span class="item-note">{{ item.Interventionactions }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.Rootcause}}
+				<span class="item-note">{{ item.Rootcause }}</span>
+			</div>
+			</mat-expansion-panel>
+		</div>
+		</mat-accordion>
+	</ion-content>
+    <ion-fab vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="openInputRequest()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+</ion-content>

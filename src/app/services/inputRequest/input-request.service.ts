@@ -25,4 +25,13 @@ export class InputRequestService {
     createInputRequest(data:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.InputRequest.Entity}`,data);
     }
+    getListReQuest():Observable<any>{
+        return HttpService.Client.get(`${api.api.url}${api.InputRequest.GetRequests}`);
+    }
+    GetAdminMTN():Observable<any>{
+        return HttpService.Client.get(`${api.api.url}${api.InputRequest.GetAdminMTN}`);
+    }
+    QueryListZone():Observable<any>{
+        return HttpService.Client.get(`${api.api.url}${api.InputRequest.GetZoneList}`);
+    }
 }

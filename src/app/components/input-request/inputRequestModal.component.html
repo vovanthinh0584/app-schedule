@@ -8,31 +8,41 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<ion-label class="title-chuan-doan" position="stacked">{{Language.WorkshopId}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.WorkshopId">
-                <ion-select-option *ngFor="let workshop of WorkShops" [value]="workshop.WorkShopId">{{workshop.WorkShopName}}</ion-select-option>
+			<ion-label class="title-chuan-doan" position="stacked">{{Language.ZoneId}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.ZoneId">
+                <ion-select-option *ngFor="let item of selectItem.ListZone" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
-		
 		<ion-item>
-			<ion-label class="title-chuan-doan" position="stacked">{{Language.LocationId}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.LocationId">
-                <ion-select-option *ngFor="let location of Locations" [value]="location.LocationID">{{location.LocationName}}</ion-select-option>
-            </ion-select>
+			<ion-label class="title-chuan-doan" position="stacked">{{Language.Requester}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.ReceiveName" type="text"></ion-input>
 		</ion-item>	
 
 		<ion-item>
-			<ion-label  position="stacked">{{Language.WorkerName}}</ion-label>
-			<ion-input  [(ngModel)]="selectItem.WorkerName" type="text"></ion-input>
+			<ion-label  position="stacked">{{Language.Equipment}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.Equipment" type="text"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="stacked">{{Language.RequestedContent}}</ion-label>
 			<ion-textarea  [(ngModel)]="selectItem.RequestedContent" type="text"></ion-textarea>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.Reason}}</ion-label>
-			<ion-textarea  [(ngModel)]="selectItem.Reason" type="text"></ion-textarea>
+			<ion-label  position="stacked">{{Language.Repair}}</ion-label>
+			<ion-checkbox [(ngModel)]="selectItem.Repair"  class="checkbox-icon"></ion-checkbox>
 		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.Projectsupporting}}</ion-label>
+			<ion-checkbox [(ngModel)]="selectItem.Projectsupporting"  class="checkbox-icon"></ion-checkbox>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.Housekeeping}}</ion-label>
+			<ion-checkbox [(ngModel)]="selectItem.Housekeeping"  class="checkbox-icon"></ion-checkbox>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.Others}}</ion-label>
+			<ion-checkbox [(ngModel)]="selectItem.Others"  class="checkbox-icon"></ion-checkbox>
+		</ion-item>
+		
 	</ion-list>
 </ion-content>
 <ion-button (click)="save()">{{Language.Save}}</ion-button>

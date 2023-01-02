@@ -13,36 +13,16 @@ export class InputRequestModalComponent implements OnInit {
   @Input() selectItem;
   @Input() toastService;
   @Input() Message;
-  Locations: [];
-  WorkShops: [];
-
+  
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
     private service: InputRequestService) {
     console.log("InputRequestModalComponent Constructor", this.Language)
-    // this.Language = {
-    //   Exit: "Thoát",
-    //   LocationId: "Vị trí",
-    //   Reason: "Lý do",
-    //   RequestedContent: "Nội dung yêu cầu",
-    //   Save: "Lưu",
-    //   WorkerName: "Tên nhân viên",
-    //   WorkshopId: "Xưởng",
-    // }
+   
   }
   ngOnInit() {
-    console.log("InputRequestModalComponent ngOnInit", this.Language)
-
-    this.service.queryLocations().subscribe(response => {
-      console.log(response)
-      this.Locations = response;
-    });
-
-    this.service.queryWorkshops().subscribe(response => {
-      console.log(response)
-      this.WorkShops = response;
-    });
+   
   }
   save() {
     let body: any = {};

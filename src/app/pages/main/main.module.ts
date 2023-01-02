@@ -3,12 +3,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
-import { MenuItemComponent } from "src/app/components/menu-item/menu-item.component";
-import { GetTaskComponent } from "../getTask/getTask.component";
-import { InputDeviceParameterComponent } from "../inputDeviceParameter/inputDeviceParameter.component";
-import { InputRequestComponent } from "../inputRequest/inputRequest.component";
 import { MainComponent } from "./main.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export const mainRoutes: Routes = [
   {
     //localhost:4200/main
@@ -26,8 +21,8 @@ export const mainRoutes: Routes = [
 @NgModule({
   exports: [],
   declarations: [
-     MainComponent,
-     InputRequestComponent
+     MainComponent
+     
      
   ],
   imports: [CommonModule, FormsModule,IonicModule,

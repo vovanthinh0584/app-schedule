@@ -18,7 +18,6 @@ export class MainComponent extends BaseController implements OnInit {
   }
   ngOnInit() {
     this.eventEmitterService.changeTitle.subscribe((x)=>{
-       debugger;
        this.Language.Title=x;
     })
   }
@@ -29,7 +28,6 @@ export class MainComponent extends BaseController implements OnInit {
     this.route.navigate([`login`], { replaceUrl: true });
   }
   onHome(){
-    debugger;
     this.route.navigate([`main`], { replaceUrl: true });
   }
 }
