@@ -26,7 +26,8 @@
         "GetAdminMTN":"/api/InputRequest/AdminMTN",
     }   ,
     "GetTask":{
-        "Entity":"/api/GetTask",
+        "Entity": "/api/Task",
+        "FinishedTask":"/api/Task/Finished"
     },
     "Sheet033Boiler":{
         "GetWorks":"/api/Sheet033Boiler/GetWorks",

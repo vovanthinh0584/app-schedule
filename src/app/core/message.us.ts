@@ -25,6 +25,7 @@ export module MessageUS {
         Status: "Please enter status!",
         SmallStatus: "The Status must be small than the current status!",
         CreateSuccessfully: "Create GetTask Successfully!",
+        FinishedSuccessfully: "Finished Task Successfully!"
     }
     export const Sheet033Boiler = {
         Save: "Save success",

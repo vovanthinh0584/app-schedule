@@ -5,6 +5,7 @@ import { ModalController, ToastController } from "@ionic/angular";
 import { GetTaskModalComponent } from "src/app/components/get-task/getTaskModal.component";
 import { BaseController } from "src/app/core/baseController";
 import { GetTaskService } from "src/app/services/getTask/get-task.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-get-task',
@@ -17,7 +18,7 @@ export class GetTaskComponent extends BaseController implements OnInit {
   statuses: any
   constructor(private getTaskService: GetTaskService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
-    this.fromName = "frmGetTask";
+    this.fromName = "SAFVIET_frmWorks";
     this.initializeApp(route, httpClient, toastController);
 
   }
@@ -77,22 +78,37 @@ export class GetTaskComponent extends BaseController implements OnInit {
 
       response.Data.forEach(element => {
         let getTaskObject = {
-          Level: element.Level,
-          LevelName: this.levels.find(x => x.levelId == element.Level).levelName,
-          Reason: element.Reason,
-          RequestOrPlanNo: element.RequestOrPlanNo,
-          RequestedContent: element.RequestedContent,
-          Status: element.Status,
-          StatusName: this.statuses.find(x => x.statusId == element.Status).statusName,
+          //Level: element.Level,
+          //LevelName: this.levels.find(x => x.levelId == element.Level).levelName,
+          //Reason: element.Reason,
+          //RequestOrPlanNo: element.RequestOrPlanNo,
+          //RequestedContent: element.RequestedContent,
+          //Status: element.Status,
+          //StatusName: this.statuses.find(x => x.statusId == element.Status).statusName,
+          
+          //WorkType: element.WorkType,
+          //WorkTypeName: this.worktypes.find(x => x.worktypeId == element.WorkType).worktypeName,
+
           WorkNo: element.WorkNo,
-          WorkType: element.WorkType,
-          WorkTypeName: this.worktypes.find(x => x.worktypeId == element.WorkType).worktypeName
+          WorkDate: element.WorkDate,
+          MTNRequestNum: element.MTNRequestNum,
+          MTNRequestDateTime: element.MTNRequestDateTime,
+          Equipment: element.Equipment,
+          DescriptionInformation: element.DescriptionInformation
         }
         this.selectItem.GetTasks.push(getTaskObject)
       }
       );
     })
 
+  }
+
+  onFinishedData(WorkNo) {
+    this.getTaskService.FinishedTask(WorkNo).subscribe(response => {
+      if (response.Code == 200) {
+        this.toastService.success(this.Message.GetTask.FinishedSuccessfully);
+      }
+    })
   }
 
   onSelectdData(data) {

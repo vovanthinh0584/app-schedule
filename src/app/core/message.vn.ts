@@ -25,6 +25,7 @@ export module MessageVN {
         Status: "Vui lòng nhập trạng thái",
         SmallStatus: "Không được phép chọn giá trị nhỏ hơn",
         CreateSuccessfully: "Thêm GetTask thành công!",
+        FinishedSuccessfully: "Hoàn thành phân công thành công!"
     }
     export const Sheet033Boiler = {
         Save: "Lưu thành công",
