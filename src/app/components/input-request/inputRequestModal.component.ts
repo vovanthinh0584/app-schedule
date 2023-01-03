@@ -33,49 +33,49 @@ export class InputRequestModalComponent implements OnInit {
     body.Reason = this.selectItem.Reason;
 
     if (this.ValidForm()) {
-      this.service.createInputRequest(body).subscribe(response => {
-        if (response.code == 200) {
-          this.toastService.success(response.data);
-
-          this.selectItem.WorkshopId = null;
-          this.selectItem.LocationId = null;
-          this.selectItem.WorkerName = null;
-          this.selectItem.RequestedContent = null;
-          this.selectItem.Reason = null;
+      this.service.createInputRequest(this.selectItem).subscribe(response => {
+        debugger;
+        if (response.Code == 200) {
+          this.toastService.success(this.Message.InputRequest.Success);
+          this.close();
         }
       }, (e) => { });
     }
+    
   }
   close() {
-    this.modalCtrl.dismiss();
+    debugger;
+    this.modalCtrl.dismiss(true);
   }
 
   ValidForm() {
     debugger;
-    if (!this.selectItem.WorkshopId) {
-      this.toastService.warn(this.Message.InputRequest.WorkshopId);
-      return false;
+    if(!this.selectItem.ZoneId)
+    {
+        this.toastService.warn(this.Message.InputRequest.ZoneId);
+        return false;
     }
-
-    if (!this.selectItem.LocationId) {
-      this.toastService.warn(this.Message.InputRequest.LocationId);
-      return false;
+    if(!this.selectItem.Requester)
+    {
+        this.toastService.warn(this.Message.InputRequest.Requester);
+        return false;
     }
-
-    if (!this.selectItem.WorkerName) {
-      this.toastService.warn(this.Message.InputRequest.WorkerName);
-      return false;
+    if(!this.selectItem.ReceiveName)
+    {
+        this.toastService.warn(this.Message.InputRequest.ReceiveName);
+        return false;
     }
-
-    if (!this.selectItem.RequestedContent) {
-      this.toastService.warn(this.Message.InputRequest.RequestedContent);
-      return false;
+    if(!this.selectItem.Equipment)
+    {
+        this.toastService.warn(this.Message.InputRequest.Equipment);
+        return false;
     }
-
-    if (!this.selectItem.Reason) {
-      this.toastService.warn(this.Message.InputRequest.Reason);
-      return false;
+    if(!this.selectItem.Descriptionrequest)
+    {
+        this.toastService.warn(this.Message.InputRequest.RequestedContent);
+        return false;
     }
+    
 
     return true;
   }

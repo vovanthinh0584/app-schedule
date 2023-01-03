@@ -11,6 +11,12 @@ export module MessageUS {
         WorkerName: "Please enter your Worker Name",
         RequestedContent: "Please enter your Requested Content",
         Reason: "Please enter your Reason",
+        ComFirmRequest: "ComFirm Request success",
+        ZoneId: "Vui lòng nhập ZoneId",
+        Requester: "Vui lòng nhập người yêu cầu",
+        ReceiveName: "Vui lòng nhập tên người nhận",
+        Equipment: "Vui lòng nhập thiết bị",
+        Success: "Save Success",
 
     }
     export const InputDeviceParameter = {

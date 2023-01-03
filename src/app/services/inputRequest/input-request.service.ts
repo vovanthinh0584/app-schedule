@@ -34,4 +34,7 @@ export class InputRequestService {
     QueryListZone():Observable<any>{
         return HttpService.Client.get(`${api.api.url}${api.InputRequest.GetZoneList}`);
     }
+    ComFirmRequest(MTNRequestNum:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputRequest.ComFirmRequest}${MTNRequestNum}`,{});
+    }
 }

@@ -10,12 +10,15 @@ import { InputRequestService } from "src/app/services/inputRequest/input-request
 
 @Component({
   selector: 'app-input-request',
-  templateUrl: './inputRequest.component.html'
+  templateUrl: './inputRequest.component.html',
+  styleUrls: ['./inputRequest.component.scss'],
 })
 export class InputRequestComponent extends BaseController implements OnInit {
+  ListZone:any=[];
+  ReceiveName="";
   constructor( private service: InputRequestService,private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
-    this.fromName = "frmInputRequest";
+    this.fromName = "FA_frmMTNRequest";
     this.initializeApp(route, httpClient, toastController);
  
   }
@@ -25,21 +28,34 @@ export class InputRequestComponent extends BaseController implements OnInit {
     this.getListZone();
     this.getReceive();
   }
+  onComFirm(item){
+    this.service.ComFirmRequest(item.MTNRequestNum).subscribe((x)=>{
+       if(x.Data==1)
+        {
+          this.toastService.success(this.Message.InputRequest.ComFirmRequest);
+        }
+      
+    });
+  }
   getInformationInputRequest() {
+    this.selectItem.ListRequest=[];
      this.service.getListReQuest().subscribe((x)=>{
-       this.selectItem.ListInputRequest=x.Data;
+      debugger;
+      
+       this.selectItem.ListRequest=x.Data;
     });
  }
   getListZone() {
     this.service.QueryListZone().subscribe((x)=>{
-
+      this.ListZone=x.Data;
       this.selectItem.ListZone=x.Data;
    });
  }
  getReceive() {
   this.service.GetAdminMTN().subscribe((x)=>{
     debugger;
-    this.selectItem.ReceiveName=x.Data;
+    this.ReceiveName=x.Data.UserName;
+    this.selectItem.ReceiveName=x.Data.UserName;
  });
  }
   openInputRequest(){
@@ -58,8 +74,12 @@ export class InputRequestComponent extends BaseController implements OnInit {
       }
     });
     modal.onDidDismiss().then((data) => {
-      if (data.data) {
-
+      debugger;
+      if (data.data==true) {
+          this.getInformationInputRequest();
+          var ReceiveName= this.selectItem.ReceiveName;
+          this.selectItem.ListZone;
+          this.selectItem={};
       }
     });
     await modal.present();

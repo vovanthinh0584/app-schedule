@@ -11,6 +11,13 @@ export module MessageVN {
         WorkerName: "Vui lòng nhập tên nhân viên",
         RequestedContent: "Vui lòng nhập nội dung",
         Reason: "Vui lòng nhập lí do",
+        ComFirmRequest: "Xác nhận thành công",
+        ZoneId: "Vui lòng nhập khu vực",
+        Requester: "Vui lòng nhập người yêu cầu",
+        ReceiveName: "Vui lòng nhập tên người nhận",
+        Equipment: "Vui lòng nhập thiết bị",
+        Success: "Lưu thành công",
+       
 
     }
     export const InputDeviceParameter = {

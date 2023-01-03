@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
+import { MomentModule } from "ngx-moment";
 import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { InputRequestComponent } from "./inputRequest.component";
@@ -24,6 +25,7 @@ const InputRequestRoutes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    MomentModule,
     MatExpansionModule,
     RouterModule.forChild(InputRequestRoutes)
   ],
