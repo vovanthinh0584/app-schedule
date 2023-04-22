@@ -6,6 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { Ionic4DatepickerModule } from "@logisticinfotech/ionic4-datepicker";
 import { MomentModule } from "ngx-moment";
+import { InformationRequestModalComponent } from "src/app/components/information-request/informationRequestModal.component";
 import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { InputRequestComponent } from "./inputRequest.component";
@@ -20,7 +21,8 @@ const InputRequestRoutes: Routes = [
   exports: [],
   declarations: [
     InputRequestComponent,
-    InputRequestModalComponent
+    InputRequestModalComponent,
+    InformationRequestModalComponent
   ],
   imports: [
     CommonModule,

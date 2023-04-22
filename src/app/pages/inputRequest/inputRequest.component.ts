@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController, ToastController } from "@ionic/angular";
+import { InformationRequestModalComponent } from "src/app/components/information-request/informationRequestModal.component";
 import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
 import { BaseController } from "src/app/core/baseController";
 import { ToastService } from "src/app/core/ToastService";
@@ -38,6 +39,36 @@ export class InputRequestComponent extends BaseController implements OnInit {
       
     });
   }
+  onVisible(item){
+    if(item.UserManage==null && item.Status==1)
+    {
+       
+    }
+  }
+  async onRequest(item){
+   
+
+    this.selectItem.RequestData=item;
+    const modal = await this.modalCtrl.create({
+      component: InformationRequestModalComponent,
+      componentProps: {
+        Language: this.Language,
+        selectItem: this.selectItem,
+        toastService: ToastService.Toast,
+        Message:this.Message
+      }
+    });
+    modal.onDidDismiss().then((data) => {
+      debugger;
+      if (data.data==true) {
+          this.getInformationInputRequest();
+          var ReceiveName= this.selectItem.ReceiveName;
+          this.selectItem.ListZone;
+          this.selectItem={};
+      }
+    });
+    await modal.present();
+  }
   getInformationInputRequest() {
     this.selectItem.ListRequest=[];
      this.service.getListReQuest().subscribe((x)=>{
@@ -69,6 +100,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
     debugger;
     this.openInputRequestModal();
   }
+ 
   async openInputRequestModal() {
     console.log("InputRequestComponent",this.Language);
     const modal = await this.modalCtrl.create({
