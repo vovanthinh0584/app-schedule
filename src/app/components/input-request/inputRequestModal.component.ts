@@ -13,7 +13,20 @@ export class InputRequestModalComponent implements OnInit {
   @Input() selectItem;
   @Input() toastService;
   @Input() Message;
-  
+  datePickerConfig: any = {
+    //inputDate: new Date("2018-12-01");
+    showTodayButton: false, // default true
+    closeOnSelect: true, // default false
+    setLabel: 'Set',  // default 'Set'
+    todayLabel: 'Hôm nay', // default 'Today'
+    closeLabel: 'Đóng', // default 'Close'
+    titleLabel: 'Select a Date', // default null
+    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+    dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
+    clearButton: false, // default true
+  };
+  ListType:any=[{TypeID:1,Type:"Urgent"},{TypeID:2,Type:"Normal"}]
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
@@ -22,7 +35,7 @@ export class InputRequestModalComponent implements OnInit {
    
   }
   ngOnInit() {
-   
+       setTimeout(()=>{(window as any).$('.deadLine input').css({"border-bottom":"none"})},100)
   }
   save() {
     let body: any = {};
@@ -55,26 +68,31 @@ export class InputRequestModalComponent implements OnInit {
         this.toastService.warn(this.Message.InputRequest.ZoneId);
         return false;
     }
-    if(!this.selectItem.Requester)
-    {
-        this.toastService.warn(this.Message.InputRequest.Requester);
-        return false;
-    }
-    if(!this.selectItem.ReceiveName)
-    {
-        this.toastService.warn(this.Message.InputRequest.ReceiveName);
-        return false;
-    }
     if(!this.selectItem.Equipment)
     {
         this.toastService.warn(this.Message.InputRequest.Equipment);
         return false;
     }
-    if(!this.selectItem.Descriptionrequest)
+    if(!this.selectItem.MTNDeadLineDateTime)
     {
-        this.toastService.warn(this.Message.InputRequest.RequestedContent);
+        this.toastService.warn(this.Message.InputRequest.MTNDeadLineDateTime);
         return false;
     }
+    if(!this.selectItem.UserManage)
+    {
+        this.toastService.warn(this.Message.InputRequest.UserManage);
+        return false;
+    }
+    // if(!this.selectItem.Equipment)
+    // {
+    //     this.toastService.warn(this.Message.InputRequest.Equipment);
+    //     return false;
+    // }
+    // if(!this.selectItem.Descriptionrequest)
+    // {
+    //     this.toastService.warn(this.Message.InputRequest.RequestedContent);
+    //     return false;
+    // }
     
 
     return true;

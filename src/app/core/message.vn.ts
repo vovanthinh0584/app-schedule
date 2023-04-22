@@ -17,6 +17,9 @@ export module MessageVN {
         ReceiveName: "Vui lòng nhập tên người nhận",
         Equipment: "Vui lòng nhập thiết bị",
         Success: "Lưu thành công",
+        Type: "Vui lòng nhập kiểu",
+        UserManage: "Vui lòng nhập người quản lý",
+        MTNDeadLineDateTime:"Vui lòng nhập thời gian hoàn thành"
        
 
     }

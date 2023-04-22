@@ -17,6 +17,9 @@ export module MessageUS {
         ReceiveName: "Vui lòng nhập tên người nhận",
         Equipment: "Vui lòng nhập thiết bị",
         Success: "Save Success",
+        Type: "Please enter your type",
+        UserManage: "Please enter your management",
+        MTNDeadLineDateTime:"Please enter your Dead Line"
 
     }
     export const InputDeviceParameter = {

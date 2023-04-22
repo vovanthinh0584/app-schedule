@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
+import { Ionic4DatepickerModule } from "@logisticinfotech/ionic4-datepicker";
 import { MomentModule } from "ngx-moment";
 import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
@@ -27,6 +28,7 @@ const InputRequestRoutes: Routes = [
     IonicModule,
     MomentModule,
     MatExpansionModule,
+    Ionic4DatepickerModule,
     RouterModule.forChild(InputRequestRoutes)
   ],
   providers: [InputRequestService], 

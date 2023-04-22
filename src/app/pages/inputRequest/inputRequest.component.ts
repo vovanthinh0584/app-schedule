@@ -27,6 +27,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
     this.getInformationInputRequest();
     this.getListZone();
     this.getReceive();
+    this.getListManagement();
   }
   onComFirm(item){
     this.service.ComFirmRequest(item.MTNRequestNum).subscribe((x)=>{
@@ -40,7 +41,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
   getInformationInputRequest() {
     this.selectItem.ListRequest=[];
      this.service.getListReQuest().subscribe((x)=>{
-      debugger;
+
       
        this.selectItem.ListRequest=x.Data;
     });
@@ -51,9 +52,15 @@ export class InputRequestComponent extends BaseController implements OnInit {
       this.selectItem.ListZone=x.Data;
    });
  }
+ getListManagement() {
+  this.service.GetListManagement().subscribe((x)=>{
+    debugger;
+    this.selectItem.ListManagement=x.Data;
+ });
+}
  getReceive() {
   this.service.GetAdminMTN().subscribe((x)=>{
-    debugger;
+
     this.ReceiveName=x.Data.UserName;
     this.selectItem.ReceiveName=x.Data.UserName;
  });

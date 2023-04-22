@@ -14,20 +14,22 @@
             </ion-select>
 		</ion-item>	
 		<ion-item>
-			<ion-label class="title-chuan-doan" position="stacked">{{Language.Requester}}</ion-label>
-			<ion-input [(ngModel)]="selectItem.Requester" type="text"></ion-input>
-		</ion-item>	
-        <ion-item>
-			<ion-label class="title-chuan-doan" position="stacked">{{Language.lblReceiveName}}</ion-label>
-			<ion-input [readonly]="true" [(ngModel)]="selectItem.ReceiveName" type="text"></ion-input>
-		</ion-item>	
+			<ion-label  position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.Descriptionrequest" type="text"></ion-input>
+		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.lblEquipment}}</ion-label>
+			<ion-label  position="stacked">{{Language.Equipment}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.Equipment" type="text"></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.RequestedContent}}</ion-label>
-			<ion-textarea  [(ngModel)]="selectItem.Descriptionrequest" type="text"></ion-textarea>
+			<ion-label  position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
+			<ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="selectItem.MTNDeadLineDateTime"></ion-datetime>
+     	</ion-item> 
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblType}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.MNType">
+                <ion-select-option *ngFor="let item of ListType" [value]="item.TypeID">{{item.Type}}</ion-select-option>
+            </ion-select>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="stacked">{{Language.Repair}}</ion-label>
@@ -45,7 +47,12 @@
 			<ion-label  position="stacked">{{Language.Others}}</ion-label>
 			<ion-checkbox [(ngModel)]="selectItem.Others"  class="checkbox-icon"></ion-checkbox>
 		</ion-item>
-		
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.UserManage">
+                <ion-select-option *ngFor="let item of selectItem.ListManagement" [value]="item.UserId">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>
 	</ion-list>
 </ion-content>
-<ion-button (click)="save()">{{Language.btnCreateTask}}</ion-button>
+<ion-button (click)="save()">{{Language.lblSend}}</ion-button>

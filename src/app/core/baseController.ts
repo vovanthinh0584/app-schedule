@@ -61,6 +61,23 @@ export class BaseController
          Title_VN:"Sheet 033 Boiler",
          Title_US:"Sheet 033 Boiler",
       }
+      ,
+      {
+         Title: 'Shift',
+         Url: '/main/shift',
+         Icon: 'file-tray-full-outline',
+         Code: 'MB005',
+         Title_VN:"Danh sách ca trực",
+         Title_US:"List Shift",
+      },
+      {
+         Title: 'Work Permision',
+         Url: '/main/work-permision',
+         Icon: 'file-tray-full-outline',
+         Code: 'MB006',
+         Title_VN:"Work Permision",
+         Title_US:"Work Permision",
+      }
     ]
   Permissions:any;
    constructor(){
