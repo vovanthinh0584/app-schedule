@@ -13,6 +13,7 @@ export class InputRequestModalComponent implements OnInit {
   @Input() selectItem;
   @Input() toastService;
   @Input() Message;
+  @Input() User;
   datePickerConfig: any = {
     //inputDate: new Date("2018-12-01");
     showTodayButton: false, // default true
@@ -26,7 +27,7 @@ export class InputRequestModalComponent implements OnInit {
     dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
     clearButton: false, // default true
   };
-  ListType:any=[{TypeID:1,Type:"Urgent"},{TypeID:2,Type:"Normal"}]
+  ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}]
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
@@ -35,34 +36,37 @@ export class InputRequestModalComponent implements OnInit {
    
   }
   ngOnInit() {
-       setTimeout(()=>{(window as any).$('.deadLine input').css({"border-bottom":"none"})},100)
+      
   }
   save() {
-    let body: any = {};
-    body.WorkshopId = this.selectItem.WorkshopId;
-    body.LocationId = this.selectItem.LocationId;
-    body.WorkerName = this.selectItem.WorkerName;
-    body.RequestedContent = this.selectItem.RequestedContent;
-    body.Reason = this.selectItem.Reason;
-
     if (this.ValidForm()) {
       this.service.createInputRequest(this.selectItem).subscribe(response => {
         debugger;
         if (response.Code == 200) {
           this.toastService.success(this.Message.InputRequest.Success);
-          this.close();
+          this.close(true);
         }
       }, (e) => { });
     }
     
   }
-  close() {
+  close(status) {
     debugger;
-    this.modalCtrl.dismiss(true);
+    this.modalCtrl.dismiss(status);
   }
 
   ValidForm() {
     debugger;
+    if(this.selectItem.UserManage==this.User.UserID)
+    {
+        this.toastService.warn(this.Message.InputRequest.ErrorUser);
+        return false;
+    }
+    if(!this.selectItem.ZoneId)
+    {
+        this.toastService.warn(this.Message.InputRequest.ZoneId);
+        return false;
+    }
     if(!this.selectItem.ZoneId)
     {
         this.toastService.warn(this.Message.InputRequest.ZoneId);

@@ -40,4 +40,10 @@ export class InputRequestService {
     GetListManagement():Observable<any>{
         return HttpService.Client.get(`${api.api.url}${api.InputRequest.GetListManagement}`);
     }
+    createApprovalRequest(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputRequest.ApprovalRequest}`,data);
+    }
+    createNoApprovalRequest(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputRequest.NoApprovalRequest}`,data);
+    }
 }

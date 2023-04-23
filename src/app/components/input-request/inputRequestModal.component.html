@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)"><ion-icon name="arrow-back"></ion-icon></ion-button>
 		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
 </ion-header>
@@ -8,7 +8,11 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<ion-label class="title-chuan-doan" position="stacked">{{Language.ZoneId}}</ion-label>
+			<ion-label position="stacked">{{Language.Requester}}</ion-label>
+			<span class="item-note">{{ User.UserID }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.ZoneId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.ZoneId">
                 <ion-select-option *ngFor="let item of selectItem.ListZone" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
             </ion-select>

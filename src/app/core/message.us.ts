@@ -19,7 +19,8 @@ export module MessageUS {
         Success: "Save Success",
         Type: "Please enter your type",
         UserManage: "Please enter your management",
-        MTNDeadLineDateTime:"Please enter your Dead Line"
+        MTNDeadLineDateTime:"Please enter your Dead Line",
+        ErrorUser:"Please enter your Requester not sample UserManage"
 
     }
     export const InputDeviceParameter = {

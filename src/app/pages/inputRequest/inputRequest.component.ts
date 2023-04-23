@@ -55,6 +55,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
         Language: this.Language,
         selectItem: this.selectItem,
         toastService: ToastService.Toast,
+        User:this.user,
         Message:this.Message
       }
     });
@@ -72,8 +73,6 @@ export class InputRequestComponent extends BaseController implements OnInit {
   getInformationInputRequest() {
     this.selectItem.ListRequest=[];
      this.service.getListReQuest().subscribe((x)=>{
-
-      
        this.selectItem.ListRequest=x.Data;
     });
  }
@@ -85,7 +84,6 @@ export class InputRequestComponent extends BaseController implements OnInit {
  }
  getListManagement() {
   this.service.GetListManagement().subscribe((x)=>{
-    debugger;
     this.selectItem.ListManagement=x.Data;
  });
 }
@@ -102,6 +100,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
   }
  
   async openInputRequestModal() {
+    debugger;
     console.log("InputRequestComponent",this.Language);
     const modal = await this.modalCtrl.create({
       component: InputRequestModalComponent,
@@ -109,6 +108,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
         Language: this.Language,
         selectItem: this.selectItem,
         toastService: ToastService.Toast,
+        User:this.user,
         Message:this.Message
       }
     });
@@ -116,9 +116,6 @@ export class InputRequestComponent extends BaseController implements OnInit {
       debugger;
       if (data.data==true) {
           this.getInformationInputRequest();
-          var ReceiveName= this.selectItem.ReceiveName;
-          this.selectItem.ListZone;
-          this.selectItem={};
       }
     });
     await modal.present();

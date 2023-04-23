@@ -18,8 +18,8 @@ export class LoginPage extends BaseController implements OnInit {
         this.fromName="frmLogin";
         this.initializeApp(router,httpClient,toastController);
         this.selectItem.Language="vi-VN";
-        this.selectItem.UserId="MOBILE_01";
-        this.selectItem.Password="SAFVIET";
+        // this.selectItem.UserId="MOBILE_01";
+        // this.selectItem.Password="SAFVIET";
         this.onChangeLanguage( this.selectItem.Language);
     }
     ngOnInit() {
@@ -63,11 +63,10 @@ export class LoginPage extends BaseController implements OnInit {
          user.Language=this.selectItem.Language;
 
          this.userService.login(user).subscribe((response:any)=>{
-            
             if(response.Code==200)
             {
-        
                 this.toastService.success(response.Data.Message);
+                this.storageService.remove("userInfo");
                 this.storageService.setObject("userInfo",response.Data);
                 this.router.navigate([`/main`], { replaceUrl: true });
 

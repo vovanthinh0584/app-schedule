@@ -13,6 +13,7 @@ export class InformationRequestModalComponent implements OnInit {
   @Input() selectItem;
   @Input() toastService;
   @Input() Message;
+  @Input() User;
   
   ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}]
   constructor(private _route: Router,
@@ -27,14 +28,27 @@ export class InformationRequestModalComponent implements OnInit {
       debugger
   }
   onApproval(){
-
+    
+    this.service.createApprovalRequest(this.selectItem.RequestData).subscribe(response => {
+      debugger;
+      if (response.Code == 200) {
+        this.toastService.success(this.Message.InputRequest.Success);
+        this.close(true);
+      }
+    }, (e) => { });
   }
   onNoApproval(){
-
+    this.service.createNoApprovalRequest(this.selectItem.RequestData).subscribe(response => {
+      debugger;
+      if (response.Code == 200) {
+        this.toastService.success(this.Message.InputRequest.Success);
+        this.close(true);
+      }
+    }, (e) => { });
   }
-  close() {
+  close(status) {
     debugger;
-    this.modalCtrl.dismiss(true);
+    this.modalCtrl.dismiss(status);
   }
 
   

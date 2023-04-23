@@ -24,7 +24,9 @@
         "GetZoneList":"/api/InputRequest/QueryListZone",
         "ComFirmRequest":"/api/InputRequest/ComFirmRequest?MTNRequestNum=",
         "GetAdminMTN":"/api/InputRequest/AdminMTN",
-        "GetListManagement":"/api/InputRequest/GetListManagement"
+        "GetListManagement":"/api/InputRequest/GetListManagement",
+        "ApprovalRequest":"/api/InputRequest/ApprovalRequest",
+        "NoApprovalRequest":"/api/InputRequest/NoApprovalRequest"
     }   ,
     "GetTask":{
         "Entity": "/api/Task",

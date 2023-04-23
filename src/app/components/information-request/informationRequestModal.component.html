@@ -65,6 +65,10 @@
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">
 	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
-	<ion-button (click)="onApproval()">{{Language.lblApproval}}</ion-button>
-	<ion-button color="warning" (click)="onNoApproval()">{{Language.lblNoApproval}}</ion-button>
+	<ion-button (click)="onApproval()" *ngIf="User.UserID==selectItem.RequestData.
+	UserManage
+	">{{Language.lblApproval}}</ion-button>
+	<ion-button color="warning" (click)="onNoApproval()" *ngIf="User.UserID==selectItem.RequestData.
+	UserManage
+	">{{Language.lblNoApproval}}</ion-button>
 </ion-footer>
