@@ -41,7 +41,7 @@ export class InputRequestModalComponent implements OnInit {
   save() {
     if (this.ValidForm()) {
       this.service.createInputRequest(this.selectItem).subscribe(response => {
-        debugger;
+   
         if (response.Code == 200) {
           this.toastService.success(this.Message.InputRequest.Success);
           this.close(true);
@@ -51,12 +51,12 @@ export class InputRequestModalComponent implements OnInit {
     
   }
   close(status) {
-    debugger;
+
     this.modalCtrl.dismiss(status);
   }
 
   ValidForm() {
-    debugger;
+    
     if(this.selectItem.UserManage==this.User.UserID)
     {
         this.toastService.warn(this.Message.InputRequest.ErrorUser);

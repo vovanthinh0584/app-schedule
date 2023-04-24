@@ -60,7 +60,6 @@ WorkDate:any;
     });
   }
   onChangeWork(event){
-    debugger;
     this.selectItem.ShiftId=this.selectItem.CurrentWorker.ShiftId;
     this.selectItem.AssetId=this.selectItem.CurrentWorker.AssetId;
     this.selectItem.WorkDate=this.selectItem.CurrentWorker.WorkDate;
@@ -89,8 +88,7 @@ WorkDate:any;
 
    async getCheckList(obj:any){
     await  this.sheet033BoilerService.GetCheckList(obj).subscribe(rs=>{
-      debugger;
-      this.selectItem.CheckList =rs.Data
+         this.selectItem.CheckList =rs.Data
     });
    }
 

@@ -81,14 +81,12 @@ export class BaseController
     ]
   Permissions:any;
    constructor(){
-     debugger
      this.user=this.storageService.getObject("userInfo");
      this.Permissions=[]
      this.selectItem.listLanguage=[{Lang:"en-US",Name:"English"},{Lang:"vi-VN",Name:"Việt Nam"}]
    }
    initializeApp(route:Router,httpClient:HttpClient,toastController:ToastController)
    {
-      debugger;
       this._route=route;
       this.httpService.http=httpClient;
       this.toastService.toastController=toastController;

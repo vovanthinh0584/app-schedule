@@ -60,7 +60,6 @@ export class InputRequestComponent extends BaseController implements OnInit {
       }
     });
     modal.onDidDismiss().then((data) => {
-      debugger;
       if (data.data==true) {
           this.getInformationInputRequest();
           var ReceiveName= this.selectItem.ReceiveName;
@@ -95,12 +94,10 @@ export class InputRequestComponent extends BaseController implements OnInit {
  });
  }
   openInputRequest(){
-    debugger;
-    this.openInputRequestModal();
+      this.openInputRequestModal();
   }
  
   async openInputRequestModal() {
-    debugger;
     console.log("InputRequestComponent",this.Language);
     const modal = await this.modalCtrl.create({
       component: InputRequestModalComponent,
@@ -113,8 +110,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
       }
     });
     modal.onDidDismiss().then((data) => {
-      debugger;
-      if (data.data==true) {
+        if (data.data==true) {
           this.getInformationInputRequest();
       }
     });

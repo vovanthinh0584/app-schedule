@@ -25,12 +25,12 @@ export class InformationRequestModalComponent implements OnInit {
    
   }
   ngOnInit() {
-      debugger
+   
   }
   onApproval(){
     
     this.service.createApprovalRequest(this.selectItem.RequestData).subscribe(response => {
-      debugger;
+   
       if (response.Code == 200) {
         this.toastService.success(this.Message.InputRequest.Success);
         this.close(true);
@@ -39,7 +39,7 @@ export class InformationRequestModalComponent implements OnInit {
   }
   onNoApproval(){
     this.service.createNoApprovalRequest(this.selectItem.RequestData).subscribe(response => {
-      debugger;
+ 
       if (response.Code == 200) {
         this.toastService.success(this.Message.InputRequest.Success);
         this.close(true);
@@ -47,7 +47,7 @@ export class InformationRequestModalComponent implements OnInit {
     }, (e) => { });
   }
   close(status) {
-    debugger;
+ 
     this.modalCtrl.dismiss(status);
   }
 

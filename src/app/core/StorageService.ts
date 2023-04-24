@@ -31,7 +31,7 @@ export namespace StorageService{
          localStorage.setItem(key, value);
        }
        static  setObject(key:string,value:any){
-        debugger;
+    
          localStorage.setItem(key,JSON.stringify(value));
        } 
   

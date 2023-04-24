@@ -41,8 +41,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         public http: HttpClient, public dialog: AlertController, private router: Router) {
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       //debugger;
-        if (request.headers.has('showSpinner') == false || request.headers.get('showSpinner') != 'false') {
+         if (request.headers.has('showSpinner') == false || request.headers.get('showSpinner') != 'false') {
             console.log('showSpinner')
             this.loadingDialogService.onStarted(request);
         }

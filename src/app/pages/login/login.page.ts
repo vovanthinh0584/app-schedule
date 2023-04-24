@@ -68,7 +68,8 @@ export class LoginPage extends BaseController implements OnInit {
                 this.toastService.success(response.Data.Message);
                 this.storageService.remove("userInfo");
                 this.storageService.setObject("userInfo",response.Data);
-                this.router.navigate([`/main`], { replaceUrl: true });
+                setTimeout(() => this.router.navigate(["/main"]), 100);
+                
 
             } 
          })
