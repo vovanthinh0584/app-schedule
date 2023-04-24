@@ -20,7 +20,8 @@ export module MessageUS {
         Type: "Please enter your type",
         UserManage: "Please enter your management",
         MTNDeadLineDateTime:"Please enter your Dead Line",
-        ErrorUser:"Please enter your Requester not sample UserManage"
+        ErrorUser:"Please enter your Requester not sample UserManage",
+        Visible:"Visible success"
 
     }
     export const InputDeviceParameter = {

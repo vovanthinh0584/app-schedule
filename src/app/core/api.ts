@@ -26,7 +26,9 @@
         "GetAdminMTN":"/api/InputRequest/AdminMTN",
         "GetListManagement":"/api/InputRequest/GetListManagement",
         "ApprovalRequest":"/api/InputRequest/ApprovalRequest",
-        "NoApprovalRequest":"/api/InputRequest/NoApprovalRequest"
+        "NoApprovalRequest":"/api/InputRequest/NoApprovalRequest",
+        "SendInputRequest":"/api/InputRequest/SendInputRequest",
+        "VisibleRequest":"/api/InputRequest/VisibleRequest",
     }   ,
     "GetTask":{
         "Entity": "/api/Task",

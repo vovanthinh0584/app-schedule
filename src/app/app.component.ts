@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
       this.isLoading=x.result
       
    })
+   
     var user=this.storageService.getObject("userInfo");
     if(user==null)
        this.router.navigate([`/login`], { replaceUrl: true });

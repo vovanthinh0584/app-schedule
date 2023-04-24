@@ -46,4 +46,10 @@ export class InputRequestService {
     createNoApprovalRequest(data:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.InputRequest.NoApprovalRequest}`,data);
     }
+    sendInputRequest(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputRequest.SendInputRequest}`,data);
+    }
+    VisibleRequest(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputRequest.VisibleRequest}`,data);
+    }
 }

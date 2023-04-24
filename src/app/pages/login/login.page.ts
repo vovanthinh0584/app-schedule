@@ -5,7 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { BaseController } from 'src/app/core/baseController';
 import { User } from 'src/app/models/user';
 import {UserService} from 'src/app/services/user/user.service'
-
+import { Camera, CameraOptions, PictureSourceType, CameraPopoverOptions } from '@ionic-native/camera/ngx';
 @Component({
     selector: 'app-login',
     templateUrl: './login.page.html',
@@ -13,7 +13,14 @@ import {UserService} from 'src/app/services/user/user.service'
 })
 export class LoginPage extends BaseController implements OnInit {
     _toastService:any;
-    constructor(private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
+    clickedImage: string;
+  options: CameraOptions = {
+    quality: 30,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+    constructor(private camera: Camera,private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
         super();
         this.fromName="frmLogin";
         this.initializeApp(router,httpClient,toastController);
@@ -81,4 +88,25 @@ export class LoginPage extends BaseController implements OnInit {
         this.setCaptionLanguage();
         this.setMessage();
     }
+    captureImage() {
+        debugger;
+        const options: CameraOptions = {
+            quality: 100,
+            targetWidth: 800,
+            targetHeight: 800,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.PNG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true,
+            popoverOptions: <CameraPopoverOptions>({ arrowDir: this.camera.PopoverArrowDirection.ARROW_ANY })
+        }
+        debugger;
+        this.camera.getPicture(options).then((imageData) => {
+            //let base64Image = `data:image/png;base64,${imageData}`;
+             debugger;
+
+        }, (err) => {
+            
+        });
+      }
 }

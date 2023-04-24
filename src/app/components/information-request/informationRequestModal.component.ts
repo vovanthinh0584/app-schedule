@@ -25,7 +25,16 @@ export class InformationRequestModalComponent implements OnInit {
    
   }
   ngOnInit() {
+   debugger
+  }
+  onSend(){
+    this.service.sendInputRequest(this.selectItem.RequestData).subscribe(response => {
    
+      if (response.Code == 200) {
+        this.toastService.success(this.Message.InputRequest.Success);
+        this.close(true);
+      }
+    }, (e) => { });
   }
   onApproval(){
     

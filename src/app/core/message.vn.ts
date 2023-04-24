@@ -20,7 +20,8 @@ export module MessageVN {
         Type: "Vui lòng nhập kiểu",
         UserManage: "Vui lòng nhập người quản lý",
         MTNDeadLineDateTime:"Vui lòng nhập thời gian hoàn thành",
-        ErrorUser:"Vui lòng nhập người yêu cầu không trùng với quản lý"
+        ErrorUser:"Vui lòng nhập người yêu cầu không trùng với quản lý",
+        Visible:"Đóng yêu cầu thành công"
        
 
     }

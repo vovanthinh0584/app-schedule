@@ -28,6 +28,6 @@ export class MainComponent extends BaseController implements OnInit {
     this.route.navigate([`login`], { replaceUrl: true });
   }
   onHome(){
-    this.route.navigate([`main`], { replaceUrl: true });
+    this.route.navigate([`/main`], { replaceUrl: true });
   }
 }

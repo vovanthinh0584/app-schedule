@@ -30,20 +30,16 @@ export class InputRequestComponent extends BaseController implements OnInit {
     this.getReceive();
     this.getListManagement();
   }
-  onComFirm(item){
-    this.service.ComFirmRequest(item.MTNRequestNum).subscribe((x)=>{
-       if(x.Data==1)
-        {
-          this.toastService.success(this.Message.InputRequest.ComFirmRequest);
-        }
-      
-    });
-  }
+ 
   onVisible(item){
-    if(item.UserManage==null && item.Status==1)
-    {
-       
-    }
+    this.service.VisibleRequest(item).subscribe((x)=>{
+      if(x.Data==1)
+       {
+         this.toastService.success(this.Message.InputRequest.VisibleRequest);
+         this.getInformationInputRequest();
+       }
+     
+   });
   }
   async onRequest(item){
    
