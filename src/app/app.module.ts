@@ -22,13 +22,13 @@ import { UserServiceModule } from './services/user/user-service.module';
 import { ErrorDialogService } from './core/errordialog.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { Camera } from '@ionic-native/camera/ngx';
 @NgModule({
   declarations: [AppComponent,MenuItemComponent],
   imports: [BrowserAnimationsModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
     backButtonText: '',
   }), AppRoutingModule,LoginPageModule,CommonServiceModule,UserServiceModule],
-  providers: [ErrorDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  providers: [Camera,ErrorDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: IonicGestureConfig

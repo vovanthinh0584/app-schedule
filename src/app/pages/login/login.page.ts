@@ -15,7 +15,7 @@ export class LoginPage extends BaseController implements OnInit {
     _toastService:any;
     clickedImage: string;
  
-    constructor(private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
+    constructor( private camera: Camera,private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
         super();
         this.fromName="frmLogin";
         this.initializeApp(router,httpClient,toastController);
@@ -24,6 +24,7 @@ export class LoginPage extends BaseController implements OnInit {
         // this.selectItem.Password="SAFVIET";
         this.onChangeLanguage( this.selectItem.Language);
     }
+   
     ngOnInit() {
    
         this.userService.getListBussiness().subscribe((response:any)=>{
