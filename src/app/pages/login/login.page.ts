@@ -5,7 +5,6 @@ import { ToastController } from '@ionic/angular';
 import { BaseController } from 'src/app/core/baseController';
 import { User } from 'src/app/models/user';
 import {UserService} from 'src/app/services/user/user.service'
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.page.html',
@@ -15,7 +14,7 @@ export class LoginPage extends BaseController implements OnInit {
     _toastService:any;
     clickedImage: string;
  
-    constructor( private camera: Camera,private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
+    constructor(private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
         super();
         this.fromName="frmLogin";
         this.initializeApp(router,httpClient,toastController);
@@ -71,7 +70,7 @@ export class LoginPage extends BaseController implements OnInit {
                 this.toastService.success(response.Data.Message);
                 this.storageService.remove("userInfo");
                 this.storageService.setObject("userInfo",response.Data);
-                setTimeout(() => this.router.navigate(["/main"]), 100);
+                this.router.navigateByUrl("main");
                 
 
             } 

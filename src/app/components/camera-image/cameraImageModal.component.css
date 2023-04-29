@@ -1,0 +1,45 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.btn-actions {
+    width: fit-content;
+    height: 100%;
+    position: absolute;
+    right: 5px;
+    justify-content: center;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-evenly;
+}
+.btn-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    vertical-align: middle;
+    background-color: rgba(158, 158, 158, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconSize {
+    font-size: 32px;
+}
+::ng-deep.mat-menu-panel {
+    max-width:none !important;
+  }
+
+  ::ng-deep.mat-menu-content{
+    margin-top:35px !important;margin-left:80px
+  }
+  ::ng-deep button.mat-menu-item
+  {
+    border-bottom: 1px solid white;
+  }

@@ -10,10 +10,10 @@ export const mainRoutes: Routes = [
     path: '', component: MainComponent, children: [
       //localhost:4200/main
       { path: '', redirectTo: 'main', pathMatch: 'full' },
-      { path: 'input-request', loadChildren: () => import('../inputRequest/inputRequest.module').then( m => m.InputRequestModule)},
-      { path: 'get-task', loadChildren: () => import('../getTask/getTask.module').then( m => m.GetTaskModule)},
-      { path: 'input-device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then( m => m.InputDeviceParameterModule)},
-      { path: 'sheet033-boiler', loadChildren: () => import('../Sheet033Boiler/sheet033Boiler.module').then( m => m.Sheet033BoilerModule)},
+      { path: 'request', loadChildren: () => import('../inputRequest/inputRequest.module').then( m => m.InputRequestModule)},
+      { path: 'list-work', loadChildren: () => import('../getTask/getTask.module').then( m => m.GetTaskModule)},
+      { path: 'device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then( m => m.InputDeviceParameterModule)},
+      { path: 'work-permit', loadChildren: () => import('../workPermit/workPermit.module').then( m => m.WorkPermitModule)},
     ]
   }
 

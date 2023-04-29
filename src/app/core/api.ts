@@ -1,15 +1,16 @@
 ﻿export default {
-    //  "url": 'http://123.25.238.48:8586',
-    //  "api":{"url":"http://123.25.238.48:8586","version":"1.0.05","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
-      "url": 'http://localhost:5000',
-      "api":{url:'http://localhost:5000'},
+     "url": 'http://123.25.238.48:8586',
+     "api":{"url":"http://123.25.238.48:8586","version":"1.0.05","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
+    //   "url": 'http://localhost:5000',
+    //   "api":{url:'http://localhost:5000'},
+
+    
     "Account": {
         "Login": '/api/account/login',
         "Logout": '/api/account/logout',
         "AppCenterInformation": '/api/account/GetAppCenterInformation',
         'CaptionLanguage':'/api/account/GetCaptionLanguage',
         'ListBussiness':'/api/account/GetListBussiness',
-        
     },
     "InputDeviceParameter":{
         'Create':'/api/InputDeviceParameter',
@@ -40,5 +41,17 @@
         "GetCheckList":"/api/Sheet033Boiler/GetCheckinglist",
         "UpdateCheckList":"/api/Sheet033Boiler/UpdateCheckinglist"
         
-    }   
+    },
+    WorkPermit:{
+        QueryVendorManagers:"/api/WorkPermit/GetVerdorManagements",
+        SaveWorkPermit:"/api/WorkPermit",
+        SendWorkPermit:"/api/WorkPermit/SendWorkPermit",
+        SaveImageWorkPermit:"/api/WorkPermit/SaveImageWorkPermit",
+        GetWorkPermits:"/api/WorkPermit/GetWorkPermits",
+        GetProjectManagers:"/api/WorkPermit/GetProjectManagers",
+        GetWorkPermitImages:"/api/WorkPermit/GetWorkPermitImages",
+        DeleteWorkPermitImage:"/api/WorkPermit/DeleteWorkPermitImage",
+        EditWorkPermitImage:"/api/WorkPermit/EditWorkPermitImage"
+        }
+       
 }

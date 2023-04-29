@@ -42,4 +42,13 @@ export module MessageUS {
         Save: "Save success",
         CheckList: "Checking list emty",
     }
+    export const WorkPermit = {
+        Success: "Save success",
+        Contractor:"Please enter Contractor",
+        DeviceDescription:"Please enter DeviceDescription",
+        VendorManager:"Please enter VendorManager",
+        ImageSuccess:"Thêm mới file thành công",
+        ImageError:"Thêm mới file thất bại",
+        UpdateImageSuccess:"update image success"
+    }
 }

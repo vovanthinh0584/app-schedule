@@ -43,4 +43,13 @@ export module MessageVN {
         Save: "Lưu thành công",
         CheckList: "Danh sách checking list rỗng",
     }
+    export const WorkPermit = {
+        Success: "Lưu thành công",
+        Contractor:"Vui lòng nhập hợp đồng",
+        DeviceDescription:"Vui lòng nhập mô tả",
+        VendorManager:"Vui lòng nhập nhà cung cấp",
+        ImageSuccess:"Thêm mới file thành công",
+        ImageError:"Thêm mới file thất bại",
+        UpdateImageSuccess:"cập nhật ảnh thành công"
+    }
 }

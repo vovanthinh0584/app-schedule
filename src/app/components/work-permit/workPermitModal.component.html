@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item>
+			<ion-label position="stacked">{{Language.lblContractor}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.Contractor" type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblDeviceDescription}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.DeviceDescription" type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblVendorManager}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.VendorManager">
+                <ion-select-option *ngFor="let item of selectItem.ListVerdorManager" [value]="item.UserId">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>	
+		
+		
+	</ion-list>
+</ion-content>
+<ion-button (click)="save()">{{Language.lblSave}}</ion-button>

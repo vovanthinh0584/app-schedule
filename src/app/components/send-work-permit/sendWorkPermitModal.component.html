@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.WorkPermitNo}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.
+				WorkPermitNo }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblVendorManager}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.
+				VendorManager }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblContractor}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.Contractor }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.label1}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.Item.ProjectManager">
+                <ion-select-option *ngFor="let item of selectItem.ListProjectManager" [value]="item.UserID">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>
+	</ion-list>
+</ion-content>
+<ion-footer style="display: flex;justify-content: center;">
+	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
+	<ion-button (click)="onImage()">{{Language.lblImage}}</ion-button>
+	<ion-button (click)="onSend()">{{Language.lblSend}}</ion-button>
+</ion-footer>

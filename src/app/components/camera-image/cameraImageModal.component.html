@@ -1,0 +1,44 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-title slot="start" class="modal-title">{{Language.lblImage}}</ion-title>
+		<ion-buttons slot="end" class="belowMenu">
+			<ion-icon name="file-tray-full-outline" slot="end" [matMenuTriggerFor]="belowMenu" id="camera-menu"></ion-icon>
+		</ion-buttons>
+	</ion-toolbar>
+	
+</ion-header>
+<mat-menu #belowMenu="matMenu" yPosition="below" >
+	<ng-template matMenuContent>
+		<button  mat-menu-item *ngFor="let item of listImage" (click)="selected(item)">{{item.ImageName}}</button>
+	</ng-template>
+</mat-menu>
+<ion-content scrollY="false" style="overflow: hidden;">
+	<div></div>
+	<div class="content">
+		<ion-content style="position: absolute" *ngIf="selectedFile != null && selectedFile != undefined">
+				<img [src]="img" style="display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;"/>
+		</ion-content>
+		<label style="font-size: 5vmin">Không có file nào</label>
+		<div class="btn-actions">
+			<div class="btns">
+				<div class="btn-icon">
+					<ion-icon class="iconSize" src="assets/icon/duplicate-outline.svg" (click)="btnAddClicked()"></ion-icon>
+				</div>
+				<div class="btn-icon" *ngIf="selectedFile != null && selectedFile != undefined">
+					<ion-icon class="iconSize"  src="assets/icon/pencil-outline.svg" (click)="btnEditClicked()"></ion-icon>
+				</div>
+				<div class="btn-icon" *ngIf="selectedFile != null && selectedFile != undefined">
+					<ion-icon class="iconSize" src="assets/icon/trash-outline.svg" (click)="btnDelClicked()"></ion-icon>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+
+</ion-content>
+<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>

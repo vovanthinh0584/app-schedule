@@ -1,0 +1,45 @@
+<ion-content  class="dsylenh"  scrollY="false">
+	<ion-content class="detail-ylenh ylenh">
+		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+			<ion-refresher-content pullingIcon="arrow-dropdown"
+								   pullingText="Lấy dữ liệu mới"
+								   refreshingSpinner="circles">
+			</ion-refresher-content>
+		</ion-refresher>
+		<mat-accordion multi="true">
+		<div class="list card ttcd" *ngFor="let item of ListWorkPermit" style="margin-bottom: 10px;">
+			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true"> 
+				<mat-expansion-panel-header  style="height: 48px;"   >
+					<mat-panel-title>
+						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+						</mat-panel-title>
+						<mat-panel-description class="more-popover">
+							<ion-button (click)="onSend(item)" size="small" class="search" style="width: 50%;">{{ Language.lblSend}}</ion-button>
+						</mat-panel-description>
+				</mat-expansion-panel-header>
+			<div class="item item-text-wrap">
+                 {{Language.WorkPermitNo}}
+				<span class="item-note">{{item.WorkPermitNo}}</span>
+			</div>
+			
+			
+			<div class="item item-text-wrap">
+				{{Language.Contractor}}
+				<span class="item-note">{{ item.Contractor }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.lblStatus}}
+				<span class="item-note">{{ item.Status }}</span>
+			</div>
+			
+			</mat-expansion-panel>
+		</div>
+		</mat-accordion>
+	</ion-content>
+    <ion-fab vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="openWorkPermitModal()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+</ion-content>
