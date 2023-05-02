@@ -11,7 +11,7 @@ import { ToastService } from './ToastService';
 import {MessageUS} from './message.us'
 import {MessageVN} from './message.vn'
 import { EventEmitterName } from './event-emitter-service';
-
+import * as _ from 'lodash';   
 
 export class BaseController
 {
@@ -57,7 +57,7 @@ export class BaseController
          Title: 'List work',
          Url: '/main/list-work',
          Icon: 'nutrition-outline',
-         Code: 'MB0004',
+         Code: 'MB004',
          Title_VN:"Danh sách công việc",
          Title_US:"List work",
      },
@@ -93,9 +93,11 @@ export class BaseController
          this.selectItem.UserID=this.user.UserID;
          this.selectItem.BUID=this.user.BusinessUnitID;
          this.selectItem.Language=this.user.Language;
+         debugger
          if(this.user.Permissions!=null)
          {
-            for(var permison of this.user.Permissions)
+            var distinctPermissions=_.uniq(this.user.Permissions);
+            for(var permison of distinctPermissions)
             {
               var page=this.pages.find(x=>x["Code"]==permison);
               page.Title=this.selectItem.Language=='vi-VN'?page.Title_VN:page.Title_US;
