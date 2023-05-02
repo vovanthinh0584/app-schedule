@@ -37,7 +37,13 @@ export module MessageVN {
         Status: "Vui lòng nhập trạng thái",
         SmallStatus: "Không được phép chọn giá trị nhỏ hơn",
         CreateSuccessfully: "Thêm GetTask thành công!",
-        FinishedSuccessfully: "Hoàn thành phân công thành công!"
+        FinishedSuccessfully: "Hoàn thành phân công thành công!",
+        FinishedError: "Lỗi hoàn thành công việc",
+        Team: "Vui lòng nhập team",
+        Worker: "Vui lòng nhập worker",
+        Level: "Vui lòng nhập level",
+        AssignerWork: "Assigner worker success",
+        AssignerWorkError: "Error Assigner worker"
     }
     export const Sheet033Boiler = {
         Save: "Lưu thành công",

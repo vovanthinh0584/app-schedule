@@ -8,20 +8,21 @@ import { Ionic4DatepickerModule } from "@logisticinfotech/ionic4-datepicker";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MomentModule } from 'ngx-moment';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { GetTaskComponent } from "./getTask.component";
+import { ListWorkComponent } from "./listWork.component";
 import { GetTaskModalComponent } from "src/app/components/get-task/getTaskModal.component";
 import { GetTaskService } from "src/app/services/getTask/get-task.service";
-
+import { AssignerWorkModalComponent } from "src/app/components/assigner-work/assignerWorkModal.component";
+import { IonicSelectableModule } from 'ionic-selectable';
 const routes: Routes = [
   //localhost:4200/main/user
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   //localhost:4200/main/home/index
-  { path: 'index', component: GetTaskComponent }
+  { path: 'index', component: ListWorkComponent }
 ]
 @NgModule({
   exports: [],
   declarations: [
-    GetTaskComponent, GetTaskModalComponent
+    ListWorkComponent, GetTaskModalComponent,AssignerWorkModalComponent
   ],
   imports: [
     CommonModule,
@@ -30,15 +31,15 @@ const routes: Routes = [
     MatExpansionModule,
     Ionic4DatepickerModule,
     MomentModule,
-
+    IonicSelectableModule,
     RouterModule.forChild(routes),
     ScrollingModule,
   ],
   providers: [GetTaskService],
-  entryComponents: [GetTaskComponent, GetTaskModalComponent]
+  entryComponents: [ListWorkComponent, GetTaskModalComponent,AssignerWorkModalComponent]
 })
 
-export class GetTaskModule {
+export class ListWorkModule {
   constructor() {
   }
 

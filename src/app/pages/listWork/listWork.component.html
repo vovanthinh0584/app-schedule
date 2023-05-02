@@ -1,3 +1,16 @@
+<ion-list no-padding>
+	<ion-item>
+		<ion-label  position="floating">{{Language.lblWorkType}}</ion-label>
+		<ion-select [(ngModel)]="selectItem.FilterType">
+			<ion-select-option *ngFor="let item of listWorkType" [value]="item.worktypeId">{{item.worktypeName}}</ion-select-option>
+		</ion-select>
+	</ion-item>
+	<ion-item>
+		<ion-label  position="stacked">{{Language.lblDescriptionInformation}}</ion-label>
+    <ion-input [(ngModel)]="selectItem.FilterDescription"></ion-input>
+	</ion-item>
+   <ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
+</ion-list>
 <ion-content class="dsylenh" scrollY="false">
     <ion-content class="detail-ylenh ylenh">
   
@@ -8,7 +21,7 @@
       </ion-refresher>
   
       <mat-accordion multi="true">
-        <div class="list card ttcd" *ngFor="let item of selectItem.GetTasks" style="margin-bottom: 10px;">
+        <div class="list card ttcd" *ngFor="let item of selectItem.ListWork" style="margin-bottom: 10px;">
           <mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true">
             <mat-expansion-panel-header style="height: 48px;">
               <mat-panel-title>
@@ -21,7 +34,7 @@
               <mat-panel-description class="more-popover">              
                 <!--<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)">
                 </ion-icon>-->
-                <ion-button (click)="onFinishedData(item.WorkNo)" size="small" class="search">{{ Language.btnFinished}}</ion-button>
+                <ion-button (click)="onDetail(item)" size="small" class="search">{{ Language.lblDetail}}</ion-button>
               </mat-panel-description>
             </mat-expansion-panel-header>
   
@@ -39,20 +52,20 @@
               <span class="item-note">{{ item.WorkDate  | amDateFormat:'MM/DD/YYYY' }}</span>
             </div>
   
-            <div class="item item-text-wrap">
+            <!-- <div class="item item-text-wrap">
               <span>{{Language.lblRequest}}</span>
               <span class="item-note">{{ item.MTNRequestNum }}</span>
-            </div>
+            </div> -->
             
-            <div class="item item-text-wrap">
+            <!-- <div class="item item-text-wrap">
               <span>{{Language.RequestedDate}}</span>
               <span class="item-note">{{ item.MTNRequestDateTime | amDateFormat:'MM/DD/YYYY'}}</span>
-            </div>
-            
+            </div> -->
+<!--             
             <div class="item item-text-wrap">
               <span>{{Language.Equipment}}</span>
               <span class="item-note">{{ item.Equipment }}</span>
-            </div>
+            </div> -->
             
             <div class="item item-text-wrap">
               <span>{{Language.DescriptionInformation}}</span>

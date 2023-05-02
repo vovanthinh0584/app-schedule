@@ -1,6 +1,6 @@
 ﻿export default {
      "url": 'http://123.25.238.48:8586',
-     "api":{"url":"http://123.25.238.48:8586","version":"1.0.05","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
+     "api":{"url":"http://123.25.238.48:8586","version":"1.0.07","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
     //   "url": 'http://localhost:5000',
     //   "api":{url:'http://localhost:5000'},
 
@@ -33,7 +33,11 @@
     }   ,
     "GetTask":{
         "Entity": "/api/Task",
-        "FinishedTask":"/api/Task/Finished"
+        "FinishedWork":"/api/Task/FinishedWork",
+         AssignWork:"/api/Task/AssignWork",
+         SearchListWork:"/api/Task/SearchListWork",
+         QueryWorkers:"/api/Task/QueryWorkers",
+         QueryTeams:"/api/Task/QueryTeams",
     },
     "Sheet033Boiler":{
         "GetWorks":"/api/Sheet033Boiler/GetWorks",

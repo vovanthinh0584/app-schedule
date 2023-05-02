@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title slot="start">{{Language.btnAssigned}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-content padding>
+   
+    <ion-item>
+      <ion-label position="floating">{{Language.lblTeamId}}</ion-label>
+      <ionic-selectable #teamComponent
+                    [items]="listTeam"
+                    [isMultiple]="true"
+                    [(ngModel)]="team"
+                    itemValueField="TeamGroupId"
+                    itemTextField="TeamGroupId"
+                    [canSearch]="true"
+                    (onChange)="onChangeTeam($event)"
+                    >
+           
+      </ionic-selectable>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{Language.lblWorkerId}}</ion-label>
+      <ionic-selectable #workerComponent
+                    [items]="listWorker"
+                    [isMultiple]="true"
+                    itemValueField="WorkerId"
+                    itemTextField="WorkerName"
+                    [canSearch]="true"
+                    [(ngModel)]="worker"
+                    (onChange)="onChangeWorker($event)"
+                    >
+      </ionic-selectable>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Language.lblLevel</ion-label>
+      <ion-select [(ngModel)]="CurrentItem.Level">
+        <ion-select-option *ngFor="let item of listLevel" [value]="item.levelId">{{item.levelName}}</ion-select-option>
+    </ion-select>
+    </ion-item>
+  </ion-content>
+</ion-content>
+<ion-footer style="display: flex;justify-content: center;">
+	<!-- <ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button> -->
+	<ion-button (click)="onSave()">{{Language.lblSave}}</ion-button>
+	
+</ion-footer>

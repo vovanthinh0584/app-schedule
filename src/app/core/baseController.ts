@@ -12,6 +12,7 @@ import {MessageUS} from './message.us'
 import {MessageVN} from './message.vn'
 import { EventEmitterName } from './event-emitter-service';
 import * as _ from 'lodash';   
+import { nextSortDir } from '@swimlane/ngx-datatable';
 
 export class BaseController
 {
@@ -93,13 +94,17 @@ export class BaseController
          this.selectItem.UserID=this.user.UserID;
          this.selectItem.BUID=this.user.BusinessUnitID;
          this.selectItem.Language=this.user.Language;
-         debugger
+  
          if(this.user.Permissions!=null)
          {
             var distinctPermissions=_.uniq(this.user.Permissions);
             for(var permison of distinctPermissions)
             {
               var page=this.pages.find(x=>x["Code"]==permison);
+              if(page==undefined)
+               {
+                  continue;
+               }
               page.Title=this.selectItem.Language=='vi-VN'?page.Title_VN:page.Title_US;
               this.Permissions.push(page);
        

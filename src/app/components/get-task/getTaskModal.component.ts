@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import * as moment from "moment";
 import { GetTaskService } from "src/app/services/getTask/get-task.service";
+import { AssignerWorkModalComponent } from "../assigner-work/assignerWorkModal.component";
 
 @Component({
   selector: 'app-get-task-modal',
@@ -15,12 +16,7 @@ export class GetTaskModalComponent implements OnInit {
   @Input() Message;
   @Input() CurrentItem: any;
   @Input() toastService: any;
-  @Input() statuses: any;
-  @Input() levels: any;
-  @Input() worktypes: any;
-  originalItem: any;
-  isVerifierInformationDisabled: boolean = false;
-  isReasonDisabled: boolean = false;
+
 
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
@@ -29,76 +25,47 @@ export class GetTaskModalComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.originalItem = { ...this.CurrentItem }
-    console.log("originalItem", this.originalItem)
-
-    if (this.CurrentItem.Status !== '3') {
-      this.CurrentItem.VerifierInformation = '';
-      this.isVerifierInformationDisabled = true;
-    }
-    else {
-      this.isVerifierInformationDisabled = false;
-    }
-    if (this.CurrentItem.Status !== '4') {
-      this.CurrentItem.Reason = '';
-      this.isReasonDisabled = true;
-    }
-    else {
-      this.isReasonDisabled = false;
-    }
+   
   }
-  ValidForm() {
-    if (!this.CurrentItem.Status) {
-      this.toastService.warn(this.Message.GetTask.Status);
-      return false;
-    }
-    if (parseInt(this.originalItem.Status) > parseInt(this.CurrentItem.Status)) {
-      this.toastService.warn(this.Message.GetTask.SmallStatus);
-      return false;
-    }
-    return true
+  
+  async onAssingerWork(){
+    const modal = await this.modalCtrl.create({
+      component: AssignerWorkModalComponent,
+      componentProps: {
+        Language: this.Language,
+        selectItem: this.selectItem,
+        Message: this.Message,
+        CurrentItem: this.CurrentItem,
+        toastService: this.toastService
+        
+      }
+    });
+    modal.onDidDismiss().then((data: any) => { 
+      
+      if (data.data == true) {
+       // this.loadData();
+      }
+    });
+    await modal.present();
   }
-  save() {
-    let body: any = {};
-    body.WorkNo = this.CurrentItem.WorkNo;
-    body.Status = this.CurrentItem.Status;
-    body.VerifierInformation = this.CurrentItem.VerifierInformation;
-    body.Reason = this.CurrentItem.Reason;
-
-    if (this.ValidForm()) {
-      this.getTaskService.CreateGetTask(body).subscribe(response => {
-        if (response.Code == 200) {
-          this.toastService.success(this.Message.GetTask.CreateSuccessfully);
-          this.CurrentItem = {}
-          this.close(true)
-        }
-      })
-    }
+  onFinisherWork(){
+     this.getTaskService.FinishedTask(this.CurrentItem).subscribe(x=>{
+      if(x.Data==1)
+      {
+        this.toastService.success(this.Message.GetTask.FinishedSuccessfully);
+        this.close(true);
+      }
+      else
+      {
+        this.toastService.success(this.Message.GetTask.FinishedError);
+        this.close(false);
+      }
+     })
   }
 
   close(trangthai) {
     this.modalCtrl.dismiss(trangthai);
   }
 
-  handleSelectStatus(e) {
-    if (parseInt(this.originalItem.Status) > parseInt(e.target.value)) {
-      this.toastService.warn(this.Message.GetTask.SmallStatus);
-      e.target.value = this.originalItem.Status;
-    }
-    if (e.target.value !== '3') {
-      this.CurrentItem.VerifierInformation = '';
-      this.isVerifierInformationDisabled = true;
-    }
-    else {
-      this.isVerifierInformationDisabled = false;
-    }
-
-    if (e.target.value !== '4') {
-      this.CurrentItem.Reason = '';
-      this.isReasonDisabled = true;
-    }
-    else {
-      this.isReasonDisabled = false;
-    }
-  }
+ 
 }

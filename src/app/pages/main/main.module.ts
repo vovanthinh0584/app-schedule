@@ -11,8 +11,8 @@ export const mainRoutes: Routes = [
       //localhost:4200/main
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'request', loadChildren: () => import('../inputRequest/inputRequest.module').then( m => m.InputRequestModule)},
-      { path: 'list-work', loadChildren: () => import('../getTask/getTask.module').then( m => m.GetTaskModule)},
-      { path: 'device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then( m => m.InputDeviceParameterModule)},
+      { path: 'list-work', loadChildren: () => import('../listWork/listWork.module').then( m => m.ListWorkModule)},
+      { path: 'input-device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then( m => m.InputDeviceParameterModule)},
       { path: 'work-permit', loadChildren: () => import('../workPermit/workPermit.module').then( m => m.WorkPermitModule)},
     ]
   }

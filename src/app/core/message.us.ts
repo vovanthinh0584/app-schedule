@@ -36,7 +36,12 @@ export module MessageUS {
         Status: "Please enter status!",
         SmallStatus: "The Status must be small than the current status!",
         CreateSuccessfully: "Create GetTask Successfully!",
-        FinishedSuccessfully: "Finished Task Successfully!"
+        FinishedSuccessfully: "Finished Task Successfully!",
+        Team: "Please enter your Team",
+        Worker: "Please enter your Worker",
+        Level: "Please enter your Level",
+        AssignerWork: "Success Assigner worker",
+        AssignerWorkError: "Error Assigner worker"
     }
     export const Sheet033Boiler = {
         Save: "Save success",

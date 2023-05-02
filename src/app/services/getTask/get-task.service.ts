@@ -17,13 +17,19 @@ export class GetTaskService {
     HttpService.Client.http = httpClient;
   }
 
-  QueryGetTask(): Observable<any> {
-    return HttpService.Client.get(`${api.api.url}${api.GetTask.Entity}`);
+  QueryGetTask(body:any): Observable<any> {
+    return HttpService.Client.post(`${api.api.url}${api.GetTask.SearchListWork}`,body);
   }
-  CreateGetTask(body: any): Observable<any> {
-    return HttpService.Client.post(`${api.api.url}${api.GetTask.Entity}`, body);
+  AssignWork(body: any): Observable<any> {
+    return HttpService.Client.post(`${api.api.url}${api.GetTask.AssignWork}`, body);
   }
   FinishedTask(workNo: any): Observable<any> {
-    return HttpService.Client.post(`${api.api.url}${api.GetTask.FinishedTask}/${workNo}`, null);
+    return HttpService.Client.post(`${api.api.url}${api.GetTask.FinishedWork}`, workNo);
+  }
+  GetListTeam(): Observable<any> {
+    return HttpService.Client.get(`${api.api.url}${api.GetTask.QueryTeams}`);
+  }
+  GetListworker(): Observable<any> {
+    return HttpService.Client.get(`${api.api.url}${api.GetTask.QueryWorkers}`);
   }
 }

@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()">
+    <ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
-    <ion-title slot="start">Input Device parameter</ion-title>
+    <ion-title slot="start">{{Language.Title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
@@ -13,35 +13,36 @@
       <ion-input type="text" [(ngModel)]="CurrentItem.WorkNo" [disabled]="true"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Language.RequestOrPlanNo</ion-label>
-      <ion-input type="text" [(ngModel)]="CurrentItem.RequestOrPlanNo" [disabled]="true"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label position="floating">Language.WorkDate</ion-label>
       <ion-input type="text" [(ngModel)]="CurrentItem.WorkDate" [disabled]="true"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Language.RequestedContent</ion-label>
-      <ion-input type="text" [(ngModel)]="CurrentItem.RequestedContent" [disabled]="true"></ion-input>
+      <ion-label position="floating">Language.DescriptionInformation</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.DescriptionInformation" [disabled]="true"></ion-input>
     </ion-item>
+   
     <ion-item>
-      <ion-label class="title-chuan-doan" position="floating">Language.Status</ion-label>
-      <ion-select [(ngModel)]="CurrentItem.Status" (ionChange)="handleSelectStatus($event)">
-        <ion-select-option *ngFor="let status of statuses"  [value]="status.statusId">{{status.statusName}}
-        </ion-select-option>
-      </ion-select>
+      <ion-label position="floating">Language.Status</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.Status" [disabled]="true"></ion-input>
+    </ion-item>
+   
+    <ion-item>
+      <ion-label position="floating">Language.Level</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.Level" [disabled]="true" ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Language.VerifierInformation</ion-label>
-      <ion-input type="text" [(ngModel)]="CurrentItem.VerifierInformation" [disabled]="isVerifierInformationDisabled" ></ion-input>
+      <ion-label position="floating">Language.Worker</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.Worker" [disabled]="true"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label position="floating">Language.Reason</ion-label>
-      <ion-input type="text" [(ngModel)]="CurrentItem.Reason" [disabled]="isReasonDisabled"></ion-input>
+      <ion-label position="floating">Language.Location</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.Location" [disabled]="true"></ion-input>
     </ion-item>
-    
   </ion-content>
 </ion-content>
-<ion-button (click)="save()">{{Language.Save}}</ion-button>
+<ion-footer style="display: flex;justify-content: center;">
+	<!-- <ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button> -->
+	<ion-button (click)="onAssingerWork()" *ngIf="CurrentItem.UserLoginRole=='ADMIN'">{{Language.btnAssigned}}</ion-button>
+	<ion-button (click)="onFinisherWork()" *ngIf="CurrentItem.UserLoginRole!='ADMIN'">{{Language.btnFinished}}</ion-button>
+</ion-footer>
