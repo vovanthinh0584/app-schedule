@@ -56,6 +56,17 @@ export module MessageVN {
         VendorManager:"Vui lòng nhập nhà cung cấp",
         ImageSuccess:"Thêm mới file thành công",
         ImageError:"Thêm mới file thất bại",
-        UpdateImageSuccess:"cập nhật ảnh thành công"
+        UpdateImageSuccess:"cập nhật ảnh thành công",
+        Approval:"Chấp nhận thành công",
+        ApprovalError:"Chấp nhận bị lỗi",
+        NoApproval:"không chấp nhận thành công",
+        NoApprovalError:"không chấp nhận bị lỗi",
+        ProjectManager:"Vui lòng nhập Project Manager",
+        ZoneManager:"Vui lòng nhập Zone Manager",
+        SaleManager:"Vui lòng nhập Sale Manager",
+        SendSuccess:"Gởi thành công",
+        SendError:"Gởi thất bại",
+        CloseWorkerError:"Đóng công việc thất bại",
+        CloseWorkerSuccess:"Đóng công việc thành công"
     }
 }

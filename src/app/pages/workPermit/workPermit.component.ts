@@ -31,6 +31,8 @@ export class WorkPermitComponent extends BaseController implements OnInit {
     this.getListVerdormanager();
     this.getListProjectManager();
     this.getListWorkPermit();
+    this.getListZonemanager() ;
+    this.getListSalemanager();
   }
  
   onVisible(item){
@@ -49,13 +51,23 @@ export class WorkPermitComponent extends BaseController implements OnInit {
       }
     });
     modal.onDidDismiss().then((data) => {
-      if (data.data==true) {
-        
+         debugger;
+         if (data.data==true) {
+           this.getListWorkPermit();
       }
     });
     await modal.present();
   }
- 
+  getListZonemanager() {
+    this.service.queryListZoneManager().subscribe((x)=>{
+      this.selectItem.ListZoneManager=x.Data;
+   });
+ }
+ getListSalemanager() {
+  this.service.queryListSaleManager().subscribe((x)=>{
+    this.selectItem.ListSaleManager=x.Data;
+ });
+}
   getListVerdormanager() {
     this.service.queryVerdorManager().subscribe((x)=>{
       this.selectItem.ListVerdorManager=x.Data;

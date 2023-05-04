@@ -32,6 +32,12 @@ export class WorkPermitService {
     queryListProjectManager():Observable<any>{
         return HttpService.Client.get(`${api.api.url}${api.WorkPermit.GetProjectManagers}`);
     }
+    queryListZoneManager():Observable<any>{
+        return HttpService.Client.get(`${api.api.url}${api.WorkPermit.GetZoneManagers}`);
+    }
+    queryListSaleManager():Observable<any>{
+        return HttpService.Client.get(`${api.api.url}${api.WorkPermit.GetSaleManagers}`);
+    }
     queryVerdorManager():Observable<any>{
         return HttpService.Client.get(`${api.api.url}${api.WorkPermit.QueryVendorManagers}`);
     }
@@ -42,15 +48,17 @@ export class WorkPermitService {
         return HttpService.Client.post(`${api.api.url}${api.WorkPermit.SaveImageWorkPermit}`,data);
     }
     createApprovalWorkPermit(data:any):Observable<any>{
-        return HttpService.Client.post(`${api.api.url}${api.InputRequest.ApprovalRequest}`,data);
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.Approval}`,data);
     }
     createNoApprovalWorkPermit(data:any):Observable<any>{
-        return HttpService.Client.post(`${api.api.url}${api.InputRequest.NoApprovalRequest}`,data);
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.NoApproval}`,data);
     }
     sendWorkPermit(data:any):Observable<any>{
-        return HttpService.Client.post(`${api.api.url}${api.InputRequest.SendInputRequest}`,data);
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.SendWorkPermit}`,data);
     }
-    VisibleWorkPermit(data:any):Observable<any>{
-        return HttpService.Client.post(`${api.api.url}${api.InputRequest.VisibleRequest}`,data);
+    
+    CloseWorkerPermit(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.CloseWorkerPermit}`,data);
     }
+    
 }

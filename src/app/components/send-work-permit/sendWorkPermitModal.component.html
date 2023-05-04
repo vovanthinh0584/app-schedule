@@ -22,15 +22,34 @@
 			<span class="item-note">{{ selectItem.Item.Contractor }}</span>
 		</ion-item>
 		<ion-item>
+			<ion-label  position="stacked">{{Language.lblStatus}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.StatusText }}</span>
+		</ion-item>
+		<ion-item>
 			<ion-label  position="stacked">{{Language.label1}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.Item.ProjectManager">
+			<ion-select [(ngModel)]="selectItem.Item.ProjectManager" [disabled]="isProjectManager">
                 <ion-select-option *ngFor="let item of selectItem.ListProjectManager" [value]="item.UserID">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.label2}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.Item.ZoneManager" [disabled]="isZoleManager">
+                <ion-select-option *ngFor="let item of selectItem.ListZoneManager" [value]="item.UserID">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.label4}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.Item.SafeManager" [disabled]="isSaleManager">
+                <ion-select-option *ngFor="let item of selectItem.ListSaleManager" [value]="item.UserID">{{item.UserName}}</ion-select-option>
             </ion-select>
 		</ion-item>
 	</ion-list>
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">
-	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
+	<!-- <ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button> -->
 	<ion-button (click)="onImage()">{{Language.lblImage}}</ion-button>
-	<ion-button (click)="onSend()">{{Language.lblSend}}</ion-button>
+	<ion-button (click)="onSend()" *ngIf="isSend=='1'">{{Language.lblSend}}</ion-button>
+	<ion-button (click)="onApproval()" *ngIf="isApproval=='1'">{{Language.lblApproval}}</ion-button>
+	<ion-button (click)="onNoApproval()" *ngIf="isApproval=='1'">{{Language.lblNoApproval}}</ion-button>
+	<ion-button (click)="onCloseWork()" *ngIf="isCloseWorker=='1'">{{Language.lblCloseWork}}</ion-button>
 </ion-footer>

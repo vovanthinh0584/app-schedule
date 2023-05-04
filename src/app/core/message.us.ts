@@ -54,6 +54,17 @@ export module MessageUS {
         VendorManager:"Please enter VendorManager",
         ImageSuccess:"Thêm mới file thành công",
         ImageError:"Thêm mới file thất bại",
-        UpdateImageSuccess:"update image success"
+        UpdateImageSuccess:"update image success",
+        Approval:"Approval success",
+        ApprovalError:"Error Approval success",
+        NoApproval:"No Approval success",
+        NoApprovalError:"No Approval success",
+        ProjectManager:"Please enter Project Manager",
+        ZoneManager:"Please enter Zone Manager",
+        SaleManager:"Please enter Sale Manager",
+        SendSuccess:"Send Successfull",
+        SendError:"Send error",
+        CloseWorkerError:"Close worker permit Successfull",
+        CloseWorkerSuccess:"Close worker permit Successfull"
     }
 }
