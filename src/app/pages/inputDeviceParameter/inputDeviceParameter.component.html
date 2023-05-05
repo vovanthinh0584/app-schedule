@@ -1,64 +1,103 @@
 <ion-list no-padding>
 	<ion-item>
-		<ion-label  position="floating">{{Language.AssetId}}</ion-label>
-		<ion-select [(ngModel)]="selectItem.AssetId">
-			<ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">{{asset.AssetName}}</ion-select-option>
+		<ion-label position="floating">{{Language.AssetId}}</ion-label>
+		<ion-select [(ngModel)]="selectItem.DeviceId">
+			<ion-select-option *ngFor="let device of selectItem.devices"
+				[value]="device.DeviceId">{{device.DeviceName}}</ion-select-option>
 		</ion-select>
 	</ion-item>
 	<ion-item>
-		<ion-label  position="stacked">{{Language.InputDate}}</ion-label>
+		<ion-label position="stacked">{{Language.InputDate}}</ion-label>
 	</ion-item>
 	<li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px"
-	[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
-    <ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
+		[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
+	<ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
 </ion-list>
-<ion-content  class="dsylenh"  scrollY="false">
+<ion-content class="dsylenh" scrollY="false">
 	<ion-content class="detail-ylenh ylenh">
 		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
-			<ion-refresher-content pullingIcon="arrow-dropdown"
-								   pullingText="Lấy dữ liệu mới"
-								   refreshingSpinner="circles">
+			<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Lấy dữ liệu mới"
+				refreshingSpinner="circles">
 			</ion-refresher-content>
 		</ion-refresher>
 		<mat-accordion multi="true">
-		<div class="list card ttcd" *ngFor="let item of selectItem.ListAssetOperation" style="margin-bottom: 10px;">
-			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true"> 
-				<mat-expansion-panel-header  style="height: 48px;"   >
-					<mat-panel-title>
-						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
-						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
-							<p class="dichvu">{{ item.AssetId }}</p>
+			<div class="list card ttcd" *ngFor="let item of selectItem.ListAssetOperation" style="margin-bottom: 10px;">
+				<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true">
+					<mat-expansion-panel-header style="height: 48px;">
+						<mat-panel-title>
+							<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
+								src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+							<ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
+								src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+							<p class="dichvu">{{item.DeviceName}}</p>
 						</mat-panel-title>
 						<mat-panel-description class="more-popover">
-							<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)" style="margin-top: 12px;"></ion-icon>
+							<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)"
+								style="margin-top: 12px;"></ion-icon>
 						</mat-panel-description>
-				</mat-expansion-panel-header>
-			<div class="item item-text-wrap">
-            {{Language.OperatingID}}
-				<span class="item-note">{{ item.OperatingId }}</span>
+					</mat-expansion-panel-header>
+					<div class="item item-text-wrap">
+						{{Language.Date}}
+						<span class="item-note">{{ item.Date | amDateFormat:'DD/MM/YYYY HH:mm'}}</span>
+					</div>
+					<div class="item item-text-wrap">
+						<span>{{Language.Device}}</span>
+						<span class="item-note">
+							<ion-select [(ngModel)]="item.Device" disabled=true>
+								<ion-select-option *ngFor="let device of selectItem.devices"
+									[value]="device.DeviceId">{{device.DeviceName}}</ion-select-option>
+							</ion-select>
+						</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.Zone}}
+						<span class="item-note">
+							<ion-select [(ngModel)]="item.Zone" disabled=true>
+								<ion-select-option *ngFor="let zoneObj of selectItem.zones"
+									[value]="zoneObj.ZoneId">{{zoneObj.ZoneName}}</ion-select-option>
+							</ion-select>
+						</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.Shift}}
+						<span class="item-note">
+							<ion-select [(ngModel)]="item.Shift" disabled=true>
+								<ion-select-option *ngFor="let shiftObj of selectItem.shifts"
+									[value]="shiftObj.ShiftID">{{shiftObj.ShiftName}}</ion-select-option>
+							</ion-select>
+						</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.Attime}} Attime
+						<span class="item-note">
+							<ion-select [(ngModel)]="item.Time" disabled=true>
+								<ion-select-option *ngFor="let timeObj of selectItem.times"
+									[value]="timeObj.Id">{{timeObj.Attime}}</ion-select-option>
+							</ion-select>
+						</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.ChecklistID}}
+						<span class="item-note">{{ item.ChecklistID }}</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.StandardValue}}
+						<span class="item-note">{{ item.StandardValue }}</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.Value}}
+						<span class="item-note">{{ item.Value }}</span>
+					</div>
+					<div class="item item-text-wrap">
+						{{Language.Confirm}}
+						<!-- <span class="item-note">{{ item.Confirm }}</span> -->
+						Confirm
+						<span class="item-note">
+							<ion-checkbox slot="end" [(ngModel)]='item.Confirm' disabled="true"></ion-checkbox>
+						</span>
+					</div>
+				</mat-expansion-panel>
 			</div>
-			<div class="item item-text-wrap">
-				<span>{{Language.OperatingName}}</span>
-				<span class="item-note">{{ item.OperatingName }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				{{Language.InputDate}}
-					<span class="item-note">{{ item.InputDate  | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</span>
-				</div>
-			<div class="item item-text-wrap">
-				{{Language.UMID}}
-				<span class="item-note">{{ item.UMID }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				{{Language.Value}}
-				<span class="item-note">{{ item.Value }}</span>
-			</div>
-			<div class="item item-text-wrap">
-				{{Language.Note}}
-				<span class="item-note">{{ item.Note }}</span>
-			</div>
-			</mat-expansion-panel>
-		</div>
 		</mat-accordion>
 	</ion-content>
 </ion-content>

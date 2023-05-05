@@ -1,46 +1,80 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon
+				name="arrow-back"></ion-icon></ion-button>
 		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 	<ion-list>
+		<input type="hidden" [value]="CurrentItem.Id">
 		<ion-item>
-			<ion-label class="title-chuan-doan" position="floating">{{Language.AssetId}}</ion-label>
-			<ion-select [(ngModel)]="CurrentItem.AssetId">
-                <ion-select-option *ngFor="let asset of selectItem.listAsset" [value]="asset.AssetID">{{asset.AssetName}}</ion-select-option>
-            </ion-select>
+			<ion-label class="title-chuan-doan" position="floating">{{Language.Device}} Device</ion-label>
+			<ion-select [(ngModel)]="CurrentItem.Device" [disabled]="true">
+				<ion-select-option *ngFor="let device of selectItem.devices"
+					[value]="device.DeviceId">{{device.DeviceName}}</ion-select-option>
+			</ion-select>
 		</ion-item>
+
+		<!-- <ion-item>
+			<ion-label class="label-for-li-ionic4-datepicker" position="floating"
+				style="margin: 15px 0 !important;">{{Language.Date}} Date</ion-label>
+			<li-ionic4-datepicker [(ngModel)]="CurrentItem.Date" style="margin: 8px 0 !important;"
+				[inputDateConfig]="datePickerConfig" [disabled]="true">
+			</li-ionic4-datepicker>
+		</ion-item> -->
+
 		<ion-item>
-			<ion-label  position="floating">{{Language.InputDate}}</ion-label>
-			
-            
+			<ion-label position="floating">{{Language.Date}} Date</ion-label>
+			<ion-input [(ngModel)]="CurrentItem.Date" type="text" [disabled]="true"></ion-input>
 		</ion-item>
-		<li-ionic4-datepicker [(ngModel)]="CurrentItem.InputDate" style="margin-left:15px"
-        [inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
-        <ion-item>
-			<ion-label  position="floating">{{Language.OperatingID}}</ion-label>
-			<ion-select [(ngModel)]="CurrentItem.OperatingID">
-                <ion-select-option *ngFor="let operating of selectItem.listOperating" [value]="operating.OperatingId">{{operating.OperatingName}}</ion-select-option>
-            </ion-select>
-		</ion-item>
+
+		<!-- ==================================================================================================== -->
 		<ion-item>
-			<ion-label  position="floating">{{Language.UMID}}</ion-label>
-			<ion-select [(ngModel)]="CurrentItem.UMID">
-                <ion-select-option *ngFor="let u of selectItem.listUM" [value]="u.UMID">{{u.UMName}}</ion-select-option>
-            </ion-select>
+			<ion-label class="title-chuan-doan" position="floating">{{Language.Zone}} Zone</ion-label>
+			<ion-select [(ngModel)]="CurrentItem.Zone" [disabled]="true">
+				<ion-select-option *ngFor="let zone of selectItem.zones"
+					[value]="zone.ZoneId">{{zone.ZoneName}}</ion-select-option>
+			</ion-select>
 		</ion-item>
+
 		<ion-item>
-			<ion-label  position="floating">{{Language.Value}}</ion-label>
-            <ion-input type="number"   step='0.01' debounce="100" pattern="^\d*(\.\d{0,3})?$" [(ngModel)]="CurrentItem.Value"></ion-input>
+			<ion-label class="title-chuan-doan" position="floating">{{Language.Shift}} Shift</ion-label>
+			<ion-select [(ngModel)]="CurrentItem.Shift" [disabled]="true">
+				<ion-select-option *ngFor="let shiftObj of selectItem.shifts"
+					[value]="shiftObj.ShiftID">{{shiftObj.ShiftName}}</ion-select-option>
+			</ion-select>
 		</ion-item>
-        <ion-item>
-			<ion-label  position="floating">{{Language.Note}}</ion-label>
-			<ion-input  [(ngModel)]="CurrentItem.Note" type="text"></ion-input>
+
+		<ion-item>
+			<ion-label class="title-chuan-doan" position="floating">{{Language.Time}} Time</ion-label>
+			<ion-select [(ngModel)]="CurrentItem.Time" [disabled]="true">
+				<ion-select-option *ngFor="let timeObj of selectItem.times"
+					[value]="timeObj.Id">{{timeObj.Attime}}</ion-select-option>
+			</ion-select>
 		</ion-item>
-		
+
+		<ion-item>
+			<ion-label position="floating">{{Language.ChecklistID}} ChecklistID</ion-label>
+			<ion-input [(ngModel)]="CurrentItem.ChecklistID" type="text" [disabled]="true"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">{{Language.StandardValue}} StandardValue</ion-label>
+			<ion-input [(ngModel)]="CurrentItem.StandardValue" type="text"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">{{Language.Value}} Value</ion-label>
+			<ion-input [(ngModel)]="CurrentItem.Value" type="text"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">{{Language.Confirm}} Confirm</ion-label>
+			<ion-checkbox labelPlacement="start" [(ngModel)]='CurrentItem.Confirm'>Confirm</ion-checkbox>
+		</ion-item>
+		<!-- ==================================================================================================== -->
 	</ion-list>
 </ion-content>
 <ion-button (click)="save()">{{Language.btnSave}}</ion-button>

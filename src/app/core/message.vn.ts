@@ -26,11 +26,9 @@ export module MessageVN {
 
     }
     export const InputDeviceParameter = {
-        AssetId: "Vui lòng nhập thiết bị",
-        InputDate: "Vui lòng nhập nhập ngày",
-        OperatingId: "Vui lòng nhập mã tham số",
-        UMID: "Vui lòng nhập đơn vị tính",
-        Value: "Vui lòng nhập đ",
+        StandardValue: "Vui lòng nhập giá trị tiêu chuẩn",
+        Confirm: "Vui lòng nhập nhập Xác nhận",
+        Value: "Vui lòng nhập giá trị",
 
     }
     export const GetTask = {
