@@ -25,10 +25,8 @@ export module MessageUS {
 
     }
     export const InputDeviceParameter = {
-        AssetId: "Please enter your AssetId",
-        InputDate: "Please enter your InputDate",
-        OperatingId: "Please enter your OperatingId",
-        UMID: "Please enter your UMID",
+        StandardValue: "Please enter your StandardValue",
+        Confirm: "Please enter your Confirm",
         Value: "Please enter your Value",
 
     }

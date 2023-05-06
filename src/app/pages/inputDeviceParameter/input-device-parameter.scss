@@ -831,3 +831,8 @@ ion-content {
     margin-left: 10px;
 	margin-bottom: 20px;
 }
+
+ion-checkbox.checkbox-disabled, ion-select.select-disabled {
+	pointer-events: none;
+	opacity: 1;
+  }
