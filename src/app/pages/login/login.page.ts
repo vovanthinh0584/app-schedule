@@ -25,7 +25,7 @@ export class LoginPage extends BaseController implements OnInit {
     }
    
     ngOnInit() {
-   
+       
         this.userService.getListBussiness().subscribe((response:any)=>{
            this.selectItem.BusinessUnitID="SAFVIET";
             this.selectItem.listBusiness=response.Data;
@@ -70,8 +70,8 @@ export class LoginPage extends BaseController implements OnInit {
                 this.toastService.success(response.Data.Message);
                 this.storageService.remove("userInfo");
                 this.storageService.setObject("userInfo",response.Data);
-                this.router.navigateByUrl("main");
-                
+                //this.router.navigateByUrl("main");
+                this.router.navigate(["/main"]);
 
             } 
          })
