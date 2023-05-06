@@ -26,12 +26,12 @@
 		</ion-item> -->
 
 		<ion-item>
-			<ion-label position="floating">{{Language.Date}} Date</ion-label>
+			<ion-label position="floating">{{Language.Date}} </ion-label>
 			<ion-input [(ngModel)]="CurrentItem.Date" type="text" [disabled]="true"></ion-input>
 		</ion-item>
 
 		<!-- ==================================================================================================== -->
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label class="title-chuan-doan" position="floating">{{Language.Zone}} Zone</ion-label>
 			<ion-select [(ngModel)]="CurrentItem.Zone" [disabled]="true">
 				<ion-select-option *ngFor="let zone of selectItem.zones"
@@ -53,26 +53,31 @@
 				<ion-select-option *ngFor="let timeObj of selectItem.times"
 					[value]="timeObj.Id">{{timeObj.Attime}}</ion-select-option>
 			</ion-select>
-		</ion-item>
+		</ion-item> -->
 
 		<ion-item>
-			<ion-label position="floating">{{Language.ChecklistID}} ChecklistID</ion-label>
+			<ion-label position="floating">{{Language.ChecklistID}}</ion-label>
 			<ion-input [(ngModel)]="CurrentItem.ChecklistID" type="text" [disabled]="true"></ion-input>
 		</ion-item>
 
 		<ion-item>
-			<ion-label position="floating">{{Language.StandardValue}} StandardValue</ion-label>
+			<ion-label position="floating">{{Language.StandardValue}}</ion-label>
 			<ion-input [(ngModel)]="CurrentItem.StandardValue" type="text"></ion-input>
 		</ion-item>
 
 		<ion-item>
-			<ion-label position="floating">{{Language.Value}} Value</ion-label>
+			<ion-label position="floating">{{Language.ResultValue}}</ion-label>
 			<ion-input [(ngModel)]="CurrentItem.Value" type="text"></ion-input>
 		</ion-item>
 
 		<ion-item>
-			<ion-label position="floating">{{Language.Confirm}} Confirm</ion-label>
+			<ion-label position="floating">{{Language.Confirm}}</ion-label>
 			<ion-checkbox labelPlacement="start" [(ngModel)]='CurrentItem.Confirm'>Confirm</ion-checkbox>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">{{Language.NonConfirm}} </ion-label>
+			<ion-checkbox labelPlacement="start" [(ngModel)]='CurrentItem.NonConfirm'>{{Language.NonConfirm}}</ion-checkbox>
 		</ion-item>
 		<!-- ==================================================================================================== -->
 	</ion-list>

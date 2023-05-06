@@ -49,10 +49,6 @@ export class InputDeviceParameterModalComponent implements OnInit {
       this.toastService.warn(this.Message.InputDeviceParameter.Value);
       return false;
     }
-    if (!this.CurrentItem.Confirm) {
-      this.toastService.warn(this.Message.InputDeviceParameter.Confirm);
-      return false;
-    }
     return true;
   }
   save() {
