@@ -1,0 +1,48 @@
+<ion-list no-padding>
+	<ion-item>
+		<ion-label  position="floating">{{Language.Shift}}</ion-label>
+		<ion-select [(ngModel)]="selectItem.ShiftId">
+			<ion-select-option *ngFor="let item of listShift" [value]="item.ShiftID">{{item.ShiftName}}</ion-select-option>
+		</ion-select>
+	</ion-item>
+	<ion-item>
+		<ion-label  position="stacked">{{Language.Date}}</ion-label>
+	</ion-item>
+	<li-ionic4-datepicker [(ngModel)]="Date" style="margin-left:15px"
+	[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
+    <ion-button (click)="onSearch()" class="search">{{Language.btnFilter}}</ion-button>
+</ion-list>
+<ion-content  class="dsylenh"  scrollY="false">
+	<ion-content class="detail-ylenh ylenh">
+		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+			<ion-refresher-content pullingIcon="arrow-dropdown"
+								   pullingText="Lấy dữ liệu mới"
+								   refreshingSpinner="circles">
+			</ion-refresher-content>
+		</ion-refresher>
+		<mat-accordion multi="true">
+		<div class="list card ttcd" *ngFor="let item of searchData" style="margin-bottom: 10px;">
+			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true"> 
+				<mat-expansion-panel-header  style="height: 48px;"   >
+					<mat-panel-title>
+						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+							
+						</mat-panel-title>
+						<mat-panel-description class="more-popover">
+							
+						</mat-panel-description>
+				</mat-expansion-panel-header>
+			<div class="item item-text-wrap">
+            {{Language.No}}
+				<span class="item-note">{{ item.No }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				<span>{{Language.Name}}</span>
+				<span class="item-note">{{ item.Name }}</span>
+			</div>
+			</mat-expansion-panel>
+		</div>
+		</mat-accordion>
+	</ion-content>
+</ion-content>
