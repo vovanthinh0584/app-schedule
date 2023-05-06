@@ -28,6 +28,8 @@ export module MessageUS {
         StandardValue: "Please enter your StandardValue",
         Confirm: "Please enter your Confirm",
         Value: "Please enter your Value",
+        SaveSuccess:"Save successfull",
+        SaveError:"Save error"
 
     }
     export const GetTask = {

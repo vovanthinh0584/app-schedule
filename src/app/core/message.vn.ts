@@ -29,6 +29,8 @@ export module MessageVN {
         StandardValue: "Vui lòng nhập giá trị tiêu chuẩn",
         Confirm: "Vui lòng nhập nhập Xác nhận",
         Value: "Vui lòng nhập giá trị",
+        SaveSuccess:"Lưu thành công",
+        SaveError:"Lưu thất bại"
 
     }
     export const GetTask = {

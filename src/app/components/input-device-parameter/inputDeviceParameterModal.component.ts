@@ -64,14 +64,22 @@ export class InputDeviceParameterModalComponent implements OnInit {
     body.StandardValue = this.CurrentItem.StandardValue;
     body.Value = this.CurrentItem.Value;
     body.Confirm = this.CurrentItem.Confirm;
+    body.NonConfirm = this.CurrentItem.NonConfirm;
     body.Time = this.CurrentItem.Time;
     body.Device = this.CurrentItem.Device;
     body.Id = this.CurrentItem.Id;
 
     this.inputDeviceParameterService.createInputDeviceParameter(body).subscribe(response => {
-
-      var result = response;
-      this.close(true);
+      if(response.Code==200)
+      {
+        this.toastService.success(this.Message.InputDeviceParameter.SaveSuccess);
+        this.close(true);
+      }
+      else
+      {
+        this.toastService.success(this.Message.InputDeviceParameter.SaveError);
+      }
+   
     });
   }
   close(trangthai) {
