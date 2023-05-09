@@ -15,7 +15,6 @@
 						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
 						</mat-panel-title>
 						<mat-panel-description class="more-popover">
-							<ion-button *ngIf="(item.Status==3 && item.Requester==user.UserID) || (item.Status==1 && item.Requester==user.UserID) || (item.Status==9 && item.UserManage==user.UserID)" (click)="onVisible(item)" size="small" class="search" style="width: 50%;margin-right:5px;">{{ Language.lblVisible}}</ion-button>
 							<ion-button (click)="onRequest(item)" size="small" class="search" style="width: 50%;">{{ Language.lblRequest}}</ion-button>
 						</mat-panel-description>
 				</mat-expansion-panel-header>

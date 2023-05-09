@@ -65,14 +65,11 @@
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">
 	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
-	
-	<ion-button (click)="onSend()" *ngIf="User.UserID==selectItem.RequestData.Requester
-	 && selectItem.RequestData.Status=='1'
+	<ion-button (click)="onVisible()" *ngIf="isVisible==true
+	">{{Language.lblVisible}}</ion-button>
+	<ion-button (click)="onSend()" *ngIf="isSend==true
 	">{{Language.lblSend}}</ion-button>
-	<ion-button (click)="onApproval()" *ngIf="User.UserID==selectItem.RequestData.
-	UserManage && selectItem.RequestData.Status=='2'
+	<ion-button (click)="onApproval()" *ngIf="isApproval==true
 	">{{Language.lblApproval}}</ion-button>
-	<ion-button color="warning" (click)="onNoApproval()" *ngIf="User.UserID==selectItem.RequestData.
-	UserManage && selectItem.RequestData.Status=='2'
-	">{{Language.lblNoApproval}}</ion-button>
+	<ion-button color="warning" (click)="onNoApproval()" *ngIf="isApproval==true">{{Language.lblNoApproval}}</ion-button>
 </ion-footer>

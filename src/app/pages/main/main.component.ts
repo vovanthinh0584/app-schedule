@@ -28,9 +28,9 @@ export class MainComponent extends BaseController implements OnInit {
   logout()
   {
     this.storageService.remove("userInfo");
-    this.route.navigate([`login`], { replaceUrl: true });
+    window.location.reload();
+    this.route.navigate(['login'], { replaceUrl: true });
+   
   }
-  onHome(){
-    this.route.navigate([`/main`], { replaceUrl: true });
-  }
+
 }

@@ -1,7 +1,7 @@
 ﻿import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { BaseController } from 'src/app/core/baseController';
 import { User } from 'src/app/models/user';
 import {UserService} from 'src/app/services/user/user.service'
@@ -14,7 +14,7 @@ export class LoginPage extends BaseController implements OnInit {
     _toastService:any;
     clickedImage: string;
  
-    constructor(private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
+    constructor(private navCtlr: NavController,private router: Router,private userService:UserService,public httpClient:HttpClient,toastController: ToastController) {
         super();
         this.fromName="frmLogin";
         this.initializeApp(router,httpClient,toastController);
@@ -67,12 +67,14 @@ export class LoginPage extends BaseController implements OnInit {
          this.userService.login(user).subscribe((response:any)=>{
             if(response.Code==200)
             {
+                debugger;
                 this.toastService.success(response.Data.Message);
                 this.storageService.remove("userInfo");
+                response.Data.UserID=response.Data.UserID.toUpperCase();
                 this.storageService.setObject("userInfo",response.Data);
                 //this.router.navigateByUrl("main");
-                this.router.navigate(["/main"]);
-
+                this.navCtlr.navigateRoot(`/main`);
+            
             } 
          })
 

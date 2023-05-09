@@ -8,6 +8,7 @@ import { Ionic4DatepickerModule } from "@logisticinfotech/ionic4-datepicker";
 import { MomentModule } from "ngx-moment";
 import { InformationRequestModalComponent } from "src/app/components/information-request/informationRequestModal.component";
 import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
+import { NoApprovalRequestModalComponent } from "src/app/components/no-approval-request/noApprovalRequestModal.component";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { InputRequestComponent } from "./inputRequest.component";
 
@@ -22,7 +23,8 @@ const InputRequestRoutes: Routes = [
   declarations: [
     InputRequestComponent,
     InputRequestModalComponent,
-    InformationRequestModalComponent
+    InformationRequestModalComponent,
+    NoApprovalRequestModalComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ const InputRequestRoutes: Routes = [
     RouterModule.forChild(InputRequestRoutes)
   ],
   providers: [InputRequestService], 
-  entryComponents:[InputRequestComponent,InputRequestModalComponent]
+  entryComponents:[InputRequestComponent,InputRequestModalComponent,NoApprovalRequestModalComponent]
 })
 
 export class InputRequestModule {

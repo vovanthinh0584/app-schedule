@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController, ToastController } from "@ionic/angular";
 import { InputDeviceParameterService } from "src/app/services/inputDeviceParameter/input-device-parameter.service";
+import { NoApprovalRequestModalComponent } from '../no-approval-request/noApprovalRequestModal.component';
 @Component({
   selector: 'app-information-request-modal',
   templateUrl: './informationRequestModal.component.html',
@@ -14,7 +15,9 @@ export class InformationRequestModalComponent implements OnInit {
   @Input() toastService;
   @Input() Message;
   @Input() User;
-  
+  isSend:any=false;
+  isApproval:any=false;
+  isVisible:any=false;
   ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}]
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
@@ -24,8 +27,36 @@ export class InformationRequestModalComponent implements OnInit {
     console.log("InformationRequestModalComponent")
    
   }
+  onVisible(){
+    this.service.VisibleRequest(this.selectItem.RequestData).subscribe((x)=>{
+      if(x.Code==200)
+       {
+         this.toastService.success(this.Message.InputRequest.VisibleRequest);
+         this.close(true);
+       }
+     
+   });
+  }
   ngOnInit() {
-   debugger
+    debugger
+    this.isVisible=false;
+    this.isSend=false;
+    this.isApproval=false;
+    var status=this.selectItem.RequestData.Status;
+    if(this.User.UserID==this.selectItem.RequestData.Requester.toUpperCase()
+      && status=='1')
+      {
+        this.isSend=true;
+      }
+    if(this.User.UserID==this.selectItem.RequestData.UserManage.toUpperCase() && status=='2')
+      {
+           this.isApproval=true;
+      }
+    if((this.selectItem.RequestData.Status=="4" &&  this.selectItem.RequestData.Requester.toUpperCase()==this.User.UserID) || (status=="3" && this.selectItem.RequestData.Requester.toUpperCase()==this.User.UserID) )
+    {
+      this.isVisible=true;
+    }
+
   }
   onSend(){
     this.service.sendInputRequest(this.selectItem.RequestData).subscribe(response => {
@@ -46,14 +77,23 @@ export class InformationRequestModalComponent implements OnInit {
       }
     }, (e) => { });
   }
-  onNoApproval(){
-    this.service.createNoApprovalRequest(this.selectItem.RequestData).subscribe(response => {
- 
-      if (response.Code == 200) {
-        this.toastService.success(this.Message.InputRequest.Success);
-        this.close(true);
+ async onNoApproval(){
+   
+    const modal = await this.modalCtrl.create({
+      component: NoApprovalRequestModalComponent,
+      componentProps: {
+        Language: this.Language,
+        Item: this.selectItem.RequestData,
+        toastService: this.toastService,
+        Message:this.Message
       }
-    }, (e) => { });
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.data==true) {
+        this.close(true)
+      }
+    });
+    await modal.present();
   }
   close(status) {
  

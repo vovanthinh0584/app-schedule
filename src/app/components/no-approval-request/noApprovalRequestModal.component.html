@@ -1,0 +1,20 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblReason}}</ion-label>
+			<ion-input  [(ngModel)]="Item.NotApprovalDescription" type="text"></ion-input>
+		</ion-item>
+		
+	</ion-list>
+</ion-content>
+<ion-footer style="display: flex;justify-content: center;">
+	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
+	<ion-button (click)="onSave()">{{Language.lblSave}}</ion-button>
+</ion-footer>
