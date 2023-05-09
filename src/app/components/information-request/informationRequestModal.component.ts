@@ -37,16 +37,24 @@ export class InformationRequestModalComponent implements OnInit {
      
    });
   }
+  isManager=false;
   ngOnInit() {
     debugger
+    this.isManager=false;
     this.isVisible=false;
     this.isSend=false;
     this.isApproval=false;
     var status=this.selectItem.RequestData.Status;
+   if(status!='1')
+   {
+    this.isManager=true;
+    
+   }
     if(this.User.UserID==this.selectItem.RequestData.Requester.toUpperCase()
       && status=='1')
       {
         this.isSend=true;
+        return;
       }
     if(this.User.UserID==this.selectItem.RequestData.UserManage.toUpperCase() && status=='2')
       {
@@ -59,6 +67,11 @@ export class InformationRequestModalComponent implements OnInit {
 
   }
   onSend(){
+    if(!this.selectItem.RequestData.UserManage)
+    {
+        this.toastService.warn(this.Message.InputRequest.UserManage);
+        return false;
+    }
     this.service.sendInputRequest(this.selectItem.RequestData).subscribe(response => {
    
       if (response.Code == 200) {

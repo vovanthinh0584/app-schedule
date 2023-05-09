@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { MainComponent } from "./main.component";
+
 export const mainRoutes: Routes = [
   {
     //localhost:4200/main

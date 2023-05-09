@@ -2,7 +2,8 @@ import { InputRequestService } from './../../services/inputRequest/input-request
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController, ToastController } from "@ionic/angular";
-import { InputDeviceParameterService } from "src/app/services/inputDeviceParameter/input-device-parameter.service";
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-input-request-modal',
   templateUrl: './inputRequestModal.component.html',
@@ -14,19 +15,7 @@ export class InputRequestModalComponent implements OnInit {
   @Input() toastService;
   @Input() Message;
   @Input() User;
-  datePickerConfig: any = {
-    //inputDate: new Date("2018-12-01");
-    showTodayButton: false, // default true
-    closeOnSelect: true, // default false
-    setLabel: 'Set',  // default 'Set'
-    todayLabel: 'Hôm nay', // default 'Today'
-    closeLabel: 'Đóng', // default 'Close'
-    titleLabel: 'Select a Date', // default null
-    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-    dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
-    clearButton: false, // default true
-  };
+
   ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}]
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
@@ -36,7 +25,7 @@ export class InputRequestModalComponent implements OnInit {
    
   }
   ngOnInit() {
-      
+    
   }
   save() {
     if (this.ValidForm()) {
@@ -82,11 +71,11 @@ export class InputRequestModalComponent implements OnInit {
         this.toastService.warn(this.Message.InputRequest.MTNDeadLineDateTime);
         return false;
     }
-    if(!this.selectItem.UserManage)
-    {
-        this.toastService.warn(this.Message.InputRequest.UserManage);
-        return false;
-    }
+    // if(!this.selectItem.UserManage)
+    // {
+    //     this.toastService.warn(this.Message.InputRequest.UserManage);
+    //     return false;
+    // }
     // if(!this.selectItem.Equipment)
     // {
     //     this.toastService.warn(this.Message.InputRequest.Equipment);

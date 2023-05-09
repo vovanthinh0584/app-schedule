@@ -7,10 +7,10 @@
 
 <ion-content padding>
 	<ion-list>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label position="stacked">{{Language.Requester}}</ion-label>
 			<span class="item-note">{{ User.UserID }}</span>
-		</ion-item>
+		</ion-item> -->
 		<ion-item>
 			<ion-label  position="stacked">{{Language.ZoneId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.ZoneId">
@@ -21,14 +21,28 @@
 			<ion-label  position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.Descriptionrequest" type="text"></ion-input>
 		</ion-item>
+		
 		<ion-item>
+			<ion-label  position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
+			<ion-input
+    value="{{ selectItem.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY hh:mm' }}"
+    id="startDate"
+    class="ion-text-end"
+  ></ion-input>
+  <ion-popover trigger="startDate" size="cover">
+    <ng-template>
+		<ion-datetime  [(ngModel)]="selectItem.MTNDeadLineDateTime" [showDefaultButtons]="true"></ion-datetime>
+    </ng-template>
+  </ion-popover>
+			
+     	</ion-item> 
+		
+		 <ion-item>
 			<ion-label  position="stacked">{{Language.Equipment}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.Equipment" type="text"></ion-input>
 		</ion-item>
-		<ion-item>
-			<ion-label  position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
-			<ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="selectItem.MTNDeadLineDateTime"></ion-datetime>
-     	</ion-item> 
+		
+		
 		<ion-item>
 			<ion-label  position="stacked">{{Language.lblType}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.MNType">
@@ -51,12 +65,12 @@
 			<ion-label  position="stacked">{{Language.Others}}</ion-label>
 			<ion-checkbox [(ngModel)]="selectItem.Others"  class="checkbox-icon"></ion-checkbox>
 		</ion-item>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.UserManage">
                 <ion-select-option *ngFor="let item of selectItem.ListManagement" [value]="item.UserId">{{item.UserName}}</ion-select-option>
             </ion-select>
-		</ion-item>
+		</ion-item> -->
 	</ion-list>
 </ion-content>
 <ion-button (click)="save()">{{Language.lblSave}}</ion-button>

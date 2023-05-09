@@ -49,9 +49,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
     modal.onDidDismiss().then((data) => {
       if (data.data==true) {
           this.getInformationInputRequest();
-          var ReceiveName= this.selectItem.ReceiveName;
-          this.selectItem.ListZone;
-          this.selectItem={};
+         
       }
     });
     await modal.present();

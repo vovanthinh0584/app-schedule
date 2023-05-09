@@ -58,9 +58,15 @@
 		</ion-item>
 		<ion-item>
 			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.RequestData.UserManage" [disabled]="isManager">
+                <ion-select-option  *ngFor="let item of selectItem.ListManagement" [value]="item.UserId">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>
+		<!-- <ion-item>
+			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				UserManage}}</span>
-		</ion-item>
+		</ion-item> -->
 	</ion-list>
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">

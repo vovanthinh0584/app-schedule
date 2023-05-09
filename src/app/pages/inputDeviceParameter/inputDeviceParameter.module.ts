@@ -12,6 +12,7 @@ import { InputDeviceParameterComponent } from "./inputDeviceParameter.component"
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MomentModule } from 'ngx-moment';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { IonicSelectableModule } from 'ionic-selectable';
 const routes: Routes = [
   //localhost:4200/main/user
   { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
     InputDeviceParameterComponent,InputDeviceParameterModalComponent ],
   imports: [
     CommonModule,
+    IonicSelectableModule,
     FormsModule,
     IonicModule,
     MatExpansionModule,

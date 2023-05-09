@@ -6,7 +6,7 @@ import * as moment from "moment";
 import { InputDeviceParameterModalComponent } from "src/app/components/input-device-parameter/inputDeviceParameterModal.component";
 import { BaseController } from "src/app/core/baseController";
 import { InputDeviceParameterService } from "src/app/services/inputDeviceParameter/input-device-parameter.service";
-
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 @Component({
   selector: 'app-input-device-parameter',
@@ -22,17 +22,16 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
   selectedName: string = "";
 
   datePickerConfig: any = {
-    //inputDate: new Date("2018-12-01");
-    showTodayButton: false, // default true
-    closeOnSelect: true, // default false
-    setLabel: 'Set',  // default 'Set'
-    todayLabel: 'Hôm nay', // default 'Today'
-    closeLabel: 'Đóng', // default 'Close'
-    titleLabel: 'Select a Date', // default null
-    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-    dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
-    clearButton: false, // default true
+       showTodayButton: false, // default true
+        closeOnSelect: true, // default false
+        setLabel: 'Set',  // default 'Set'
+        todayLabel: 'Hôm nay', // default 'Today'
+        closeLabel: 'Đóng', // default 'Close'
+        titleLabel: 'Select a Date', // default null
+        monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+        weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+        dateFormat: 'DD/MM/YYYY', // default DD MMM YYYY
+        clearButton: false, // default true
   };
 
   InputDate: any;
@@ -49,15 +48,15 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
     this.inputDeviceParameterService.getInformation().subscribe((response) => {
 
       var result = response.data;
-      this.selectItem.listAsset = response.Data.listAsset;
-      this.selectItem.listOperating = response.Data.listOperating;
-      this.selectItem.listUM = response.Data.listUM;
-      this.selectItem.Device = response.Data.devices[0].DeviceId;
+      // this.selectItem.listAsset = response.Data.listAsset;
+      // this.selectItem.listOperating = response.Data.listOperating;
+      // this.selectItem.listUM = response.Data.listUM;
+      //this.selectItem.Device = response.Data.devices[0].DeviceId;
 
-      this.selectItem.zones = response.Data.zones;
-      this.selectItem.shifts = response.Data.shifts;
-      this.selectItem.devices = response.Data.devices;
-      this.selectItem.times = response.Data.times;
+      // this.selectItem.zones = response.Data.zones;
+      // this.selectItem.shifts = response.Data.shifts;
+       this.selectItem.devices = response.Data.devices;
+      // this.selectItem.times = response.Data.times;
 
       this.onSearch();
     })

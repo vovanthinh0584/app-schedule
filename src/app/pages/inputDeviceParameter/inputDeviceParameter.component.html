@@ -1,16 +1,21 @@
 <ion-list no-padding>
 	<ion-item>
 		<ion-label position="floating">{{Language.Device}}</ion-label>
-		<ion-select [(ngModel)]="selectItem.DeviceId">
-			<ion-select-option *ngFor="let device of selectItem.devices"
-				[value]="device.DeviceId">{{device.DeviceName}}</ion-select-option>
-		</ion-select>
+		<ionic-selectable [(ngModel)]="selectItem.DeviceId"
+							  [items]="selectItem.devices"
+							  itemValueField="DeviceId"
+							  itemTextField="DeviceName"
+							  [canSearch]="true"
+							  [hasVirtualScroll]="true"
+							  
+							  >
+							</ionic-selectable>
 	</ion-item>
 	<ion-item>
 		<ion-label position="stacked">{{Language.InputDate}}</ion-label>
+		<ion-input placeholder="Language.InputDate" [liIonic4Datepicker]="datePickerConfig" [(ngModel)]="InputDate"></ion-input>
 	</ion-item>
-	<li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px"
-		[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
+	
 	<ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
 </ion-list>
 <ion-content class="dsylenh" scrollY="false">
