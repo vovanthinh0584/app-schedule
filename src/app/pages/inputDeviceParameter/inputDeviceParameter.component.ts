@@ -21,17 +21,31 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
   reorderable: boolean = true;
   selectedName: string = "";
 
+  // datePickerConfig: any = {
+  //   showTodayButton: false, // default true
+  //   closeOnSelect: true, // default false
+  //   setLabel: 'Set',  // default 'Set'
+  //   todayLabel: 'Hôm nay', // default 'Today'
+  //   closeLabel: 'Đóng', // default 'Close'
+  //   titleLabel: 'Select a Date', // default null
+  //   monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+  //   weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+  //   dateFormat: 'DD/MM/YYYY', // default DD MMM YYYY
+  //   clearButton: false, // default true
+  // };
+
   datePickerConfig: any = {
-       showTodayButton: false, // default true
-        closeOnSelect: true, // default false
-        setLabel: 'Set',  // default 'Set'
-        todayLabel: 'Hôm nay', // default 'Today'
-        closeLabel: 'Đóng', // default 'Close'
-        titleLabel: 'Select a Date', // default null
-        monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-        weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-        dateFormat: 'DD/MM/YYYY', // default DD MMM YYYY
-        clearButton: false, // default true
+    //inputDate: new Date("2018-12-01");
+    showTodayButton: false, // default true
+    closeOnSelect: true, // default false
+    setLabel: 'Set',  // default 'Set'
+    todayLabel: 'Hôm nay', // default 'Today'
+    closeLabel: 'Đóng', // default 'Close'
+    titleLabel: 'Select a Date', // default null
+    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+    dateFormat: 'MM/DD/YYYY', // default DD MMM YYYY
+    clearButton: false, // default true
   };
 
   InputDate: any;
@@ -53,26 +67,46 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
       // this.selectItem.listUM = response.Data.listUM;
       //this.selectItem.Device = response.Data.devices[0].DeviceId;
 
-      // this.selectItem.zones = response.Data.zones;
-      // this.selectItem.shifts = response.Data.shifts;
-       this.selectItem.devices = response.Data.devices;
-      // this.selectItem.times = response.Data.times;
+      this.selectItem.zones = response.Data.zones;
+      this.selectItem.shifts = response.Data.shifts;
+      this.selectItem.devices = response.Data.devices;
+      this.selectItem.times = response.Data.times;
 
       this.onSearch();
     })
   }
   getParameter() {
+    let params = {
+      BUID: this.selectItem.BUID,
+      LANG: this.selectItem.LANG,
+      USERID: this.selectItem.USERID,
+      Device: this.selectItem.Device != null ? this.selectItem.Device.DeviceId : null,
+      InputDate: this.selectItem.InputDate,
+      Zone: this.selectItem.Zone,
+      Shift: this.selectItem.Shift,
+      Time: this.selectItem.Time,
+    }
 
-    this.inputDeviceParameterService.getParameter(this.selectItem).subscribe((response) => {
+    this.inputDeviceParameterService.getParameter(params).subscribe((response) => {
 
-      this.selectItem.ListAssetOperation = response.Data.map((x)=>{
-        x.DeviceName =  this.selectItem.devices.find(y=>y.DeviceId === x.Device).DeviceName
+      this.selectItem.ListAssetOperation = response.Data.map((x) => {
+        x.DeviceName = this.selectItem.devices.find(y => y.DeviceId === x.Device).DeviceName
         console.log(x);
         return x;
-    })
+      })
     })
   }
 
+  async getListSheet() {
+    await  this.inputDeviceParameterService.GetShiftsAttime({BUID:this.selectItem.BUID,ShiftID:this.selectItem.Shift}).subscribe(rs=>{
+     
+      this.selectItem.listSheetAtime =rs.Data
+    });
+  }
+
+  onShiftChange(e){
+    this.getListSheet();
+  }
 
   onSearch() {
     this.selectItem.InputDate = this.InputDate;

@@ -10,7 +10,7 @@
   <ion-content padding>
    
     <ion-item>
-      <ion-label position="floating">{{Language.lblTeamId}}</ion-label>
+      <ion-label position="floating">{{Language.TeamId}}</ion-label>
       <ionic-selectable #teamComponent
                     [items]="listTeam"
                     [isMultiple]="true"
@@ -25,7 +25,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">{{Language.lblWorkerId}}</ion-label>
+      <ion-label position="floating">{{Language.WorkerId}}</ion-label>
       <ionic-selectable #workerComponent
                     [items]="listWorker"
                     [isMultiple]="true"
@@ -38,7 +38,7 @@
       </ionic-selectable>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Language.lblLevel</ion-label>
+      <ion-label position="floating">{{Language.Level}}</ion-label>
       <ion-select [(ngModel)]="CurrentItem.Level">
         <ion-select-option *ngFor="let item of listLevel" [value]="item.levelId">{{item.levelName}}</ion-select-option>
     </ion-select>
@@ -47,6 +47,6 @@
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">
 	<!-- <ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button> -->
-	<ion-button (click)="onSave()">{{Language.lblSave}}</ion-button>
+	<ion-button (click)="onSave()">{{Language.Save}}</ion-button>
 	
 </ion-footer>
