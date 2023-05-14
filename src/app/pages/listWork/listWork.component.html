@@ -1,12 +1,12 @@
 <ion-list no-padding>
 	<ion-item>
-		<ion-label  position="floating">{{Language.lblWorkType}}</ion-label>
+		<ion-label  position="floating">{{Language.WorkType}}</ion-label>
 		<ion-select [(ngModel)]="selectItem.FilterType">
 			<ion-select-option *ngFor="let item of listWorkType" [value]="item.worktypeId">{{item.worktypeName}}</ion-select-option>
 		</ion-select>
 	</ion-item>
 	<ion-item>
-		<ion-label  position="stacked">{{Language.lblDescriptionInformation}}</ion-label>
+		<ion-label  position="stacked">{{Language.DescriptionInformation}}</ion-label>
     <ion-input [(ngModel)]="selectItem.FilterDescription"></ion-input>
 	</ion-item>
    <ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
