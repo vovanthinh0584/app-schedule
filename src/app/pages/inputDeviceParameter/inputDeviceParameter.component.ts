@@ -78,8 +78,8 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
   getParameter() {
     let params = {
       BUID: this.selectItem.BUID,
-      LANG: this.selectItem.LANG,
-      USERID: this.selectItem.USERID,
+      LANG: this.selectItem.Language,
+      USERID: this.selectItem.UserID,
       Device: this.selectItem.Device != null ? this.selectItem.Device.DeviceId : null,
       InputDate: this.selectItem.InputDate,
       Zone: this.selectItem.Zone,
