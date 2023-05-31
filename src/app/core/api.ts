@@ -64,6 +64,12 @@
       Shift:{
         SearhShift:"/api/Shift/SearhShift",
         GetShifts:"/api/Shift/GetShifts",
+      } , 
+      Notification:{
+        GetTotalNotification:"/api/Notifications/GetTotalNotification",
+        GetTotalNotificationNew:"/api/Notifications/GetTotalNotificationNew",
+        GetListNotification:"/api/Notifications/GetListNotification",
+        UpdateNotification:"/api/Notifications/UpdateNotification",
       }  
 
        

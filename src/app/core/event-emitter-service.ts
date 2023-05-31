@@ -4,6 +4,7 @@ export namespace EventEmitterName {
         static changeTitle: EventEmitter<object> = new EventEmitter();
         static changeStartLoading: EventEmitter<object> = new EventEmitter();
         static changeFinishLoading: EventEmitter<object> = new EventEmitter();
+        static changeNotification: EventEmitter<object> = new EventEmitter();
     
     }
 }

@@ -16,6 +16,7 @@ export const mainRoutes: Routes = [
       { path: 'input-device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then( m => m.InputDeviceParameterModule)},
       { path: 'work-permit', loadChildren: () => import('../workPermit/workPermit.module').then( m => m.WorkPermitModule)},
       { path: 'list-shift', loadChildren: () => import('../listShift/listShift.module').then( m => m.ListShiftModule)},
+      { path: 'notification', loadChildren: () => import('../notification/notification.module').then( m => m.NotificationModule)},
     ]
   }
 
