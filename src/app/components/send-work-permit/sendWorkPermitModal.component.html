@@ -7,16 +7,16 @@
 
 <ion-content padding>
 	<ion-list>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.WorkPermitNo}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.
 				WorkPermitNo }}</span>
-		</ion-item>
-		<ion-item>
+		</ion-item> -->
+		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.lblVendorManager}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.
 				VendorManager }}</span>
-		</ion-item>
+		</ion-item> -->
 		<ion-item>
 			<ion-label  position="stacked">{{Language.lblContractor}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.Contractor }}</span>
@@ -42,6 +42,10 @@
 			<ion-select [(ngModel)]="selectItem.Item.SafeManager" [disabled]="isSaleManager">
                 <ion-select-option *ngFor="let item of selectItem.ListSaleManager" [value]="item.UserID">{{item.UserName}}</ion-select-option>
             </ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.DeviceDescription}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.DeviceDescription }}</span>
 		</ion-item>
 	</ion-list>
 </ion-content>

@@ -112,6 +112,21 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
     this.selectItem.InputDate = this.InputDate;
     this.getParameter();
   }
+
+  onEndInput(){
+    let params = {
+      BUID: this.selectItem.BUID,
+      LANG: this.selectItem.Language,
+      USERID: this.selectItem.UserID,
+      Device: this.selectItem.Device != null ? this.selectItem.Device.DeviceId : null
+    }
+
+    this.inputDeviceParameterService.closeInput(params).subscribe((response) => {
+      console.log(response);
+    })
+  }
+
+
   ngOnInit() {
     this.getInformationInputDeviceParameter();
   }

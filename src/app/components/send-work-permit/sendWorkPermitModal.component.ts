@@ -78,7 +78,7 @@ export class SendWorkPermitModalComponent implements OnInit {
    this.checkSend(userLoginRole,status);
     this.checkApproval(userLoginRole,status);
     this.checkCloseWorker(userLoginRole,status);
-
+    console.log(this.selectItem)
   }
   onCloseWork(){
     var status=this.selectItem.Item.Status;

@@ -1,10 +1,10 @@
 <ion-list no-padding>
-	<ion-item>
+	<!-- <ion-item>
 		<ion-label  position="stacked">{{Language.Zone}}</ion-label>
 		<ion-select [(ngModel)]="selectItem.Zone">
 			<ion-select-option *ngFor="let item of selectItem.zones" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
 		</ion-select>
-	</ion-item>
+	</ion-item> -->
 
 	<ion-item>
 		<ion-label position="stacked">{{Language.Device}}</ion-label>
@@ -18,28 +18,29 @@
 							  >
 							</ionic-selectable>
 	</ion-item>
-	<ion-item>
+	<!-- <ion-item>
 		<ion-label position="stacked">{{Language.InputDate}}</ion-label>
-	</ion-item>
-	<li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px"
-	[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
+	</ion-item> -->
+	<!-- <li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px"
+	[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker> -->
 
-	<ion-item>
+	<!-- <ion-item>
 		<ion-label  position="stacked">{{Language.Shift}}</ion-label>
 		<ion-select [(ngModel)]="selectItem.Shift" (ionChange)="onShiftChange()">
 			<ion-select-option *ngFor="let item of selectItem.shifts" [value]="item.ShiftID">{{item.ShiftName}}</ion-select-option>
 		</ion-select>
-	</ion-item>
+	</ion-item> -->
 
-	<ion-item>
+	<!-- <ion-item>
 		<ion-label  position="stacked">{{Language.Time}}</ion-label>
 		<ion-select [(ngModel)]="selectItem.Time">
 			<ion-select-option *ngFor="let item of selectItem.listSheetAtime" [value]="item.Id">{{item.Attime}}</ion-select-option>
 		</ion-select>
-	</ion-item>
+	</ion-item> -->
 
 
 	<ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
+	<ion-button (click)="onEndInput()" class="search">{{Language.btnClose}} close</ion-button>
 </ion-list>
 <ion-content class="dsylenh" scrollY="false">
 	<ion-content class="detail-ylenh ylenh">
@@ -52,14 +53,14 @@
 			<div class="list card ttcd" *ngFor="let item of selectItem.ListAssetOperation" style="margin-bottom: 10px;">
 				<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true">
 					<mat-expansion-panel-header style="height: 48px;">
-						<mat-panel-title>
+						<mat-panel-title style="flex-grow:5">
 							<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
 								src="assets/icon/chevron-forward-outline.svg"></ion-icon>
 							<ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
 								src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
-							<p class="dichvu">{{item.DeviceName}}</p>
+							<p class="dichvu">{{item.ChecklistID}}</p>
 						</mat-panel-title>
-						<mat-panel-description class="more-popover">
+						<mat-panel-description class="more-popover" style="flex-grow: 1;">
 							<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)"
 								style="margin-top: 12px;"></ion-icon>
 						</mat-panel-description>
@@ -105,8 +106,8 @@
 						</span>
 					</div> -->
 					<div class="item item-text-wrap">
-						{{Language.ChecklistID}}
-						<span class="item-note">{{ item.ChecklistID }}</span>
+						{{Language.Device}}
+						<span class="item-note">{{ item.DeviceName }}</span>
 					</div>
 					<div class="item item-text-wrap">
 						{{Language.StandardValue}}

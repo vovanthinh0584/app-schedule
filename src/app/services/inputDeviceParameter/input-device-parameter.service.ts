@@ -25,6 +25,9 @@ export class InputDeviceParameterService {
     getParameter(body:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.InputDeviceParameter.GetParameter}`,body);
     }
+    closeInput(body:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.InputDeviceParameter.CloseInput}`,body);
+    }
     GetShiftsAttime(body:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.Sheet033Boiler.GetShiftsAttime}`,body);
     }

@@ -18,10 +18,10 @@
 							<ion-button (click)="onSend(item)" size="small" class="search" style="width: 50%;">{{ Language.lblDetail}}</ion-button>
 						</mat-panel-description>
 				</mat-expansion-panel-header>
-			<div class="item item-text-wrap">
+			<!-- <div class="item item-text-wrap">
                  {{Language.WorkPermitNo}}
 				<span class="item-note">{{item.WorkPermitNo}}</span>
-			</div>
+			</div> -->
 			
 			
 			<div class="item item-text-wrap">
@@ -31,6 +31,10 @@
 			<div class="item item-text-wrap">
 				{{Language.lblStatus}}
 				<span class="item-note">{{ item.StatusText }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.DeviceDescription}}
+				<span class="item-note">{{ item.DeviceDescription }}</span>
 			</div>
 			
 			</mat-expansion-panel>
