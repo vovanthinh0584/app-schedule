@@ -65,10 +65,10 @@
         GetShifts:"/api/Shift/GetShifts",
       } , 
       Notification:{
-        GetTotalNotification:"/api/Notification/GetTotalNotification",
-        GetTotalNotificationNew:"/api/Notification/GetTotalNotificationNew",
-        GetListNotification:"/api/Notification/GetListNotification",
-        UpdateNotification:"/api/Notification/UpdateNotification",
+        GetTotalNotification:"/api/Notifications/GetTotalNotification",
+        GetTotalNotificationNew:"/api/Notifications/GetTotalNotificationNew",
+        GetListNotification:"/api/Notifications/GetListNotification",
+        UpdateNotification:"/api/Notifications/UpdateNotification",
       }  
 
        
