@@ -1,7 +1,14 @@
 <ion-list no-padding>
 	<ion-item>
-		<ion-label position="floating">{{Language.Device}}</ion-label>
-		<ionic-selectable [(ngModel)]="selectItem.DeviceId"
+		<ion-label  position="stacked">{{Language.Zone}}</ion-label>
+		<ion-select [(ngModel)]="selectItem.Zone">
+			<ion-select-option *ngFor="let item of selectItem.zones" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
+		</ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label position="stacked">{{Language.Device}}</ion-label>
+		<ionic-selectable [(ngModel)]="selectItem.Device"
 							  [items]="selectItem.devices"
 							  itemValueField="DeviceId"
 							  itemTextField="DeviceName"
@@ -13,9 +20,25 @@
 	</ion-item>
 	<ion-item>
 		<ion-label position="stacked">{{Language.InputDate}}</ion-label>
-		<ion-input placeholder="Language.InputDate" [liIonic4Datepicker]="datePickerConfig" [(ngModel)]="InputDate"></ion-input>
 	</ion-item>
-	
+	<li-ionic4-datepicker [(ngModel)]="InputDate" style="margin-left:15px"
+	[inputDateConfig]="datePickerConfig"></li-ionic4-datepicker>
+
+	<ion-item>
+		<ion-label  position="stacked">{{Language.Shift}}</ion-label>
+		<ion-select [(ngModel)]="selectItem.Shift" (ionChange)="onShiftChange()">
+			<ion-select-option *ngFor="let item of selectItem.shifts" [value]="item.ShiftID">{{item.ShiftName}}</ion-select-option>
+		</ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label  position="stacked">{{Language.Time}}</ion-label>
+		<ion-select [(ngModel)]="selectItem.Time">
+			<ion-select-option *ngFor="let item of selectItem.listSheetAtime" [value]="item.Id">{{item.Attime}}</ion-select-option>
+		</ion-select>
+	</ion-item>
+
+
 	<ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
 </ion-list>
 <ion-content class="dsylenh" scrollY="false">

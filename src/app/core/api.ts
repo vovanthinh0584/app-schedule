@@ -1,8 +1,8 @@
 ﻿export default {
-    //  "url": 'http://123.25.238.48:8586',
-    //  "api":{"url":"http://123.25.238.48:8586","version":"0.0.10","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
-      "url": 'http://localhost:5000',
-      "api":{url:'http://localhost:5000'},
+     "url": 'http://123.25.238.48:8586',
+     "api":{"url":"http://123.25.238.48:8586","version":"0.0.14","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
+    //   "url": 'http://localhost:5000',
+    //   "api":{url:'http://localhost:5000'},
     "Account": {
         "Login": '/api/account/login',
         "Logout": '/api/account/logout',
