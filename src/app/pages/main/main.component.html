@@ -27,6 +27,13 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-badge slot="start" style="position: absolute;
+        margin-top: -22px;MARGIN-LEFT: 4PX;">{{TotalNotification==0?"":TotalNotification}}</ion-badge>
+        <ion-icon style="MARGIN-TOP: 14PX;
+        margin-right: 21pX" class="iconSize" src="assets/icon/notification.svg" (click)="btnNotification()"></ion-icon>
+      </ion-buttons>
+      
       <ion-title style="padding-inline: 0px !important" >{{Language.Title}}</ion-title>
     </ion-toolbar>
   </ion-header>

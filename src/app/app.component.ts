@@ -13,9 +13,10 @@ export class AppComponent implements OnInit {
      isLoading=true;
      eventEmitterService=EventEmitterName.EventEmitterService;
      constructor(private router: Router ) {
-
+       
       
      }
+     i:any=10;
   ngOnInit() {
     this.eventEmitterService.changeStartLoading.subscribe((x:any)=>{
       this.isLoading=true;
@@ -25,7 +26,11 @@ export class AppComponent implements OnInit {
       this.isLoading=x.result
       
    })
-   
+ 
+    setInterval(()=>{
+      this.i+=10; 
+      this.eventEmitterService.changeNotification.emit({result:this.i})
+    },120000)
     var user=this.storageService.getObject("userInfo");
     if(user==null)
        this.router.navigate([`/login`], { replaceUrl: true });

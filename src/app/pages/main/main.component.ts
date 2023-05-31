@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ToastController } from "@ionic/angular";
+import { NavController, ToastController } from "@ionic/angular";
 import { BaseController } from "src/app/core/baseController";
 
 @Component({
@@ -9,8 +9,8 @@ import { BaseController } from "src/app/core/baseController";
   templateUrl: './main.component.html'
 })
 export class MainComponent extends BaseController implements OnInit {
- 
-  constructor(private chRef: ChangeDetectorRef,private route: Router, private activatedRoute: ActivatedRoute,httpClient:HttpClient,toastController: ToastController) {
+  TotalNotification:any=0;
+  constructor(private navCtlr: NavController,private chRef: ChangeDetectorRef,private route: Router, private activatedRoute: ActivatedRoute,httpClient:HttpClient,toastController: ToastController) {
      super();
      debugger
     this.initializeApp(route,httpClient,toastController);
@@ -22,9 +22,16 @@ export class MainComponent extends BaseController implements OnInit {
     this.eventEmitterService.changeTitle.subscribe((x)=>{
        this.Language.Title=x;
     })
+    this.eventEmitterService.changeNotification.subscribe((x:any)=>{
+      debugger;
+      this.TotalNotification=x.result;
+   })
     setTimeout(()=>{this.chRef.detectChanges()},100) ;
   }
-  
+  btnNotification(){
+    debugger
+    this.navCtlr.navigateRoot(`/main/notification`);
+  }
   logout()
   {
     this.storageService.remove("userInfo");
