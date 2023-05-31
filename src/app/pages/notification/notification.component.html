@@ -1,3 +1,26 @@
 <ion-content  class="dsylenh"  scrollY="false">
-	 123123123
+  <ion-content class="view-2" [hidden]="isEmptyData">
+		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+			<ion-refresher-content pullingIcon="arrow-dropdown"
+								   pullingText="Lấy dữ liệu mới"
+								   refreshingSpinner="circles">
+			</ion-refresher-content>
+		</ion-refresher>
+		<ion-list class="list-1">
+			<ion-item  *ngFor="let item of listNotication">
+				<ion-grid class="box-1">
+					<ion-row>
+            <div class="item-content">{{ item.CreateDate | amDateFormat:'DD/MM/YYYY hh:mm:ss' }}</div>
+						<div class="item-content">{{item.FromUserId}}</div> 
+            <div class="item-content">{{item.DocumentType}}</div>
+            <div class="item-content">{{item.DocumentId}}</div>
+            <div class="item-content">{{item.DocumentMessage}}</div>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll [disabled]="eventLoadmore" (ionInfinite)="doLoadmore($event)">
+			<ion-infinite-scroll-content></ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</ion-content>
 </ion-content>

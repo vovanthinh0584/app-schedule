@@ -23,7 +23,6 @@ export class MainComponent extends BaseController implements OnInit {
        this.Language.Title=x;
     })
     this.eventEmitterService.changeNotification.subscribe((x:any)=>{
-      debugger;
       this.TotalNotification=x.result;
    })
     setTimeout(()=>{this.chRef.detectChanges()},100) ;

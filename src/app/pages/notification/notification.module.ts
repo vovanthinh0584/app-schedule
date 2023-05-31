@@ -9,6 +9,7 @@ import { MomentModule } from 'ngx-moment';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NotificationComponent } from "./notification.component";
 import { IonicSelectableModule } from 'ionic-selectable';
+import { NotificationService } from "src/app/services/notification/notification.service";
 const routes: Routes = [
   //localhost:4200/main/user
   { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -31,7 +32,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ScrollingModule,
   ],
-  providers: [],
+  providers: [NotificationService],
   entryComponents: [NotificationComponent]
 })
 
