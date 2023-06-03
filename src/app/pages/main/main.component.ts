@@ -23,15 +23,14 @@ export class MainComponent extends BaseController implements OnInit {
     this.eventEmitterService.changeTitle.subscribe((x) => {
       this.Language.Title = x;
     })
-    this.eventEmitterService.changeNotification.subscribe((x: any) => {
+    this.eventEmitterService.changeNotification.subscribe((x:any)=>{
       debugger;
-      this.TotalNotification = x.result;
-    })
-    this.eventEmitterService.changeVisibleNotification.subscribe((x: any) => {
-      this.isOnMainPage = x.result;
-    });
-
-    setTimeout(() => { this.chRef.detectChanges() }, 100);
+      this.TotalNotification=x.result;
+   })
+   this.eventEmitterService.changeVisibleNotification.subscribe((x: any) => {
+    this.isOnMainPage = x.result;
+  });
+    setTimeout(()=>{this.chRef.detectChanges()},100) ;
   }
   btnNotification() {
     debugger

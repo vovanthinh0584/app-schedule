@@ -31,11 +31,10 @@ export class AppComponent implements OnInit {
  
     setInterval(()=>{
       HttpService.Client.post(`${api.api.url}${api.Notification.GetTotalNotificationNew}`,{}).subscribe(x=>{
-        debugger;
         var total=x.Data[0].Total;
         this.eventEmitterService.changeNotification.emit({result:total})
       });
-    },60000)
+    },300000)
     var user=this.storageService.getObject("userInfo");
     if(user==null)
        this.router.navigate([`/login`], { replaceUrl: true });
