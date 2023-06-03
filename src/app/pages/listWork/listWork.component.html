@@ -1,78 +1,98 @@
 <ion-list no-padding>
-	<ion-item>
-		<ion-label  position="floating">{{Language.WorkType}}</ion-label>
-		<ion-select [(ngModel)]="selectItem.FilterType">
-			<ion-select-option *ngFor="let item of listWorkType" [value]="item.worktypeId">{{item.worktypeName}}</ion-select-option>
-		</ion-select>
-	</ion-item>
-	<ion-item>
-		<ion-label  position="stacked">{{Language.DescriptionInformation}}</ion-label>
+  <ion-item>
+    <ion-label position="floating">{{Language.WorkType}}</ion-label>
+    <ion-select [(ngModel)]="selectItem.FilterType">
+      <ion-select-option *ngFor="let item of listWorkType"
+        [value]="item.worktypeId">{{item.worktypeName}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">{{Language.DescriptionInformation}}</ion-label>
     <ion-input [(ngModel)]="selectItem.FilterDescription"></ion-input>
-	</ion-item>
-   <ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
+  </ion-item>
+  <ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
 </ion-list>
 <ion-content class="dsylenh" scrollY="false">
-    <ion-content class="detail-ylenh ylenh">
-  
-      <ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Lấy dữ liệu mới"
-                               refreshingSpinner="circles">
-        </ion-refresher-content>
-      </ion-refresher>
-  
-      <mat-accordion multi="true">
-        <div class="list card ttcd" *ngFor="let item of selectItem.ListWork" style="margin-bottom: 10px;">
-          <mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true">
-            <mat-expansion-panel-header style="height: 48px;">
-              <mat-panel-title>
-                <ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
-                          src="assets/icon/chevron-forward-outline.svg"></ion-icon>
-                <ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
-                          src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
-                <!--<p class="dichvu"> {{ Language.btnFinished}}</p>-->
-              </mat-panel-title>
-              <mat-panel-description class="more-popover">              
-                <!--<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)">
+  <ion-content class="detail-ylenh ylenh">
+
+    <ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Lấy dữ liệu mới" refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
+
+    <mat-accordion multi="true">
+      <div class="list card ttcd" *ngFor="let item of selectItem.ListWork" style="margin-bottom: 10px;">
+        <mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true">
+          <mat-expansion-panel-header style="height: 48px;">
+            <mat-panel-title>
+              <ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
+                src="assets/icon/chevron-forward-outline.svg"></ion-icon>
+              <ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
+                src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+              <!--<p class="dichvu"> {{ Language.btnFinished}}</p>-->
+            </mat-panel-title>
+            <mat-panel-description class="more-popover">
+              <!--<ion-icon class="more-popover-icon" name="create-outline" (click)="onSelectdData(item)">
                 </ion-icon>-->
-                <ion-button (click)="onDetail(item)" size="small" class="search">{{ Language.lblDetail}}</ion-button>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-  
-            <div class="item item-text-wrap">
+              <ion-button (click)="onDetail(item)" size="small" class="search">{{ Language.lblDetail}}</ion-button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <!-- <div class="item item-text-wrap">
               <span>
                 {{Language.WorkNo}}
               </span>
               <span class="item-note">
                 {{ item.WorkNo}}
               </span>
-            </div>
-  
-            <div class="item item-text-wrap">
-              <span>{{Language.WorkDate}}</span>
-              <span class="item-note">{{ item.WorkDate  | amDateFormat:'MM/DD/YYYY' }}</span>
-            </div>
-  
-            <!-- <div class="item item-text-wrap">
+            </div> -->
+
+          <div class="item item-text-wrap">
+            <span>{{Language.WorkDate}}</span>
+            <span class="item-note">{{ item.WorkDate | amDateFormat:'MM/DD/YYYY' }}</span>
+          </div>
+
+          <!-- <div class="item item-text-wrap">
               <span>{{Language.lblRequest}}</span>
               <span class="item-note">{{ item.MTNRequestNum }}</span>
             </div> -->
-            
-            <!-- <div class="item item-text-wrap">
+
+          <!-- <div class="item item-text-wrap">
               <span>{{Language.RequestedDate}}</span>
               <span class="item-note">{{ item.MTNRequestDateTime | amDateFormat:'MM/DD/YYYY'}}</span>
             </div> -->
-<!--             
+          <!--             
             <div class="item item-text-wrap">
               <span>{{Language.Equipment}}</span>
               <span class="item-note">{{ item.Equipment }}</span>
             </div> -->
-            
-            <div class="item item-text-wrap">
-              <span>{{Language.DescriptionInformation}}</span>
-              <span class="item-note">{{ item.DescriptionInformation }}</span>
-            </div>
-  
-            <!--<div class="item item-text-wrap">
+
+          <div class="item item-text-wrap">
+            <span>{{Language.DescriptionInformation}}</span>
+            <span class="item-note">{{ item.DescriptionInformation }}</span>
+          </div>
+          <div class="item item-text-wrap">
+            <span>{{Language.lblDescriptionrequest}}</span>
+            <span class="item-note">{{ item.Descriptionrequest }}</span>
+          </div>
+          <div class="item item-text-wrap">
+            <span>{{Language.Level}}</span>
+            <span class="item-note">{{ item.Level }}</span>
+          </div>
+          <div class="item item-text-wrap">
+            <span>{{Language.MNType }}</span>
+            <span class="item-note">{{ item.MNType }}</span>
+          </div>
+          <div class="item item-text-wrap">
+            <span>{{Language.MTNDeadLineDateTime }}</span>
+            <span class="item-note">{{ item.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY' }}</span>
+          </div>
+          <div class="item item-text-wrap">
+            <span>{{Language.ZoneId }}</span>
+            <span class="item-note">{{ item.ZoneName }}</span>
+          </div>
+
+          <!--<div class="item item-text-wrap">
                 <span>{{Language.RequestOrPlanNo}}</span>
                 <span class="item-note">{{ item.RequestOrPlanNo }}</span>
             </div>
@@ -84,21 +104,17 @@
                 <span>{{Language.Status}}</span>
                 <span class="item-note">{{ item.StatusName }}</span>
             </div>
-            <div class="item item-text-wrap">
-                <span>{{Language.Level}}</span>
-                <span class="item-note">{{ item.LevelName }}</span>
-            </div>
+            
             <div class="item item-text-wrap">
                 <span>{{Language.RequestedContent}}</span>
                 <span class="item-note">{{ item.RequestedContent }}</span>
             </div>-->
-          </mat-expansion-panel>
-        </div>
-      </mat-accordion>
-      <!--<ion-infinite-scroll (ionInfinite)="doLoadmore($event)">
+        </mat-expansion-panel>
+      </div>
+    </mat-accordion>
+    <!--<ion-infinite-scroll (ionInfinite)="doLoadmore($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>-->
-    </ion-content>
-  
   </ion-content>
-  
+
+</ion-content>

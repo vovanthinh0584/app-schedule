@@ -60,5 +60,8 @@ export class WorkPermitService {
     CloseWorkerPermit(data:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.WorkPermit.CloseWorkerPermit}`,data);
     }
+    ExtendWork(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.ExtendWork}`,data);
+    }
     
 }

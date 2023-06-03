@@ -18,10 +18,10 @@
 							<ion-button (click)="onRequest(item)" size="small" class="search" style="width: 50%;">{{ Language.lblRequest}}</ion-button>
 						</mat-panel-description>
 				</mat-expansion-panel-header>
-			<div class="item item-text-wrap">
+			<!-- <div class="item item-text-wrap">
                  {{Language.MTNRequestNum}}
 				<span class="item-note">{{item.MTNRequestNum}}</span>
-			</div>
+			</div> -->
 			<div class="item item-text-wrap">
 				<span>{{Language.lblMTNDeadLineDateTime}}</span>
 				<span class="item-note">{{ item.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY' }}</span>
@@ -34,6 +34,18 @@
 			<div class="item item-text-wrap">
 				{{Language.lblManagement}}
 				<span class="item-note">{{ item.UserManage }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.lblDescriptionrequest}}
+				<span class="item-note">{{ item.Descriptionrequest }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.Status}}
+				<span class="item-note">{{ item.Status }}</span>
+			</div>
+			<div class="item item-text-wrap">
+				{{Language.SentApprovalDate}}
+				<span class="item-note">{{ item.SentApprovalDate }}</span>
 			</div>
 			
 			</mat-expansion-panel>

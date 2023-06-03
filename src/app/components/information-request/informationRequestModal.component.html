@@ -1,19 +1,20 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon
+				name="arrow-back"></ion-icon></ion-button>
 		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 	<ion-list>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.MTNRequestNum}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				MTNRequestNum }}</span>
-		</ion-item>
+		</ion-item> -->
 		<ion-item>
-			<ion-label  position="stacked">{{Language.MTNRequestDateTime}}</ion-label>
+			<ion-label position="stacked">{{Language.MTNRequestDateTime}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY hh:mm:ss' }}</span>
 		</ion-item>
@@ -21,46 +22,54 @@
 			<ion-label class="title-chuan-doan" position="stacked">{{Language.Status}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				StatusName}}</span>
-			
-		</ion-item>	
+
+		</ion-item>
 		<ion-item>
 			<ion-label class="title-chuan-doan" position="stacked">{{Language.ZoneId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.RequestData.ZoneId" [disabled]="true">
-                <ion-select-option *ngFor="let item of selectItem.ListZone" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
-            </ion-select>
-		</ion-item>	
+				<ion-select-option *ngFor="let item of selectItem.ListZone"
+					[value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
+			</ion-select>
+		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.Equipment}}</ion-label>
+			<ion-label position="stacked">{{Language.Equipment}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				Equipment}}</span>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.lblRequester}}</ion-label>
+			<ion-label position="stacked">{{Language.lblRequester}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				Requester}}</span>
 		</ion-item>
-		
-		
+
+
 		<ion-item>
-			<ion-label  position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
-			<span class="item-note">{{ selectItem.RequestData.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY hh:mm' }}</span>
-     	</ion-item> 
-		<ion-item>
-			<ion-label  position="stacked">{{Language.lblType}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.RequestData.MNType" [disabled]="true">
-                <ion-select-option *ngFor="let item of ListType" [value]="item.TypeID">{{item.Type}}</ion-select-option>
-            </ion-select>
+			<ion-label position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
+			<span class="item-note">{{ selectItem.RequestData.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY hh:mm'
+				}}</span>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
+			<ion-label position="stacked">{{Language.lblType}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.RequestData.MNType" [disabled]="true">
+				<ion-select-option *ngFor="let item of ListType" [value]="item.TypeID">{{item.Type}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
 				Descriptionrequest}}</span>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
+			<ion-label position="stacked">{{Language.lblManagement}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.RequestData.UserManage" [disabled]="isManager">
-                <ion-select-option  *ngFor="let item of selectItem.ListManagement" [value]="item.UserId">{{item.UserName}}</ion-select-option>
-            </ion-select>
+				<ion-select-option *ngFor="let item of selectItem.ListManagement"
+					[value]="item.UserId">{{item.UserName}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="stacked">{{Language.SentApprovalDate}}</ion-label>
+			<span class="item-note">{{ selectItem.RequestData.SentApprovalDate}}</span>
 		</ion-item>
 		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
@@ -77,5 +86,6 @@
 	">{{Language.lblSend}}</ion-button>
 	<ion-button (click)="onApproval()" *ngIf="isApproval==true
 	">{{Language.lblApproval}}</ion-button>
-	<ion-button color="warning" (click)="onNoApproval()" *ngIf="isApproval==true">{{Language.lblNoApproval}}</ion-button>
+	<ion-button color="warning" (click)="onNoApproval()"
+		*ngIf="isApproval==true">{{Language.lblNoApproval}}</ion-button>
 </ion-footer>

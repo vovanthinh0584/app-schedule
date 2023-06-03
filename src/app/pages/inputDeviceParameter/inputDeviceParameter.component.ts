@@ -54,7 +54,6 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
     this.fromName = "frminputDeviceParameter";
     this.initializeApp(route, httpClient, toastController);
     this.InputDate = moment(new Date()).format('MM/DD/YYYY');
-
   }
 
 
@@ -98,13 +97,13 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
   }
 
   async getListSheet() {
-    await  this.inputDeviceParameterService.GetShiftsAttime({BUID:this.selectItem.BUID,ShiftID:this.selectItem.Shift}).subscribe(rs=>{
-     
-      this.selectItem.listSheetAtime =rs.Data
+    await this.inputDeviceParameterService.GetShiftsAttime({ BUID: this.selectItem.BUID, ShiftID: this.selectItem.Shift }).subscribe(rs => {
+
+      this.selectItem.listSheetAtime = rs.Data
     });
   }
 
-  onShiftChange(e){
+  onShiftChange(e) {
     this.getListSheet();
   }
 
@@ -113,7 +112,7 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
     this.getParameter();
   }
 
-  onEndInput(){
+  onEndInput() {
     let params = {
       BUID: this.selectItem.BUID,
       LANG: this.selectItem.Language,
@@ -151,5 +150,13 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
       }
     });
     await modal.present();
+  }
+  ngAfterContentChecked() {
+    if (this.routeUrl !== '/main/index/page') {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: false });
+    }
+    else {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: true });
+    }
   }
 }

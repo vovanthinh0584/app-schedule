@@ -1,5 +1,4 @@
-
-  <ion-menu  no-padding contentId="main-content">
+<ion-menu no-padding contentId="main-content">
   <ion-header>
     <ion-toolbar>
       <ion-title>{{Language.MenuTitle}}</ion-title>
@@ -23,25 +22,27 @@
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar>
-      <!-- <ion-icon name="home-outline" slot="start" style="padding-left:5px" (click)="onHome()"></ion-icon> -->
-      <ion-buttons slot="start">
+      <ion-buttons slot="start" style="position: relative;" *ngIf="isOnMainPage">
+        <ion-badge slot="start"
+          style="position: absolute;top:0;left: 0;">{{TotalNotification==0?"":TotalNotification}}12</ion-badge>
+        <ion-icon style="padding: 12px;" class="iconSize" src="assets/icon/notification.svg"
+          (click)="btnNotification()"></ion-icon>
+      </ion-buttons>
+
+      <ion-buttons slot="start" style="position: relative;" *ngIf="!isOnMainPage">
+        <ion-icon style="padding: 12px;" class="iconSize" src="assets/icon/notification.svg"
+          (click)="onBack()"></ion-icon>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-badge slot="start" style="position: absolute;
-        margin-top: -22px;MARGIN-LEFT: 4PX;">{{TotalNotification==0?"":TotalNotification}}</ion-badge>
-        <ion-icon style="MARGIN-TOP: 14PX;
-        margin-right: 21pX" class="iconSize" src="assets/icon/notification.svg" (click)="btnNotification()"></ion-icon>
-      </ion-buttons>
-      
-      <ion-title style="padding-inline: 0px !important" >{{Language.Title}}</ion-title>
+
+      <ion-title style="padding-inline: 0px !important">{{Language.Title}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content  padding class="background-main ion-padding">
-    <ion-router-outlet 
-    ></ion-router-outlet>
+  <ion-content padding class="background-main ion-padding">
+    <ion-router-outlet></ion-router-outlet>
   </ion-content>
-  
+
 </div>
-
-

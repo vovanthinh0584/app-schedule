@@ -1,3 +1,4 @@
+import { InputRequestService } from 'src/app/services/inputRequest/input-request.service';
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -16,7 +17,8 @@ export class ListWorkComponent extends BaseController implements OnInit {
   listWorkType: any
   levels: any
   statuses: any
-  constructor(private getTaskService: GetTaskService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
+  listZone: any
+  constructor(private getTaskService: GetTaskService, private inputRequestService: InputRequestService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
     this.fromName = "SAFVIET_frmWorks";
     this.initializeApp(route, httpClient, toastController);
@@ -73,14 +75,23 @@ export class ListWorkComponent extends BaseController implements OnInit {
   }
   ngOnInit(): void {
     this.declareListValue()
-   
+    this.getInformation()
   }
-  onSearch(){
-      this.getTaskService.QueryGetTask(this.selectItem).subscribe(x=>{
-        this.selectItem.ListWork = x.Data;
+  getInformation() {
+    this.inputRequestService.QueryListZone().subscribe(x => {
+      this.listZone = x.Data;
+    })
+  }
+  onSearch() {
+    this.getTaskService.QueryGetTask(this.selectItem).subscribe(x => {
+      x.Data.map(w => {
+        w.ZoneName = this.listZone.find(y => y.zoneId === w.zoneId).ZoneName
       })
+
+      this.selectItem.ListWork = x.Data;
+    })
   }
- async onDetail(item){
+  async onDetail(item) {
     const modal = await this.modalCtrl.create({
       component: GetTaskModalComponent,
       componentProps: {
@@ -89,13 +100,13 @@ export class ListWorkComponent extends BaseController implements OnInit {
         Message: this.Message,
         CurrentItem: item,
         toastService: this.toastService
-        
+
       }
     });
-    modal.onDidDismiss().then((data: any) => { 
-      
+    modal.onDidDismiss().then((data: any) => {
+
       if (data.data == true) {
-       // this.loadData();
+        // this.loadData();
       }
     });
     await modal.present();
@@ -109,6 +120,13 @@ export class ListWorkComponent extends BaseController implements OnInit {
     })
   }
 
+  ngAfterContentChecked() {
+    if (this.routeUrl !== '/main/index/page') {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: false });
+    }
+    else {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: true });
+    }
+  }
 
-  
 }

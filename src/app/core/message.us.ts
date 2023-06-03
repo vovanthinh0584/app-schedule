@@ -65,6 +65,7 @@ export module MessageUS {
         SendSuccess:"Send Successfull",
         SendError:"Send error",
         CloseWorkerError:"Close worker permit Successfull",
-        CloseWorkerSuccess:"Close worker permit Successfull"
+        CloseWorkerSuccess:"Close worker permit Successfull",
+        ExtendSuccess:"Extend work Successfull"
     }
 }

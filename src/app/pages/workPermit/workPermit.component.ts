@@ -18,91 +18,99 @@ import { WorkPermitService } from "src/app/services/workPermit/work-permit.servi
   styleUrls: ['./workPermit.component.scss'],
 })
 export class WorkPermitComponent extends BaseController implements OnInit {
-  ListVerdorManage:any=[];
-  ListWorkPermit:any=[];
-  constructor(private service: WorkPermitService,private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
+  ListVerdorManage: any = [];
+  ListWorkPermit: any = [];
+  constructor(private service: WorkPermitService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
     this.fromName = "FA_frmWorkPermit";
     this.initializeApp(route, httpClient, toastController);
- 
+
   }
   ngOnInit() {
-    
+
     this.getListVerdormanager();
     this.getListProjectManager();
     this.getListWorkPermit();
-    this.getListZonemanager() ;
+    this.getListZonemanager();
     this.getListSalemanager();
   }
- 
-  onVisible(item){
-   
+
+  onVisible(item) {
+
   }
-  async onSend(item){
-    this.selectItem.Item=item;
+  async onSend(item) {
+    this.selectItem.Item = item;
     const modal = await this.modalCtrl.create({
       component: SendWorkPermitModalComponent,
       componentProps: {
         Language: this.Language,
         selectItem: this.selectItem,
         toastService: ToastService.Toast,
-        User:this.user,
-        Message:this.Message
+        User: this.user,
+        Message: this.Message
       }
     });
     modal.onDidDismiss().then((data) => {
-         debugger;
-         if (data.data==true) {
-           this.getListWorkPermit();
+      debugger;
+      if (data.data == true) {
+        this.getListWorkPermit();
       }
     });
     await modal.present();
   }
   getListZonemanager() {
-    this.service.queryListZoneManager().subscribe((x)=>{
-      this.selectItem.ListZoneManager=x.Data;
-   });
- }
- getListSalemanager() {
-  this.service.queryListSaleManager().subscribe((x)=>{
-    this.selectItem.ListSaleManager=x.Data;
- });
-}
-  getListVerdormanager() {
-    this.service.queryVerdorManager().subscribe((x)=>{
-      this.selectItem.ListVerdorManager=x.Data;
-   });
- }
- getListProjectManager() {
-  this.service.queryListProjectManager().subscribe((x)=>{
-    this.selectItem.ListProjectManager=x.Data;
- });
-}
- openWorkPermit(){
-      this.openWorkPermitModal();
+    this.service.queryListZoneManager().subscribe((x) => {
+      this.selectItem.ListZoneManager = x.Data;
+    });
   }
-  getListWorkPermit(){
-    this.service.queryListWorkPermit().subscribe((x)=>{
-      this.ListWorkPermit=x.Data;
-   });
+  getListSalemanager() {
+    this.service.queryListSaleManager().subscribe((x) => {
+      this.selectItem.ListSaleManager = x.Data;
+    });
+  }
+  getListVerdormanager() {
+    this.service.queryVerdorManager().subscribe((x) => {
+      this.selectItem.ListVerdorManager = x.Data;
+    });
+  }
+  getListProjectManager() {
+    this.service.queryListProjectManager().subscribe((x) => {
+      this.selectItem.ListProjectManager = x.Data;
+    });
+  }
+  openWorkPermit() {
+    this.openWorkPermitModal();
+  }
+  getListWorkPermit() {
+    this.service.queryListWorkPermit().subscribe((x) => {
+      this.ListWorkPermit = x.Data;
+    });
   }
   async openWorkPermitModal() {
-    console.log("WorkPermit",this.Language);
+    console.log("WorkPermit", this.Language);
     const modal = await this.modalCtrl.create({
       component: WorkPermitModalComponent,
       componentProps: {
         Language: this.Language,
         selectItem: this.selectItem,
         toastService: ToastService.Toast,
-        User:this.user,
-        Message:this.Message
+        User: this.user,
+        Message: this.Message
       }
     });
     modal.onDidDismiss().then((data) => {
-        if (data.data==true) {
-          this.getListWorkPermit();
+      if (data.data == true) {
+        this.getListWorkPermit();
       }
     });
     await modal.present();
+  }
+  ngAfterContentChecked() {
+    if (this.routeUrl !== '/main/index/page') {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: false });
+    }
+    else {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: true });
+    }
   }
 }

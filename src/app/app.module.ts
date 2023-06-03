@@ -13,6 +13,7 @@ import { CommonServiceModule } from './core/common-service.module';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ToastService } from './core/ToastService';
 import { MainComponent } from './pages/main/main.component';
+import { IndexComponent } from './pages/index/index.component';
 import { StorageService } from './core/StorageService';
 import { BaseController } from './core/baseController';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';

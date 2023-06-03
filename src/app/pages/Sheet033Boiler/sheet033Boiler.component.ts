@@ -118,5 +118,12 @@ WorkDate:any;
         });
       }
    }
-  
+   ngAfterContentChecked() {
+    if (this.routeUrl !== '/main/index/page') {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: false });
+    }
+    else {
+      this.eventEmitterService.changeVisibleNotification.emit({ result: true });
+    }
+  }
 }

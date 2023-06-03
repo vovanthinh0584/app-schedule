@@ -35,9 +35,24 @@
       <ion-label position="floating">{{Language.WorkerId}}</ion-label>
       <ion-input type="text" [(ngModel)]="CurrentItem.Worker" [disabled]="true"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-label position="floating">{{Language.Location}}</ion-label>
-      <ion-input type="text" [(ngModel)]="CurrentItem.Location" [disabled]="true"></ion-input>
+      <ion-label position="floating">{{Language.lblDescriptionrequest}}</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.Descriptionrequest" [disabled]="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{Language.MNType}}</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.MNType" [disabled]="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{Language.MTNDeadLineDateTime}}</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.MTNDeadLineDateTime" [disabled]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{Language.ZoneId}}</ion-label>
+      <ion-input type="text" [(ngModel)]="CurrentItem.ZoneName" [disabled]="true"></ion-input>
     </ion-item>
   </ion-content>
 </ion-content>

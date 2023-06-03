@@ -67,6 +67,7 @@ export module MessageVN {
         SendSuccess:"Gởi thành công",
         SendError:"Gởi thất bại",
         CloseWorkerError:"Đóng công việc thất bại",
-        CloseWorkerSuccess:"Đóng công việc thành công"
+        CloseWorkerSuccess:"Đóng công việc thành công",
+        ExtendSuccess:"Gia hạn công việc thành công",
     }
 }
