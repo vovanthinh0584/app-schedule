@@ -11,7 +11,6 @@ import { Location } from '@angular/common';
 })
 export class MainComponent extends BaseController implements OnInit {
   TotalNotification: any = 0;
-  isOnMainPage: any = true;
   constructor(private navCtlr: NavController, private chRef: ChangeDetectorRef, private route: Router, private activatedRoute: ActivatedRoute, httpClient: HttpClient, toastController: ToastController, private _location: Location, private aRoute: ActivatedRoute) {
     super();
     this.initializeApp(route, httpClient, toastController);
@@ -27,9 +26,7 @@ export class MainComponent extends BaseController implements OnInit {
       debugger;
       this.TotalNotification=x.result;
    })
-   this.eventEmitterService.changeVisibleNotification.subscribe((x: any) => {
-    this.isOnMainPage = x.result;
-  });
+  
     setTimeout(()=>{this.chRef.detectChanges()},100) ;
   }
   btnNotification() {
