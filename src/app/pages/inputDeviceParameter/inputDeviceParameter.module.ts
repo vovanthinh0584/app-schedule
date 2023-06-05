@@ -32,6 +32,7 @@ const routes: Routes = [
     Ionic4DatepickerModule,
     MomentModule,
     ScrollingModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   providers: [InputDeviceParameterService],

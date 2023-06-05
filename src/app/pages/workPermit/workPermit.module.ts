@@ -15,6 +15,7 @@ import { WorkPermitComponent } from "./workPermit.component";
 // import { PinchZoomModule } from 'ngx-pinch-zoom';
 import { MatMenuModule  } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from "src/app/components/shared-module";
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: 'index', component: WorkPermitComponent }
@@ -38,6 +39,7 @@ const routes: Routes = [
 
     MatMenuModule,
     MatButtonModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   providers: [WorkPermitService], 

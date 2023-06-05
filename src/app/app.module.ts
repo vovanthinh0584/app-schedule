@@ -24,10 +24,11 @@ import { ErrorDialogService } from './core/errordialog.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera/ngx';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent,MenuItemComponent],
-  imports: [BrowserAnimationsModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
+  imports: [FormsModule,BrowserAnimationsModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
     backButtonText: '',
   }), AppRoutingModule,LoginPageModule,CommonServiceModule,UserServiceModule],
   providers: [Camera,ErrorDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

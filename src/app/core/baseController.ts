@@ -84,6 +84,9 @@ export class BaseController {
       this.httpService.http = httpClient;
       this.toastService.toastController = toastController;
       this.eventEmitterService.changeStartLoading.emit({});
+   
+   
+     
       if (this.user == null) {
          this._route.navigate([`/login`], { replaceUrl: true });
          this.user = new User();

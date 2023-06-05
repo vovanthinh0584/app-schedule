@@ -9,6 +9,7 @@ import { MomentModule } from "ngx-moment";
 import { InformationRequestModalComponent } from "src/app/components/information-request/informationRequestModal.component";
 import { InputRequestModalComponent } from "src/app/components/input-request/inputRequestModal.component";
 import { NoApprovalRequestModalComponent } from "src/app/components/no-approval-request/noApprovalRequestModal.component";
+import { SharedModule } from "src/app/components/shared-module";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { InputRequestComponent } from "./inputRequest.component";
 
@@ -33,7 +34,7 @@ const InputRequestRoutes: Routes = [
     MomentModule,
     MatExpansionModule,
     Ionic4DatepickerModule,
-
+    SharedModule,
     RouterModule.forChild(InputRequestRoutes)
   ],
   providers: [InputRequestService], 

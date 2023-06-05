@@ -24,15 +24,15 @@
     <ion-toolbar>
       <ion-buttons slot="start" style="position: relative;" *ngIf="isOnMainPage">
         <ion-badge slot="start"
-          style="position: absolute;top:0;left: 0;">{{TotalNotification==0?"":TotalNotification}}12</ion-badge>
+          style="position: absolute;top:0;left: 0;">{{TotalNotification==0?"":TotalNotification}}</ion-badge>
         <ion-icon style="padding: 12px;" class="iconSize" src="assets/icon/notification.svg"
           (click)="btnNotification()"></ion-icon>
       </ion-buttons>
 
-      <ion-buttons slot="start" style="position: relative;" *ngIf="!isOnMainPage">
+      <!-- <ion-buttons slot="start" style="position: relative;" *ngIf="!isOnMainPage">
         <ion-icon style="padding: 12px;" class="iconSize" src="assets/icon/notification.svg"
           (click)="onBack()"></ion-icon>
-      </ion-buttons>
+      </ion-buttons> -->
 
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>

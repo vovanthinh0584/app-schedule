@@ -14,10 +14,10 @@ export class MainComponent extends BaseController implements OnInit {
   isOnMainPage: any = true;
   constructor(private navCtlr: NavController, private chRef: ChangeDetectorRef, private route: Router, private activatedRoute: ActivatedRoute, httpClient: HttpClient, toastController: ToastController, private _location: Location, private aRoute: ActivatedRoute) {
     super();
-    debugger
     this.initializeApp(route, httpClient, toastController);
     this.Language.MenuTitle = this.user.Language == 'vi-VN' ? 'Danh mục' : 'Catagory';
     this.Language.LogoutTitle = this.user.Language == 'vi-VN' ? 'Đăng xuất' : 'Log out';
+    this.TotalNotification = 0;
   }
   ngOnInit() {
     this.eventEmitterService.changeTitle.subscribe((x) => {

@@ -7,23 +7,15 @@ import { MainComponent } from "./main.component";
 import { InputRequestComponent } from "../inputRequest/inputRequest.component";
 
 export const mainRoutes: Routes = [
-  {
-    //localhost:4200/main
-    path: '', component: MainComponent, children: [
-      //localhost:4200/main
-      { path: '', redirectTo: 'main', pathMatch: 'full' },
-      { path: 'main', redirectTo: 'index', pathMatch: 'full' },
-      { path: 'index', loadChildren: () => import('../index/index.module').then( m => m.IndexModule)},
+      {path: '', component: MainComponent}, 
       { path: 'request', loadChildren: () => import('../inputRequest/inputRequest.module').then( m => m.InputRequestModule)},
       { path: 'list-work', loadChildren: () => import('../listWork/listWork.module').then(m => m.ListWorkModule) },
       { path: 'input-device-parameter', loadChildren: () => import('../inputDeviceParameter/inputDeviceParameter.module').then(m => m.InputDeviceParameterModule) },
       { path: 'work-permit', loadChildren: () => import('../workPermit/workPermit.module').then(m => m.WorkPermitModule) },
       { path: 'list-shift', loadChildren: () => import('../listShift/listShift.module').then(m => m.ListShiftModule) },
       { path: 'notification', loadChildren: () => import('../notification/notification.module').then(m => m.NotificationModule) },
-    ]
-  },
-
-]
+      
+  ]
 @NgModule({
   exports: [],
   declarations: [

@@ -1,3 +1,11 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<app-backbutton-component></app-backbutton-component>
+		</ion-buttons>
+		<ion-title>{{Language.Title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
 <ion-content  class="dsylenh"  scrollY="false">
   <ion-content class="view-2" [hidden]="isEmptyData">
 		<ion-refresher style="z-index:0" (ionRefresh)="doRefresh($event)">

@@ -10,6 +10,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NotificationComponent } from "./notification.component";
 import { IonicSelectableModule } from 'ionic-selectable';
 import { NotificationService } from "src/app/services/notification/notification.service";
+import { SharedModule } from "src/app/components/shared-module";
 const routes: Routes = [
   //localhost:4200/main/user
   { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -31,6 +32,7 @@ const routes: Routes = [
     IonicSelectableModule,
     RouterModule.forChild(routes),
     ScrollingModule,
+    SharedModule
   ],
   providers: [NotificationService],
   entryComponents: [NotificationComponent]

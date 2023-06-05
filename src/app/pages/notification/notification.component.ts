@@ -20,7 +20,7 @@ export class NotificationComponent extends BaseController implements OnInit {
   totalNotication:number=0;
   constructor(public dialog: ErrorDialogService,private service: NotificationService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
-    this.fromName = "SAFVIET_frmWorks";
+    this.fromName = "FA_Notication";
     this.initializeApp(route, httpClient, toastController);
 
   }
@@ -64,17 +64,7 @@ async GetListNotification(body:any, Evt?: any) {
                   this.listNotication = res.Data;
               }
               this.isEmptyData = this.listNotication.length > 0 ? false : true;
-              if(this.listNotication.length>0)
-              {
-                var listNoticationNew=this.listNotication.filter(x=>x.Watched==false);
-                if(listNoticationNew.length>0)
-                {
-                  var id= this.listNotication.map(x=>x.Id).join();
-                  this.service.UpdateNotification({Id:id}).subscribe(x=>{}); 
-                }
-               
-              }
-              debugger;
+              
           }
       });
   }).add(() => {

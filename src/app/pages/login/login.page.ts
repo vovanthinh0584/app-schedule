@@ -67,7 +67,7 @@ export class LoginPage extends BaseController implements OnInit {
          this.userService.login(user).subscribe((response:any)=>{
             if(response.Code==200)
             {
-                debugger;
+             
                 this.toastService.success(response.Data.Message);
                 this.storageService.remove("userInfo");
                 response.Data.UserID=response.Data.UserID.toUpperCase();

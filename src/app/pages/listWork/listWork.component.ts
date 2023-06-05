@@ -22,6 +22,7 @@ export class ListWorkComponent extends BaseController implements OnInit {
     super();
     this.fromName = "SAFVIET_frmWorks";
     this.initializeApp(route, httpClient, toastController);
+    this.selectItem.FilterType="1";
 
   }
 
@@ -76,6 +77,7 @@ export class ListWorkComponent extends BaseController implements OnInit {
   ngOnInit(): void {
     this.declareListValue()
     this.getInformation()
+    this.onSearch(); 
   }
   getInformation() {
     this.inputRequestService.QueryListZone().subscribe(x => {
