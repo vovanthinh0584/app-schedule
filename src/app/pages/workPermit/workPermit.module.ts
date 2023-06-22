@@ -12,6 +12,7 @@ import { SendWorkPermitModalComponent } from "src/app/components/send-work-permi
 import { WorkPermitModalComponent } from "src/app/components/work-permit/workPermitModal.component";
 import { WorkPermitService } from "src/app/services/workPermit/work-permit.service";
 import { WorkPermitComponent } from "./workPermit.component";
+import { PinchZoomModule } from 'ngx-pinch-zoom';
 // import { PinchZoomModule } from 'ngx-pinch-zoom';
 import { MatMenuModule  } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,6 +39,7 @@ const routes: Routes = [
     MatExpansionModule,
     Ionic4DatepickerModule,
     IonicSelectableModule,
+    PinchZoomModule,
     MatMenuModule,
     MatButtonModule,
     SharedModule,
