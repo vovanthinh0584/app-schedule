@@ -122,6 +122,11 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
 
     this.inputDeviceParameterService.closeInput(params).subscribe((response) => {
       console.log(response);
+      let resultError = response.Data[0].resultError;
+      if(resultError ==='')
+      {
+        this.toastService.success(this.Message.InputDeviceParameter.CloseSuccess);
+      }
     })
   }
 
@@ -150,13 +155,5 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
       }
     });
     await modal.present();
-  }
-  ngAfterContentChecked() {
-    if (this.routeUrl !== '/main/index/page') {
-      this.eventEmitterService.changeVisibleNotification.emit({ result: false });
-    }
-    else {
-      this.eventEmitterService.changeVisibleNotification.emit({ result: true });
-    }
   }
 }

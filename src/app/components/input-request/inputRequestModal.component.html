@@ -7,35 +7,31 @@
 
 <ion-content padding>
 	<ion-list>
-		<!-- <ion-item>
-			<ion-label position="stacked">{{Language.Requester}}</ion-label>
-			<span class="item-note">{{ User.UserID }}</span>
-		</ion-item> -->
+		<ion-item>
+			<ion-label  position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
+			<ion-input
+    			value="{{ selectItem.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY hh:mm' }}"
+				id="startDate"
+				class="ion-text-end">
+			</ion-input>
+			<ion-popover trigger="startDate" size="cover">
+				<ng-template>
+					<ion-datetime  [(ngModel)]="selectItem.MTNDeadLineDateTime" [showDefaultButtons]="true"></ion-datetime>
+				</ng-template>
+			</ion-popover>
+     	</ion-item> 
+		
 		<ion-item>
 			<ion-label  position="stacked">{{Language.ZoneId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.ZoneId">
                 <ion-select-option *ngFor="let item of selectItem.ListZone" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
+		
 		<ion-item>
 			<ion-label  position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.Descriptionrequest" type="text"></ion-input>
 		</ion-item>
-		
-		<ion-item>
-			<ion-label  position="stacked">{{Language.lblMTNDeadLineDateTime}}</ion-label>
-			<ion-input
-    value="{{ selectItem.MTNDeadLineDateTime | amDateFormat:'MM/DD/YYYY hh:mm' }}"
-    id="startDate"
-    class="ion-text-end"
-  ></ion-input>
-  <ion-popover trigger="startDate" size="cover">
-    <ng-template>
-		<ion-datetime  [(ngModel)]="selectItem.MTNDeadLineDateTime" [showDefaultButtons]="true"></ion-datetime>
-    </ng-template>
-  </ion-popover>
-			
-     	</ion-item> 
 		
 		 <ion-item>
 			<ion-label  position="stacked">{{Language.Equipment}}</ion-label>

@@ -59,14 +59,19 @@
 			<span class="item-note">{{ selectItem.RequestData.
 				Descriptionrequest}}</span>
 		</ion-item>
+		
 		<ion-item>
 			<ion-label position="stacked">{{Language.lblManagement}}</ion-label>
-			<ion-select [(ngModel)]="selectItem.RequestData.UserManage" [disabled]="isManager">
-				<ion-select-option *ngFor="let item of selectItem.ListManagement"
-					[value]="item.UserId">{{item.UserName}}</ion-select-option>
-			</ion-select>
+			<ionic-selectable [(ngModel)]="UserManager"
+								  [items]="selectItem.ListManagement"
+								  itemValueField="UserId"
+								  itemTextField="UserName"
+								  [canSearch]="true"
+								  [hasVirtualScroll]="true"
+								  
+								  >
+								</ionic-selectable>
 		</ion-item>
-
 		<ion-item>
 			<ion-label position="stacked">{{Language.SentApprovalDate}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.SentApprovalDate}}</span>

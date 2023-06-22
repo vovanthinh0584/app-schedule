@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController, ToastController } from "@ionic/angular";
 import { InputDeviceParameterService } from "src/app/services/inputDeviceParameter/input-device-parameter.service";
 import { NoApprovalRequestModalComponent } from '../no-approval-request/noApprovalRequestModal.component';
+import { IonicSelectableComponent } from 'ionic-selectable';
+
 @Component({
   selector: 'app-information-request-modal',
   templateUrl: './informationRequestModal.component.html',
@@ -18,7 +20,8 @@ export class InformationRequestModalComponent implements OnInit {
   isSend:any=false;
   isApproval:any=false;
   isVisible:any=false;
-  ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}]
+  ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}];
+  UserManager:any = {};
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
@@ -45,6 +48,7 @@ export class InformationRequestModalComponent implements OnInit {
     this.isSend=false;
     this.isApproval=false;
     var status=this.selectItem.RequestData.Status;
+    this.UserManager = this.selectItem.RequestData.UserManage;
    if(status!='1')
    {
     this.isManager=true;
@@ -67,10 +71,13 @@ export class InformationRequestModalComponent implements OnInit {
 
   }
   onSend(){
-    if(!this.selectItem.RequestData.UserManage)
+    if(!this.UserManager)
     {
         this.toastService.warn(this.Message.InputRequest.UserManage);
         return false;
+    }
+    else{
+      this.selectItem.RequestData.UserManage = this.UserManager.UserId;
     }
     this.service.sendInputRequest(this.selectItem.RequestData).subscribe(response => {
    

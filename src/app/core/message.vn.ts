@@ -30,7 +30,8 @@ export module MessageVN {
         Confirm: "Vui lòng nhập nhập Xác nhận",
         Value: "Vui lòng nhập giá trị",
         SaveSuccess:"Lưu thành công",
-        SaveError:"Lưu thất bại"
+        SaveError:"Lưu thất bại",
+        CloseSuccess:"Đóng thành công!"
 
     }
     export const GetTask = {
@@ -48,6 +49,9 @@ export module MessageVN {
     export const Sheet033Boiler = {
         Save: "Lưu thành công",
         CheckList: "Danh sách checking list rỗng",
+    }
+    export const ListShift = {
+        ShiftIsNull: "Vui lòng nhập ca!",
     }
     export const WorkPermit = {
         Success: "Lưu thành công",

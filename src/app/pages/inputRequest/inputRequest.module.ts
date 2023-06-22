@@ -12,6 +12,7 @@ import { NoApprovalRequestModalComponent } from "src/app/components/no-approval-
 import { SharedModule } from "src/app/components/shared-module";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { InputRequestComponent } from "./inputRequest.component";
+import { IonicSelectableModule } from 'ionic-selectable';
 
 const InputRequestRoutes: Routes = [
   //localhost:4200/main/user
@@ -32,6 +33,7 @@ const InputRequestRoutes: Routes = [
     FormsModule,
     IonicModule,
     MomentModule,
+    IonicSelectableModule,
     MatExpansionModule,
     Ionic4DatepickerModule,
     SharedModule,

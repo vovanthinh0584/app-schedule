@@ -46,6 +46,12 @@ export class ListShiftComponent extends BaseController implements OnInit {
   }
   onSearch() {
     this.selectItem.Date = this.InputDate;
+
+    if (!this.selectItem.ShiftId) {
+      this.toastService.error(this.Message.ListShift.ShiftIsNull);
+      return;
+    }
+
     this.service.SearchShift(this.selectItem).subscribe(x => {
       this.searchData = x.Data;
     })

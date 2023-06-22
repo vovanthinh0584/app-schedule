@@ -826,8 +826,7 @@ ion-content {
 	height: 400px;
 }
 .search{
-	display: block;
-    width: 95%;
+    width: calc(50% - 15px);
     margin-left: 10px;
 	margin-bottom: 20px;
 }

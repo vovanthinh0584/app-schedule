@@ -24,12 +24,16 @@ export module MessageUS {
         Visible:"Visible success"
 
     }
+    export const ListShift = {
+        ShiftIsNull: "Please enter shift.",
+    }
     export const InputDeviceParameter = {
         StandardValue: "Please enter your StandardValue",
         Confirm: "Please enter your Confirm",
         Value: "Please enter your Value",
         SaveSuccess:"Save successfull",
-        SaveError:"Save error"
+        SaveError:"Save error",
+        CloseSuccess:"Close successfull."
 
     }
     export const GetTask = {

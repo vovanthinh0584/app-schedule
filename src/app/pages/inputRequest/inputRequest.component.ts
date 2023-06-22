@@ -7,6 +7,7 @@ import { InputRequestModalComponent } from "src/app/components/input-request/inp
 import { BaseController } from "src/app/core/baseController";
 import { ToastService } from "src/app/core/ToastService";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 
 @Component({
