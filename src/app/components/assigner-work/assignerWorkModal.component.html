@@ -37,12 +37,28 @@
                     >
       </ionic-selectable>
     </ion-item>
+
     <ion-item>
       <ion-label position="floating">{{Language.Level}}</ion-label>
       <ion-select [(ngModel)]="CurrentItem.Level">
         <ion-select-option *ngFor="let item of listLevel" [value]="item.levelId">{{item.levelName}}</ion-select-option>
     </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{Language.KindOfWork}}</ion-label>
+      <ion-select [(ngModel)]="CurrentItem.KindOfWork">
+        <ion-select-option *ngFor="let item of listKindOfWork" [value]="item.value">{{item.name}}</ion-select-option>
+    </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{Language.Classification}}</ion-label>
+      <ion-select [(ngModel)]="CurrentItem.Classification">
+        <ion-select-option *ngFor="let item of listClassifications" [value]="item.value">{{item.name}}</ion-select-option>
+    </ion-select>
+    </ion-item>
+
   </ion-content>
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">

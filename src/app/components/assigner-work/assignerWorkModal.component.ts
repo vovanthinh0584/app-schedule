@@ -31,12 +31,66 @@ export class AssignerWorkModalComponent implements OnInit {
       levelName: "Low"
     }
   ]
+  listKindOfWork : any =[
+    {
+      //MTN Request Form,MTN Request Form;Other,Other;Schedule Work,Schedule Work (Công việc theo kế hoạch)
+      value: "MTN Request Form",
+      name: "MTN Request Form"
+    },
+    {
+      //MTN Request Form,MTN Request Form;Other,Other;Schedule Work,Schedule Work (Công việc theo kế hoạch)
+      value: "Other",
+      name: "Other"
+    },
+    {
+      //MTN Request Form,MTN Request Form;Other,Other;Schedule Work,Schedule Work (Công việc theo kế hoạch)
+      value: "Schedule Work",
+      name: "Schedule Work (Công việc theo kế hoạch)"
+    }
+  ];
+  listClassifications : any =[
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "R",
+      name: "Repair"
+    },
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "PM",
+      name: "Preventive maintenance"
+    },
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "OP",
+      name: "Operation"
+    },
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "SP",
+      name: "Support"
+    },
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "CL",
+      name: "Cleaning"
+    },
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "RP",
+      name: "Replace"
+    },
+    {
+      //R, Repair;PM, Preventive maintenance;OP, Operation;SP, Support;CL, Cleaning;RP, Replace;SA, Safety
+      value: "SA",
+      name: "Safety"
+    },
+  ];
  listTeam:any=[];
  listWorker:any=[];
  team:any=[];
  worker:any=[];
  strTeam:any="";
- strWorker:any=""
+ strWorker:any="";
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
@@ -67,12 +121,15 @@ export class AssignerWorkModalComponent implements OnInit {
     if(this.ValidForm()){
       this.strTeam=this.team.map(x=>x.TeamGroupId).join();
       this.strWorker=this.worker.map(x=>x.WorkerId).join();
+      this.CurrentItem.ClassificationName = this.listClassifications.find(x=>x.value == this.CurrentItem.Classification).name;
        var body:any={};
        debugger;
        body.WorkNo=this.CurrentItem.WorkNo;
        body.Team=this.strTeam;
        body.Worker=this.strWorker;
        body.Level=this.CurrentItem.Level;
+       body.Classification=this.CurrentItem.Classification;
+       body.KindOfWork=this.CurrentItem.KindOfWork;
        this.service.AssignWork(body).subscribe(x=>{
          if(x.Data==1)
          {
