@@ -48,6 +48,103 @@
 			<span class="item-note">{{ selectItem.Item.DeviceDescription }}</span>
 		</ion-item>
 		<ion-item>
+			<ion-label position="stacked">{{Language.WorkDescription}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.WorkDescription }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.numofEmployees}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.numofEmployees }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.OtherSafe}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.OtherSafe }}</span>
+		</ion-item>
+		<ion-accordion-group>
+			<ion-accordion value="first">
+			  <ion-item slot="header" color="light">
+				<ion-label>{{Language.Flat}}</ion-label>
+			  </ion-item>
+			  <div class="ion-padding" slot="content">
+				<div class="item item-text-wrap">
+					{{Language.Helmet}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Helmet" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				
+				<div class="item item-text-wrap">
+					{{Language.Goggles}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Goggles" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Safetyshoes}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Safetyshoes" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Antinoisedevice}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Antinoisedevice" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Soldermask}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Soldermask" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Facemask}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Facemask" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				
+				<div class="item item-text-wrap">
+					{{Language.Cutmask}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Cutmask" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Gloves}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Gloves" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Apron}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Apron" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Chemicalresistantsuit}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Chemicalresistantsuit" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Gasmasks}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Gasmasks" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Seatbelt}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Seatbelt" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				
+			  </div>
+			</ion-accordion>
+			
+		  </ion-accordion-group>
+		<ion-item>
 			<ion-label  position="stacked">{{Language.CreateSentDate}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.CreateSentDate }}</span>
 		</ion-item>

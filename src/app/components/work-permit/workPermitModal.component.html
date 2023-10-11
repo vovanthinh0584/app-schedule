@@ -21,8 +21,103 @@
                 <ion-select-option *ngFor="let item of selectItem.ListVerdorManager" [value]="item.UserId">{{item.UserName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
-		
-		
+		<ion-item>
+			<ion-label position="stacked">{{Language.WorkDescription}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.WorkDescription" type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.lblnumofEmployees}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.numofEmployees" type="number"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.lblOtherSafe}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.OtherSafe" type="text"></ion-input>
+		</ion-item>
+		<ion-accordion-group>
+			<ion-accordion value="first">
+			  <ion-item slot="header" color="light">
+				<ion-label>{{Language.Flat}}</ion-label>
+			  </ion-item>
+			  <div class="ion-padding" slot="content">
+				<div class="item item-text-wrap">
+					{{Language.Helmet}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Helmet"></ion-checkbox>
+					</span>
+				</div>
+				
+				<div class="item item-text-wrap">
+					{{Language.Goggles}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Goggles"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Safetyshoes}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Safetyshoes"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Antinoisedevice}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Antinoisedevice"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Soldermask}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Soldermask"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Facemask}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Facemask"></ion-checkbox>
+					</span>
+				</div>
+				
+				<div class="item item-text-wrap">
+					{{Language.Cutmask}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Cutmask"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Gloves}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Gloves"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Apron}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Apron"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Chemicalresistantsuit}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Chemicalresistantsuit"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Gasmasks}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Gasmasks"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.Seatbelt}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Seatbelt"></ion-checkbox>
+					</span>
+				</div>
+				
+			  </div>
+			</ion-accordion>
+			
+		  </ion-accordion-group>
 	</ion-list>
 </ion-content>
 <ion-button (click)="save()">{{Language.lblSave}}</ion-button>

@@ -94,6 +94,7 @@ export class ListWorkComponent extends BaseController implements OnInit {
     })
   }
   async onDetail(item) {
+    debugger;
     const modal = await this.modalCtrl.create({
       component: GetTaskModalComponent,
       componentProps: {

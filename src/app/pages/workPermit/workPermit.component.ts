@@ -39,6 +39,7 @@ export class WorkPermitComponent extends BaseController implements OnInit {
 
   }
   async onSend(item) {
+    
     this.selectItem.Item = item;
     const modal = await this.modalCtrl.create({
       component: SendWorkPermitModalComponent,
