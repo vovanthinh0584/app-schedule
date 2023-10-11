@@ -45,10 +45,10 @@ export class InputDeviceParameterModalComponent implements OnInit {
       this.toastService.warn(this.Message.InputDeviceParameter.StandardValue);
       return false;
     }
-    if (!this.CurrentItem.Value) {
-      this.toastService.warn(this.Message.InputDeviceParameter.Value);
-      return false;
-    }
+    // if (!this.CurrentItem.Value) {
+    //   this.toastService.warn(this.Message.InputDeviceParameter.Value);
+    //   return false;
+    // }
     return true;
   }
   save() {
