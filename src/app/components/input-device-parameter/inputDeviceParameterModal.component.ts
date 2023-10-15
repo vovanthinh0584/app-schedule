@@ -41,10 +41,10 @@ export class InputDeviceParameterModalComponent implements OnInit {
     this.CurrentItem.Date = moment(this.CurrentItem.Date).format('MM/DD/YYYY');
   }
   ValidForm() {
-    if (!this.CurrentItem.StandardValue) {
-      this.toastService.warn(this.Message.InputDeviceParameter.StandardValue);
-      return false;
-    }
+    // if (!this.CurrentItem.StandardValue) {
+    //   this.toastService.warn(this.Message.InputDeviceParameter.StandardValue);
+    //   return false;
+    // }
     // if (!this.CurrentItem.Value) {
     //   this.toastService.warn(this.Message.InputDeviceParameter.Value);
     //   return false;
