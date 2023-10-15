@@ -61,7 +61,7 @@ export class InputDeviceParameterModalComponent implements OnInit {
     body.Shift = this.CurrentItem.Shift;
     body.Date = this.CurrentItem.Date;
     body.ChecklistID = this.CurrentItem.ChecklistID;
-    body.StandardValue = this.CurrentItem.StandardValue;
+    // body.StandardValue = this.CurrentItem.StandardValue;
     body.Value = this.CurrentItem.Value;
     body.Confirm = this.CurrentItem.Confirm;
     body.NonConfirm = this.CurrentItem.NonConfirm;
