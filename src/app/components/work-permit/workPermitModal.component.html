@@ -33,6 +33,14 @@
 			<ion-label position="stacked">{{Language.lblOtherSafe}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.OtherSafe" type="text"></ion-input>
 		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.Hazard}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.Hazard" type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.controlmeasures}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.controlmeasures" type="text"></ion-input>
+		</ion-item>
 		<ion-accordion-group>
 			<ion-accordion value="first">
 			  <ion-item slot="header" color="light">
@@ -113,7 +121,19 @@
 						<ion-checkbox slot="end" [(ngModel)]="selectItem.Seatbelt"></ion-checkbox>
 					</span>
 				</div>
-				
+
+				<!-- <div class="item item-text-wrap">
+					{{Language.Hazard}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Hazard"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.ControlMeasures}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.ControlMeasures"></ion-checkbox>
+					</span>
+				</div> -->
 			  </div>
 			</ion-accordion>
 			

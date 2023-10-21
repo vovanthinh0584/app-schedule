@@ -59,5 +59,7 @@ export class UserService {
         modelDTO.Version=  this.api.version;
         return HttpService.Client.post(`${api.api.url}${api.Account.AppCenterInformation}`, modelDTO);
     }
-   
+   getVersion(){
+    return HttpService.Client.get(`${api.api.url}${api.Account.Version}`);
+   }
 }

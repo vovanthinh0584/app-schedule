@@ -1,6 +1,6 @@
 ﻿export default {
-     "url": 'http://123.25.238.48:8586',
-     "api":{"url":"http://123.25.238.48:8586","version":"0.0.14","iosUrl":"https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish"},
+    "url": 'http://123.25.238.48:8586',
+    "api": { "url": "http://123.25.238.48:8586", "version": "0.0.14", "iosUrl": "https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish" },
     // "url": 'http://localhost:5000',
     // "api": { url: 'http://localhost:5000' },
     "Account": {
@@ -9,6 +9,7 @@
         "AppCenterInformation": '/api/account/GetAppCenterInformation',
         'CaptionLanguage': '/api/account/GetCaptionLanguage',
         'ListBussiness': '/api/account/GetListBussiness',
+        'Version': '/api/account/GetVersion',
     },
     "InputDeviceParameter": {
         'Create': '/api/InputDeviceParameter',
