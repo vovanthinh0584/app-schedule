@@ -139,6 +139,18 @@
 						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Seatbelt" disabled="true"></ion-checkbox>
 					</span>
 				</div>
+				<!-- <div class="item item-text-wrap">
+					{{Language.Hazard}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.Hazard" disabled="true"></ion-checkbox>
+					</span>
+				</div>
+				<div class="item item-text-wrap">
+					{{Language.controlmeasures}}
+					<span class="item-note">
+						<ion-checkbox slot="end" [(ngModel)]="selectItem.Item.controlmeasures" disabled="true"></ion-checkbox>
+					</span>
+				</div> -->
 				
 			  </div>
 			</ion-accordion>
@@ -159,6 +171,14 @@
 		<ion-item>
 			<ion-label  position="stacked">{{Language.SafeSentApprovalDate}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.SafeSentApprovalDate }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.Hazard}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.Hazard }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.controlmeasures}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.controlmeasures }}</span>
 		</ion-item>
 	</ion-list>
 </ion-content>
