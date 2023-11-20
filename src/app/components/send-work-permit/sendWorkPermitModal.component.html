@@ -26,6 +26,11 @@
 			<span class="item-note">{{ selectItem.Item.StatusText }}</span>
 		</ion-item>
 		<ion-item>
+			<ion-label  position="stacked">{{Language.Area}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.
+				Area }}</span>
+		</ion-item>
+		<ion-item>
 			<ion-label  position="stacked">{{Language.label1}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.Item.ProjectManager" [disabled]="isProjectManager">
                 <ion-select-option *ngFor="let item of selectItem.ListProjectManager" [value]="item.UserID">{{item.UserName}}</ion-select-option>
@@ -50,6 +55,14 @@
 		<ion-item>
 			<ion-label position="stacked">{{Language.WorkDescription}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.WorkDescription }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.Hazard}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.Hazard }}</span>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="stacked">{{Language.controlmeasures}}</ion-label>
+			<span class="item-note">{{ selectItem.Item.controlmeasures }}</span>
 		</ion-item>
 		<ion-item>
 			<ion-label position="stacked">{{Language.numofEmployees}}</ion-label>
@@ -172,14 +185,7 @@
 			<ion-label  position="stacked">{{Language.SafeSentApprovalDate}}</ion-label>
 			<span class="item-note">{{ selectItem.Item.SafeSentApprovalDate }}</span>
 		</ion-item>
-		<ion-item>
-			<ion-label  position="stacked">{{Language.Hazard}}</ion-label>
-			<span class="item-note">{{ selectItem.Item.Hazard }}</span>
-		</ion-item>
-		<ion-item>
-			<ion-label  position="stacked">{{Language.controlmeasures}}</ion-label>
-			<span class="item-note">{{ selectItem.Item.controlmeasures }}</span>
-		</ion-item>
+		
 	</ion-list>
 </ion-content>
 <ion-footer style="display: flex;overflow-x: scroll;">

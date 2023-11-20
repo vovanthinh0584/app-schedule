@@ -29,6 +29,7 @@ export class WorkPermitComponent extends BaseController implements OnInit {
   ngOnInit() {
 
     this.getListVerdormanager();
+    this.getListArea();
     this.getListProjectManager();
     this.getListWorkPermit();
     this.getListZonemanager();
@@ -72,6 +73,11 @@ export class WorkPermitComponent extends BaseController implements OnInit {
   getListVerdormanager() {
     this.service.queryVerdorManager().subscribe((x) => {
       this.selectItem.ListVerdorManager = x.Data;
+    });
+  }
+  getListArea() {
+    this.service.queryArea().subscribe((x) => {
+      this.selectItem.Areas = x.Data;
     });
   }
   getListProjectManager() {

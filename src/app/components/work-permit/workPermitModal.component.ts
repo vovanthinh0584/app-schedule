@@ -65,11 +65,11 @@ export class WorkPermitModalComponent implements OnInit {
         this.toastService.warn(this.Message.WorkPermit.DeviceDescription);
         return false;
     }
-    if(!this.selectItem.VendorManager)
-    {
-        this.toastService.warn(this.Message.InputRequest.VendorManager);
-        return false;
-    }
+    // if(!this.selectItem.VendorManager)
+    // {
+    //     this.toastService.warn(this.Message.InputRequest.VendorManager);
+    //     return false;
+    // }
     return true;
   }
 }

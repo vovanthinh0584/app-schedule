@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { MainComponent } from "./main.component";
 import { InputRequestComponent } from "../inputRequest/inputRequest.component";
+import { NotificationService } from "src/app/services/notification/notification.service";
 
 export const mainRoutes: Routes = [
       {path: '', component: MainComponent}, 
@@ -24,7 +25,7 @@ export const mainRoutes: Routes = [
   imports: [CommonModule, FormsModule, IonicModule,
     RouterModule.forChild(mainRoutes)
   ],
-  providers: []
+  providers: [NotificationService],
 })
 
 export class MainModule {

@@ -76,6 +76,19 @@
 			<ion-label position="stacked">{{Language.SentApprovalDate}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.SentApprovalDate}}</span>
 		</ion-item>
+
+		<ion-item style="color: #eb445a;">
+			<ion-label position="stacked">{{Language.ApprovalDescription}}</ion-label>
+			<ion-text class="item-note" style="margin-top: 8px;white-space: pre-wrap;">{{ selectItem.RequestData.ApprovalDescription}}</ion-text>
+		</ion-item>
+		<ion-item style="color: #eb445a;">
+			<ion-label position="stacked">{{Language.NotApprovalDescription}}</ion-label>
+			<ion-text class="item-note" style="margin-top: 8px;white-space: pre-wrap;">{{ selectItem.RequestData.NotApprovalDescription}}</ion-text>
+		</ion-item>
+		<ion-item style="color: #eb445a;">
+			<ion-label position="stacked">{{Language.RefusedDescription}}</ion-label>
+			<ion-text class="item-note" style="margin-top: 8px;white-space: pre-wrap;">{{ selectItem.RequestData.RefusedDescription}}</ion-text>
+		</ion-item>
 		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.lblManagement}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.

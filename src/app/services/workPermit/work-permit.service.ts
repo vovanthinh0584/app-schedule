@@ -41,6 +41,9 @@ export class WorkPermitService {
     queryVerdorManager():Observable<any>{
         return HttpService.Client.get(`${api.api.url}${api.WorkPermit.QueryVendorManagers}`);
     }
+    queryArea():Observable<any>{
+        return HttpService.Client.get(`${api.api.url}${api.WorkPermit.QueryArea}`);
+    }
     saveWorkPermit(data:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.WorkPermit.SaveWorkPermit}`,data);
     }

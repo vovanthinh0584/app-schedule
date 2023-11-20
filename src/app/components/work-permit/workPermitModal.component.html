@@ -15,23 +15,21 @@
 			<ion-label  position="stacked">{{Language.lblDeviceDescription}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.DeviceDescription" type="text"></ion-input>
 		</ion-item>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.lblVendorManager}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.VendorManager">
                 <ion-select-option *ngFor="let item of selectItem.ListVerdorManager" [value]="item.UserId">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>	 -->
+		<ion-item>
+			<ion-label  position="stacked">{{Language.Area}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.Area">
+                <ion-select-option *ngFor="let item of selectItem.Areas" [value]="item.AreaId">{{item.AreaName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
 		<ion-item>
 			<ion-label position="stacked">{{Language.WorkDescription}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.WorkDescription" type="text"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label position="stacked">{{Language.lblnumofEmployees}}</ion-label>
-			<ion-input  [(ngModel)]="selectItem.numofEmployees" type="number"></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label position="stacked">{{Language.lblOtherSafe}}</ion-label>
-			<ion-input  [(ngModel)]="selectItem.OtherSafe" type="text"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label position="stacked">{{Language.Hazard}}</ion-label>
@@ -41,6 +39,15 @@
 			<ion-label position="stacked">{{Language.controlmeasures}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.controlmeasures" type="text"></ion-input>
 		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.lblnumofEmployees}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.numofEmployees" type="number"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.lblOtherSafe}}</ion-label>
+			<ion-input  [(ngModel)]="selectItem.OtherSafe" type="text"></ion-input>
+		</ion-item>
+		
 		<ion-accordion-group>
 			<ion-accordion value="first">
 			  <ion-item slot="header" color="light">

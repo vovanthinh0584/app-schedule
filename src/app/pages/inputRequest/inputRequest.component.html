@@ -55,7 +55,21 @@
 				{{Language.SentApprovalDate}}
 				<span class="item-note">{{ item.SentApprovalDate }}</span>
 			</div>
-			
+
+			<div class="item item-text-wrap" style="color: #eb445a;">
+				{{Language.ApprovalDescription}}
+				<ion-text class="item-note" style = "white-space: pre-wrap;color: #eb445a;">{{ item.ApprovalDescription }}</ion-text>
+			</div>
+			<div class="item item-text-wrap" style="color: #eb445a;">
+				{{Language.NotApprovalDescription}}
+				<ion-text class="item-note" style = "white-space: pre-wrap;color: #eb445a;">{{ item.NotApprovalDescription }}</ion-text>
+			</div>
+			<div class="item item-text-wrap" style="color: #eb445a;">
+				{{Language.RefusedDescription}}
+				<!-- <span class="item-note">{{ item.RefusedDescription }}</span> -->
+				<ion-text class="item-note" style = "white-space: pre-wrap;color: #eb445a;">{{ item.RefusedDescription }}</ion-text>
+			</div>
+
 			</mat-expansion-panel>
 		</div>
 		</mat-accordion>
