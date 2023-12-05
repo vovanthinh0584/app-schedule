@@ -1,8 +1,9 @@
 ﻿export default {
-     "url": 'http://123.25.238.48:8586',
-     "api": { "url": "http://123.25.238.48:8586", "version": "0.0.14", "iosUrl": "https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish" },
-    //"url": 'http://localhost:5000',
-    //"api": { url: 'http://localhost:5000' },
+    //  "url": 'http://123.25.238.48:8586',
+    //  "api": { "url": "http://123.25.238.48:8586", "version": "0.0.14", "iosUrl": "https://install.appcenter.ms/users/core.hisstudio-gmail.com/apps/medlatec-uat/distribution_groups/publish" },
+    "url": 'http://localhost:5000',
+    "api": { url: 'http://localhost:5000' },
+    "version": "2",
     "Account": {
         "Login": '/api/account/login',
         "Logout": '/api/account/logout',
@@ -38,6 +39,8 @@
         SearchListWork: "/api/Task/SearchListWork",
         QueryWorkers: "/api/Task/QueryWorkers",
         QueryTeams: "/api/Task/QueryTeams",
+        GetTypeList: "/api/Task/GetTypeList",
+        GetWorkTypes:"/api/Task/GetWorkTypes",
     },
     "Sheet033Boiler": {
         "GetWorks": "/api/Sheet033Boiler/GetWorks",
@@ -63,6 +66,8 @@
         GetSaleManagers: "/api/WorkPermit/QuerySaleManagers",
         CloseWorkerPermit: "/api/WorkPermit/CloseWorkerPermit",
         ExtendWork: "/api/WorkPermit/ExtendWork",
+        GetEditEnabled:"/api/WorkPermit/GetEditEnabled",
+        GetBoPhans:"/api/WorkPermit/GetBoPhans",
     },
     Shift: {
         SearhShift: "/api/Shift/SearhShift",
@@ -73,6 +78,7 @@
         GetTotalNotificationNew: "/api/Notifications/GetTotalNotificationNew",
         GetListNotification: "/api/Notifications/GetListNotification",
         UpdateNotification: "/api/Notifications/UpdateNotification",
+        
     }
 
 

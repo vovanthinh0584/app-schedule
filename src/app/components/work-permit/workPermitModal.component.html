@@ -24,7 +24,13 @@
 		<ion-item>
 			<ion-label  position="stacked">{{Language.Area}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.Area">
-                <ion-select-option *ngFor="let item of selectItem.Areas" [value]="item.AreaId">{{item.AreaName}}</ion-select-option>
+                <ion-select-option *ngFor="let item of ListArea" [value]="item.UserID">{{item.UserName}}</ion-select-option>
+            </ion-select>
+		</ion-item>	
+		<ion-item>
+			<ion-label  position="stacked">{{Language.BoPhan}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.MaBoPhan">
+                <ion-select-option *ngFor="let item of ListBoPhan" [value]="item.MaBoPhan">{{item.TenBoPhan}}</ion-select-option>
             </ion-select>
 		</ion-item>	
 		<ion-item>

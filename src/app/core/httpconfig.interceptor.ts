@@ -1,4 +1,4 @@
-﻿import { Injectable, Component, Inject } from '@angular/core';
+﻿import { Injectable, Component, Inject, ChangeDetectorRef } from '@angular/core';
 import { ErrorDialogService } from './errordialog.service';
 import {
     HttpInterceptor,
@@ -41,9 +41,11 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         public http: HttpClient, public dialog: AlertController, private router: Router) {
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-         if (request.headers.has('showSpinner') == false || request.headers.get('showSpinner') != 'false') {
+       // debugger;
+        if (request.headers.has('showSpinner') == false || request.headers.get('showSpinner') != 'false') {
             console.log('showSpinner')
             this.loadingDialogService.onStarted(request);
+           
         }
       
   
@@ -59,8 +61,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         if (!request.headers.has('Content-Type')) {
             request = request.clone({ headers: request.headers.set('Content-Type', 'application/json; charset=utf-8'), withCredentials: false });
         }
+        else
+        {
+            // request = request.clone({ headers: request.headers.set('Content-Type', 'multipart/form-data')});
+            //request = request.clone({ headers: request.headers.set('Accept','application/json') });
+        }
          request = request.clone({ headers: request.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE') });
-        request = request.clone({ headers: request.headers.set('Access-Control-Allow-Origin', '*') });
+
         console.log('HttpConfigInterceptor', request);
         this.eventEmitterService.changeStartLoading.emit({});
         return next.handle(request).pipe(
@@ -69,6 +76,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
                     console.log('event--->>>', event);
+                   // debugger;
                     if (event.body) {
                         if (event.body.NewToken != null) {
                             console.log('NewToken');
@@ -101,7 +109,9 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             }), 
         ).finally(() => { 
             this.eventEmitterService.changeFinishLoading.emit({result:false});
-            console.log('[debug] funally'); this.loadingDialogService.onFinished(request); });
+            console.log('[debug] funally'); this.loadingDialogService.onFinished(request);
+           
+        });
         
     }
 

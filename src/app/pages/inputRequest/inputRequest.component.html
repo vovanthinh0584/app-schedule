@@ -19,8 +19,10 @@
 			<mat-expansion-panel class="mat-panel" hideToggle="true" #xyz [expanded]="true"> 
 				<mat-expansion-panel-header  style="height: 48px;"   >
 					<mat-panel-title>
-						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded" src="assets/icon/chevron-forward-outline.svg"></ion-icon>
-						<ion-icon class="ex-co-icon" *ngIf="xyz.expanded" src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+						<ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
+								src="assets/icon/caret-forward-outline.svg"></ion-icon>
+							<ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
+								src="assets/icon/caret-down-outline.svg"></ion-icon>
 						</mat-panel-title>
 						<mat-panel-description class="more-popover">
 							<ion-button (click)="onRequest(item)" size="small" class="search" style="width: 50%;">{{ Language.lblRequest}}</ion-button>
@@ -44,6 +46,10 @@
 				<span class="item-note">{{ item.UserManage }}</span>
 			</div>
 			<div class="item item-text-wrap">
+				{{Language.BoPhan}}
+				<span class="item-note">{{ item.MaBoPhan }}</span>
+			</div>
+			<div class="item item-text-wrap">
 				{{Language.lblDescriptionrequest}}
 				<span class="item-note">{{ item.Descriptionrequest }}</span>
 			</div>
@@ -52,20 +58,20 @@
 				<span class="item-note">{{ item.StatusName }}</span>
 			</div>
 			<div class="item item-text-wrap">
-				{{Language.SentApprovalDate}}
+				{{Language.lblSentApprovalDate}}
 				<span class="item-note">{{ item.SentApprovalDate }}</span>
 			</div>
 
 			<div class="item item-text-wrap" style="color: #eb445a;">
-				{{Language.ApprovalDescription}}
+				{{Language.lblApprovalDescription}}
 				<ion-text class="item-note" style = "white-space: pre-wrap;color: #eb445a;">{{ item.ApprovalDescription }}</ion-text>
 			</div>
 			<div class="item item-text-wrap" style="color: #eb445a;">
-				{{Language.NotApprovalDescription}}
+				{{Language.lblNotApprovalDescription}}
 				<ion-text class="item-note" style = "white-space: pre-wrap;color: #eb445a;">{{ item.NotApprovalDescription }}</ion-text>
 			</div>
 			<div class="item item-text-wrap" style="color: #eb445a;">
-				{{Language.RefusedDescription}}
+				{{Language.lbRefusedDescription}}
 				<!-- <span class="item-note">{{ item.RefusedDescription }}</span> -->
 				<ion-text class="item-note" style = "white-space: pre-wrap;color: #eb445a;">{{ item.RefusedDescription }}</ion-text>
 			</div>
@@ -75,8 +81,9 @@
 		</mat-accordion>
 	</ion-content>
     <ion-fab vertical="bottom" horizontal="end">
-        <ion-fab-button (click)="openInputRequest()">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
+		<ion-fab-button (click)="openInputRequest('Create')">
+			<ion-icon name="add"></ion-icon>
+		</ion-fab-button>
+       
       </ion-fab>
 </ion-content>

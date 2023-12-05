@@ -32,4 +32,10 @@ export class GetTaskService {
   GetListworker(): Observable<any> {
     return HttpService.Client.get(`${api.api.url}${api.GetTask.QueryWorkers}`);
   }
+  GetListType(): Observable<any> {
+    return HttpService.Client.post(`${api.api.url}${api.GetTask.GetTypeList}`,{});
+  }
+  GetWorkerTypes(): Observable<any> {
+    return HttpService.Client.post(`${api.api.url}${api.GetTask.GetWorkTypes}`,{});
+  }
 }

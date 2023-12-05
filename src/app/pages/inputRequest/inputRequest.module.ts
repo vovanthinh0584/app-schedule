@@ -39,7 +39,7 @@ const InputRequestRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(InputRequestRoutes)
   ],
-  providers: [InputRequestService], 
+  providers: [InputRequestService,], 
   entryComponents:[InputRequestComponent,InputRequestModalComponent,NoApprovalRequestModalComponent]
 })
 

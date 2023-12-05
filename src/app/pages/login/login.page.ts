@@ -5,6 +5,7 @@ import { NavController, ToastController } from '@ionic/angular';
 import { BaseController } from 'src/app/core/baseController';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user/user.service'
+import api from '../../core/api';
 @Component({
     selector: 'app-login',
     templateUrl: './login.page.html',
@@ -23,10 +24,10 @@ export class LoginPage extends BaseController implements OnInit {
         // this.selectItem.UserId="MOBILE_01";
         // this.selectItem.Password="SAFVIET";
         this.onChangeLanguage(this.selectItem.Language);
-
-        this.userService.getVersion().subscribe((response: any) => {
-            this.version = response.Data[0].VersionMobile;
-        });
+        this.version="Version "+api.version;
+        // this.userService.getVersion().subscribe((response: any) => {
+        //     this.version = response.Data[0].VersionMobile;
+        // });
     }
 
     ngOnInit() {

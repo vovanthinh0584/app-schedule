@@ -25,13 +25,14 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FormsModule } from '@angular/forms';
+import { LoadingDialogService } from './core/loading-dialog.service';
 
 @NgModule({
   declarations: [AppComponent,MenuItemComponent],
   imports: [FormsModule,BrowserAnimationsModule,HttpClientModule,BrowserModule, IonicModule.forRoot({
     backButtonText: '',
   }), AppRoutingModule,LoginPageModule,CommonServiceModule,UserServiceModule],
-  providers: [Camera,ErrorDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  providers: [Camera,ErrorDialogService,LoadingDialogService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: IonicGestureConfig

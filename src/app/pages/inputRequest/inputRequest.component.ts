@@ -8,6 +8,7 @@ import { BaseController } from "src/app/core/baseController";
 import { ToastService } from "src/app/core/ToastService";
 import { InputRequestService } from "src/app/services/inputRequest/input-request.service";
 import { IonicSelectableComponent } from 'ionic-selectable';
+import { WorkPermitService } from "src/app/services/workPermit/work-permit.service";
 
 
 @Component({
@@ -18,10 +19,13 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 export class InputRequestComponent extends BaseController implements OnInit {
   ListZone: any = [];
   ReceiveName = "";
-  constructor(private service: InputRequestService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
+  constructor(private workPermitService: WorkPermitService,private service: InputRequestService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
     this.fromName = "FA_frmMTNRequest";
     this.initializeApp(route, httpClient, toastController);
+
+  }
+  doRefresh(event){
 
   }
   ngOnInit() {
@@ -30,6 +34,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
     this.getListZone();
     this.getReceive();
     this.getListManagement();
+    this.getListBoPhan();
   }
 
   ngAfterContentChecked() {
@@ -42,24 +47,35 @@ export class InputRequestComponent extends BaseController implements OnInit {
   }
 
   async onRequest(item) {
-    this.selectItem.RequestData = item;
-    const modal = await this.modalCtrl.create({
-      component: InformationRequestModalComponent,
-      componentProps: {
-        Language: this.Language,
-        selectItem: this.selectItem,
-        toastService: ToastService.Toast,
-        User: this.user,
-        Message: this.Message
-      }
-    });
-    modal.onDidDismiss().then((data) => {
-      if (data.data == true) {
-        this.getInformationInputRequest();
-
-      }
-    });
-    await modal.present();
+    debugger;
+    this.selectItem.RequestData= item;
+    if(item.Status=='0')
+    {
+      this.openInputRequest("Edit");
+      
+    }
+    else
+    {
+      const modal = await this.modalCtrl.create({
+        component: InformationRequestModalComponent,
+        componentProps: {
+          Language: this.Language,
+          selectItem: this.selectItem,
+          toastService: ToastService.Toast,
+          User: this.user,
+          Message: this.Message
+        }
+      });
+      modal.onDidDismiss().then((data) => {
+        if (data.data == true) {
+          this.getInformationInputRequest();
+  
+        }
+      });
+      await modal.present();
+     
+    }
+    
   }
   getInformationInputRequest() {
     this.selectItem.ListRequest = [];
@@ -78,6 +94,11 @@ export class InputRequestComponent extends BaseController implements OnInit {
       this.selectItem.ListManagement = x.Data;
     });
   }
+  getListBoPhan() {
+    this.workPermitService.GetBoPhans({}).subscribe((x) => {
+      this.selectItem.ListBoPhan = x.Data;
+    });
+  }
   getReceive() {
     this.service.GetAdminMTN().subscribe((x) => {
 
@@ -85,20 +106,23 @@ export class InputRequestComponent extends BaseController implements OnInit {
       this.selectItem.ReceiveName = x.Data.UserName;
     });
   }
-  openInputRequest() {
-    this.openInputRequestModal();
+  openInputRequest(action) {
+    this.openInputRequestModal(action);
   }
 
-  async openInputRequestModal() {
+  async openInputRequestModal(action) {
     console.log("InputRequestComponent", this.Language);
+    this.selectItem.RequestData=action=="Create"?{}:this.selectItem.RequestData;
     const modal = await this.modalCtrl.create({
       component: InputRequestModalComponent,
       componentProps: {
         Language: this.Language,
-        selectItem: this.selectItem,
+        selectItem: this.selectItem.RequestData,
         toastService: ToastService.Toast,
         User: this.user,
-        Message: this.Message
+        Message: this.Message,
+        ListZone:this.selectItem.ListZone,
+        ListBoPhan:this.selectItem.ListBoPhan,
       }
     });
     modal.onDidDismiss().then((data) => {

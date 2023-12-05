@@ -21,10 +21,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     
     this.eventEmitterService.changeStartLoading.subscribe((x:any)=>{
+      //debugger;
       this.isLoading=true;
       
    })
     this.eventEmitterService.changeFinishLoading.subscribe((x:any)=>{
+      //debugger;
       this.isLoading=x.result
       
    })

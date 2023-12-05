@@ -33,7 +33,7 @@
 
     <ion-item>
       <ion-label position="floating">{{Language.WorkerId}}</ion-label>
-      <ion-input type="text" [(ngModel)]="CurrentItem.Worker" [disabled]="true"></ion-input>
+      <ion-input type="text" [(ngModel)]="CurrentItem.WorkerId" [disabled]="true"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -67,5 +67,5 @@
 <ion-footer style="display: flex;justify-content: center;">
 	<!-- <ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button> -->
 	<ion-button (click)="onAssingerWork()" *ngIf="CurrentItem.UserLoginRole=='ADMIN'">{{Language.btnAssigned}}</ion-button>
-	<ion-button (click)="onFinisherWork()" *ngIf="CurrentItem.UserLoginRole!='ADMIN'">{{Language.btnFinished}}</ion-button>
+	<ion-button (click)="onFinisherWork()" *ngIf="isBtnFinished==true">{{Language.btnFinished}}</ion-button>
 </ion-footer>

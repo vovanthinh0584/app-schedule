@@ -14,6 +14,7 @@ import { GetTaskService } from "src/app/services/getTask/get-task.service";
 import { AssignerWorkModalComponent } from "src/app/components/assigner-work/assignerWorkModal.component";
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SharedModule } from "src/app/components/shared-module";
+import { WorkPermitService } from "src/app/services/workPermit/work-permit.service";
 const routes: Routes = [
   //localhost:4200/main/user
   { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -37,7 +38,7 @@ const routes: Routes = [
     ScrollingModule,
     SharedModule,
   ],
-  providers: [GetTaskService],
+  providers: [GetTaskService,WorkPermitService],
   entryComponents: [ListWorkComponent, GetTaskModalComponent,AssignerWorkModalComponent]
 })
 

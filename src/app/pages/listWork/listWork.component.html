@@ -11,13 +11,13 @@
     <ion-label position="floating">{{Language.WorkType}}</ion-label>
     <ion-select [(ngModel)]="selectItem.FilterType">
       <ion-select-option *ngFor="let item of listWorkType"
-        [value]="item.worktypeId">{{item.worktypeName}}</ion-select-option>
+        [value]="item.Code">{{item.vName}}</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label position="stacked">{{Language.DescriptionInformation}}</ion-label>
     <ion-input [(ngModel)]="selectItem.FilterDescription"></ion-input>
-  </ion-item>
+  </ion-item> -->
   <ion-button (click)="onSearch()" class="search">{{Language.btnSearch}}</ion-button>
 </ion-list>
 <ion-content class="dsylenh" scrollY="false">
@@ -34,9 +34,9 @@
           <mat-expansion-panel-header style="height: 48px;">
             <mat-panel-title>
               <ion-icon class="ex-co-icon" *ngIf="!xyz.expanded"
-                src="assets/icon/chevron-forward-outline.svg"></ion-icon>
-              <ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
-                src="assets/icon/chevron-forward-outline_down.svg"></ion-icon>
+								src="assets/icon/caret-forward-outline.svg"></ion-icon>
+							<ion-icon class="ex-co-icon" *ngIf="xyz.expanded"
+								src="assets/icon/caret-down-outline.svg"></ion-icon>
               <!--<p class="dichvu"> {{ Language.btnFinished}}</p>-->
             </mat-panel-title>
             <mat-panel-description class="more-popover">

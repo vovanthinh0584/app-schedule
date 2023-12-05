@@ -1,4 +1,4 @@
-﻿import { Injectable, EventEmitter } from '@angular/core';
+﻿import { Injectable, EventEmitter, ChangeDetectorRef } from '@angular/core';
 // import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LoadingController } from '@ionic/angular';
 import { HttpRequest } from '@angular/common/http';
@@ -9,9 +9,10 @@ import { HttpRequest } from '@angular/common/http';
 export class LoadingDialogService {
     constructor(public dialog: LoadingController) {
         this._dialog = dialog;
+       // this._chRef=chRef;
     }
     _dialog;
-
+    _chRef;
     onLoadingChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     /**
@@ -56,5 +57,6 @@ export class LoadingDialogService {
     private notify(): void {
 
         this.onLoadingChanged.emit(this.requests.length !== 0);
+       // this.chRef.detectChanges();
     }
 }

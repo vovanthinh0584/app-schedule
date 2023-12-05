@@ -30,6 +30,13 @@
 			<span class="item-note">{{ selectItem.Item.
 				Area }}</span>
 		</ion-item>
+		
+		<ion-item>
+			<ion-label  position="stacked">{{Language.BoPhan}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.Item.MaBoPhan" [disabled]="isBoPhan">
+                <ion-select-option *ngFor="let item of selectItem.ListBoPhan" [value]="item.MaBoPhan">{{item.TenBoPhan}}</ion-select-option>
+            </ion-select>
+		</ion-item>
 		<ion-item>
 			<ion-label  position="stacked">{{Language.label1}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.Item.ProjectManager" [disabled]="isProjectManager">
@@ -190,10 +197,11 @@
 </ion-content>
 <ion-footer style="display: flex;overflow-x: scroll;">
 	<!-- <ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button> -->
-	<ion-button (click)="onImage()">{{Language.lblImage}}</ion-button>
+
+	<ion-button (click)="onImage()" *ngIf="isBtnEnable==true">{{Language.lblImage}}</ion-button>
 	<ion-button (click)="onSend()" *ngIf="isSend=='1'">{{Language.lblSend}}</ion-button>
 	<ion-button (click)="onApproval()" *ngIf="isApproval=='1'">{{Language.lblApproval}}</ion-button>
 	<ion-button (click)="onNoApproval()" *ngIf="isApproval=='1'">{{Language.lblNoApproval}}</ion-button>
 	<ion-button (click)="onCloseWork()" *ngIf="isCloseWorker=='1'">{{Language.lblCloseWork}}</ion-button>
-	<ion-button (click)="onExtendWork()" >{{Language.lblExtend}}</ion-button>
+	<ion-button (click)="onExtendWork()" *ngIf="isBtnEnable==true">{{Language.lblExtend}}</ion-button>
 </ion-footer>

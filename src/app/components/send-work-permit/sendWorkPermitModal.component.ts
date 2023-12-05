@@ -22,13 +22,22 @@ export class SendWorkPermitModalComponent implements OnInit {
   isSend = '0';
   isApproval = '0';
   isCloseWorker = '0';
+  isBtnEnable:any=1;
+  isBoPhan:any=true;
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
     private service: WorkPermitService) {
-
+   
     console.log("SendWorkPermitModalComponent")
-
+    var selectable=this.selectItem;
+  }
+  GetEditEnabled(){
+    this.service.GetEditEnabled({WorkPermitNo:this.selectItem.Item.WorkPermitNo}).subscribe(x=>{
+      debugger
+      var result:any=x.Data[0];
+      this.isBtnEnable=result.btnEdit;
+    });
   }
   checkSend(userLoginRole, status) {
     this.isSend = '0';
@@ -68,6 +77,7 @@ export class SendWorkPermitModalComponent implements OnInit {
     this.isProjectManager = status && userLoginRole == "USER" ? false : true;
     this.isZoleManager = status == "3" && userLoginRole == "ProjectManager" ? false : true;
     this.isSaleManager = status == "6" && userLoginRole == "ProjectManager" ? false : true;
+    this.GetEditEnabled();
     this.checkSend(userLoginRole, status);
     this.checkApproval(userLoginRole, status);
     this.checkCloseWorker(userLoginRole, status);

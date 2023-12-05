@@ -24,10 +24,15 @@
 		<ion-item>
 			<ion-label  position="stacked">{{Language.ZoneId}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.ZoneId">
-                <ion-select-option *ngFor="let item of selectItem.ListZone" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
+                <ion-select-option *ngFor="let item of ListZone" [value]="item.ZoneId">{{item.ZoneName}}</ion-select-option>
             </ion-select>
 		</ion-item>	
-		
+		<ion-item>
+			<ion-label  position="stacked">{{Language.BoPhan}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.MaBoPhan">
+                <ion-select-option *ngFor="let item of ListBoPhan" [value]="item.MaBoPhan">{{item.TenBoPhan}}</ion-select-option>
+            </ion-select>
+		</ion-item>
 		<ion-item>
 			<ion-label  position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
 			<ion-input  [(ngModel)]="selectItem.Descriptionrequest" type="text"></ion-input>

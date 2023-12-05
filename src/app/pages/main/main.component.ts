@@ -14,17 +14,28 @@ export class MainComponent extends BaseController implements OnInit {
   TotalNotification: any = 0;
   constructor(private navCtlr: NavController, private chRef: ChangeDetectorRef, private service: NotificationService, private route: Router, private activatedRoute: ActivatedRoute, httpClient: HttpClient, toastController: ToastController, private _location: Location, private aRoute: ActivatedRoute) {
     super();
+    debugger;
     this.initializeApp(route, httpClient, toastController);
     this.Language.MenuTitle = this.user.Language == 'vi-VN' ? 'Danh mục' : 'Catagory';
     this.Language.LogoutTitle = this.user.Language == 'vi-VN' ? 'Đăng xuất' : 'Log out';
     this.TotalNotification = 0;
+    var pathname=window.location.pathname;
+    if(this.user.Language=="vi-VN" && pathname=="/main")
+    {
+      this.Language.Title="Trang chủ";
+    }
+    else
+    {
+      this.Language.Title="Home";
+    }
+   
   }
   ngOnInit() {
     this.eventEmitterService.changeTitle.subscribe((x) => {
       this.Language.Title = x;
     })
     this.eventEmitterService.changeNotification.subscribe((x: any) => {
-      debugger;
+     // debugger;
       this.TotalNotification = x.result;
     })
 
@@ -33,14 +44,14 @@ export class MainComponent extends BaseController implements OnInit {
   }
 
   setTotalNotification() {
-    this.service.GetTotalNotification().subscribe(x => {
+    this.service.GetTotalNotificationNew().subscribe(x => {
       var total = x.Data[0].Total;
       this.eventEmitterService.changeNotification.emit({ result: total })
     });
   }
 
   btnNotification() {
-    debugger
+   // debugger
     this.navCtlr.navigateRoot(`/main/notification`);
 
     if (this.routeUrl !== '/main/index/page') {

@@ -20,6 +20,7 @@ export class ListWorkComponent extends BaseController implements OnInit {
   listZone: any
   constructor(private getTaskService: GetTaskService, private inputRequestService: InputRequestService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
+    debugger
     this.fromName = "SAFVIET_frmWorks";
     this.initializeApp(route, httpClient, toastController);
     this.selectItem.FilterType="1";
@@ -27,20 +28,20 @@ export class ListWorkComponent extends BaseController implements OnInit {
   }
 
   declareListValue() {
-    this.listWorkType = [
-      {
-        worktypeId: "1",
-        worktypeName: "Nội dung công việc",
-      },
-      {
-        worktypeId: "2",
-        worktypeName: "Nhân viên",
-      },
-      {
-        worktypeId: "3",
-        worktypeName: "Nhóm nhân viên",
-      }
-    ]
+    // this.listWorkType = [
+    //   {
+    //     worktypeId: "1",
+    //     worktypeName: "Nội dung công việc",
+    //   },
+    //   {
+    //     worktypeId: "2",
+    //     worktypeName: "Nhân viên",
+    //   },
+    //   {
+    //     worktypeId: "3",
+    //     worktypeName: "Nhóm nhân viên",
+    //   }
+    // ]
     this.levels = [
       {
         levelId: "1",
@@ -77,11 +78,17 @@ export class ListWorkComponent extends BaseController implements OnInit {
   ngOnInit(): void {
     this.declareListValue()
     this.getInformation()
+    this.getWorkerTypes();
     this.onSearch(); 
   }
   getInformation() {
     this.inputRequestService.QueryListZone().subscribe(x => {
       this.listZone = x.Data;
+    })
+  }
+  getWorkerTypes() {
+    this.getTaskService.GetWorkerTypes().subscribe(x => {
+      this.listWorkType = x.Data;
     })
   }
   onSearch() {
@@ -107,7 +114,7 @@ export class ListWorkComponent extends BaseController implements OnInit {
       }
     });
     modal.onDidDismiss().then((data: any) => {
-
+       debugger;
       if (data.data == true) {
         // this.loadData();
       }
@@ -122,7 +129,9 @@ export class ListWorkComponent extends BaseController implements OnInit {
       }
     })
   }
+  doRefresh(event){
 
+  }
   ngAfterContentChecked() {
     if (this.routeUrl !== '/main/index/page') {
       this.eventEmitterService.changeVisibleNotification.emit({ result: false });

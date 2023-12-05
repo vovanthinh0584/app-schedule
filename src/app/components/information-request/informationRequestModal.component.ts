@@ -17,6 +17,7 @@ export class InformationRequestModalComponent implements OnInit {
   @Input() toastService;
   @Input() Message;
   @Input() User;
+  
   isSend:any=false;
   isApproval:any=false;
   isVisible:any=false;
@@ -48,7 +49,12 @@ export class InformationRequestModalComponent implements OnInit {
     this.isSend=false;
     this.isApproval=false;
     var status=this.selectItem.RequestData.Status;
-    this.UserManager = this.selectItem.RequestData.UserManage;
+    if(this.selectItem.RequestData.UserManage)
+    {
+      this.UserManager.UserId = this.selectItem.RequestData.UserManage;
+      this.UserManager.UserName =this.selectItem.ListManagement.find(x=>x.UserId==this.UserManager.UserId).UserName
+    }
+    
    if(status!='1')
    {
     this.isManager=true;
@@ -71,14 +77,14 @@ export class InformationRequestModalComponent implements OnInit {
 
   }
   onSend(){
-    if(!this.UserManager)
+    if(!this.UserManager.UserId)
     {
         this.toastService.warn(this.Message.InputRequest.UserManage);
         return false;
     }
-    else{
+    
       this.selectItem.RequestData.UserManage = this.UserManager.UserId;
-    }
+    
     this.service.sendInputRequest(this.selectItem.RequestData).subscribe(response => {
    
       if (response.Code == 200) {

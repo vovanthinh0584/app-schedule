@@ -56,7 +56,9 @@ export class InputDeviceParameterComponent extends BaseController implements OnI
     this.InputDate = moment(new Date()).format('MM/DD/YYYY');
   }
 
+  doRefresh(event){
 
+  }
   getInformationInputDeviceParameter() {
     this.inputDeviceParameterService.getInformation().subscribe((response) => {
 

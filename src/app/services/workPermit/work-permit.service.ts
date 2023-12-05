@@ -66,5 +66,11 @@ export class WorkPermitService {
     ExtendWork(data:any):Observable<any>{
         return HttpService.Client.post(`${api.api.url}${api.WorkPermit.ExtendWork}`,data);
     }
+    GetEditEnabled(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.GetEditEnabled}`,data);
+    }
+    GetBoPhans(data:any):Observable<any>{
+        return HttpService.Client.post(`${api.api.url}${api.WorkPermit.GetBoPhans}`,data);
+    }
     
 }

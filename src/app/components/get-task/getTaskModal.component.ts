@@ -53,15 +53,27 @@ export class GetTaskModalComponent implements OnInit {
       name: "Safety"
     },
   ];
-
+  isBtnFinished=true;
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
     private getTaskService: GetTaskService) {
 
   }
+
   ngOnInit() {
-    this.CurrentItem.ClassificationName = this.listClassifications.find(x=>x.value == this.CurrentItem.Classification).name;
+   
+    if(this.CurrentItem.Status=="Finished" || this.CurrentItem.Status=="Process")
+    {
+      this.isBtnFinished=false;
+    }
+    this.getTaskService.GetListType().subscribe(x=>{
+      debugger;
+      this.listClassifications=x.Data;
+      this.CurrentItem.ClassificationName = this.listClassifications.find(x=>x.Classification == this.CurrentItem.Classification).name;
+    }
+      )
+    
   }
 
   async onAssingerWork() {
@@ -76,9 +88,10 @@ export class GetTaskModalComponent implements OnInit {
       }
     });
     modal.onDidDismiss().then((data: any) => {
-
-      if (data.data == true) {
-        // this.loadData();
+      debugger;
+      var result=data.data;
+      if (result.status == true) {
+         this.CurrentItem=result.item;
       }
     });
     await modal.present();

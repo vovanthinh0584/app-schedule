@@ -15,6 +15,10 @@ export class WorkPermitModalComponent implements OnInit {
   @Input() toastService;
   @Input() Message;
   @Input() User;
+  @Input() Action;
+  @Input() ListArea;
+  @Input() ListBoPhan;
+  
   datePickerConfig: any = {
     //inputDate: new Date("2018-12-01");
     showTodayButton: false, // default true
@@ -35,17 +39,21 @@ export class WorkPermitModalComponent implements OnInit {
     console.log("WorkPermitModalComponent Constructor", this.Language)
   }
   ngOnInit() {
-      
+       debugger;
+       
   }
   save() {
     if (this.ValidForm()) {
-      this.service.saveWorkPermit(this.selectItem).subscribe(response => {
-        if (response.Code == 200) {
-          this.toastService.success(this.Message.WorkPermit.Success);
-          this.close(true);
-        }
-      }, (e) => { });
-    }
+     
+        this.service.saveWorkPermit(this.selectItem).subscribe(response => {
+          if (response.Code == 200) {
+            this.toastService.success(this.Message.WorkPermit.Success);
+            this.close(true);
+          }
+        }, (e) => { });
+      }
+      
+    
   }
   close(status) {
 

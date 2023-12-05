@@ -27,7 +27,7 @@ const routes: Routes = [
   declarations: [
     WorkPermitComponent,
     WorkPermitModalComponent,
-    InformationRequestModalComponent,
+  
     SendWorkPermitModalComponent,
     CameraImageModalComponent
   ],

@@ -12,9 +12,9 @@ export class Client{
   public static get(url:string):Observable<any>{
       return this.http.get(url);
     }
-    public  static post(url:string,T:any):Observable<any>{
+    public  static post(url:string,T:any,options:any={}):Observable<any>{
 
-        return this.http.post(url,T);
+        return this.http.post(url,T,options);
     }
     public static delete(url:string,T:any):Observable<any>{
     

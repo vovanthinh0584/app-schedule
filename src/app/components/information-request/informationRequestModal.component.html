@@ -33,13 +33,11 @@
 		</ion-item>
 		<ion-item>
 			<ion-label position="stacked">{{Language.Equipment}}</ion-label>
-			<span class="item-note">{{ selectItem.RequestData.
-				Equipment}}</span>
+			<span class="item-note">{{ selectItem.RequestData.Equipment}}</span>
 		</ion-item>
 		<ion-item>
 			<ion-label position="stacked">{{Language.lblRequester}}</ion-label>
-			<span class="item-note">{{ selectItem.RequestData.
-				Requester}}</span>
+			<span class="item-note">{{ selectItem.RequestData.FullName}}</span>
 		</ion-item>
 
 
@@ -52,6 +50,12 @@
 			<ion-label position="stacked">{{Language.lblType}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.RequestData.MNType" [disabled]="true">
 				<ion-select-option *ngFor="let item of ListType" [value]="item.TypeID">{{item.Type}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label position="stacked">{{Language.BoPhan}}</ion-label>
+			<ion-select [(ngModel)]="selectItem.RequestData.MaBoPhan" [disabled]="true">
+				<ion-select-option *ngFor="let item of selectItem.ListBoPhan" [value]="item.MaBoPhan">{{item.TebBoPhan}}</ion-select-option>
 			</ion-select>
 		</ion-item>
 		<ion-item>
@@ -68,25 +72,24 @@
 								  itemTextField="UserName"
 								  [canSearch]="true"
 								  [hasVirtualScroll]="true"
-								  
 								  >
 								</ionic-selectable>
 		</ion-item>
 		<ion-item>
-			<ion-label position="stacked">{{Language.SentApprovalDate}}</ion-label>
+			<ion-label position="stacked">{{Language.lblSentApprovalDate}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.SentApprovalDate}}</span>
 		</ion-item>
 
 		<ion-item style="color: #eb445a;">
-			<ion-label position="stacked">{{Language.ApprovalDescription}}</ion-label>
+			<ion-label position="stacked">{{Language.lblApprovalDescription}}</ion-label>
 			<ion-text class="item-note" style="margin-top: 8px;white-space: pre-wrap;">{{ selectItem.RequestData.ApprovalDescription}}</ion-text>
 		</ion-item>
 		<ion-item style="color: #eb445a;">
-			<ion-label position="stacked">{{Language.NotApprovalDescription}}</ion-label>
+			<ion-label position="stacked">{{Language.lblNotApprovalDescription}}</ion-label>
 			<ion-text class="item-note" style="margin-top: 8px;white-space: pre-wrap;">{{ selectItem.RequestData.NotApprovalDescription}}</ion-text>
 		</ion-item>
 		<ion-item style="color: #eb445a;">
-			<ion-label position="stacked">{{Language.RefusedDescription}}</ion-label>
+			<ion-label position="stacked">{{Language.lbRefusedDescription}}</ion-label>
 			<ion-text class="item-note" style="margin-top: 8px;white-space: pre-wrap;">{{ selectItem.RequestData.RefusedDescription}}</ion-text>
 		</ion-item>
 		<!-- <ion-item>
@@ -100,10 +103,7 @@
 	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
 	<ion-button (click)="onVisible()" *ngIf="isVisible==true
 	">{{Language.lblVisible}}</ion-button>
-	<ion-button (click)="onSend()" *ngIf="isSend==true
-	">{{Language.lblSend}}</ion-button>
-	<ion-button (click)="onApproval()" *ngIf="isApproval==true
-	">{{Language.lblApproval}}</ion-button>
-	<ion-button color="warning" (click)="onNoApproval()"
-		*ngIf="isApproval==true">{{Language.lblNoApproval}}</ion-button>
+	<ion-button (click)="onSend()" *ngIf="isSend==true">{{Language.lblSend}}</ion-button>
+	<ion-button (click)="onApproval()" *ngIf="isApproval==true">{{Language.lblApproval}}</ion-button>
+	<ion-button color="warning" (click)="onNoApproval()" *ngIf="isApproval==true">{{Language.lblNoApproval}}</ion-button>
 </ion-footer>

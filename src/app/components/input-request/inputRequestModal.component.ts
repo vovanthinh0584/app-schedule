@@ -15,7 +15,8 @@ export class InputRequestModalComponent implements OnInit {
   @Input() toastService;
   @Input() Message;
   @Input() User;
-
+  @Input() ListZone;
+  @Input() ListBoPhan;
   ListType:any=[{TypeID:"1",Type:"Urgent"},{TypeID:"2",Type:"Normal"}]
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
@@ -25,7 +26,7 @@ export class InputRequestModalComponent implements OnInit {
    
   }
   ngOnInit() {
-    
+    debugger;var te=this.selectItem;
   }
   save() {
     if (this.ValidForm()) {

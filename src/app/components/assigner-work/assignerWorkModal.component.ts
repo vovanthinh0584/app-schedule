@@ -34,18 +34,18 @@ export class AssignerWorkModalComponent implements OnInit {
   listKindOfWork : any =[
     {
       //MTN Request Form,MTN Request Form;Other,Other;Schedule Work,Schedule Work (Công việc theo kế hoạch)
-      value: "MTN Request Form",
-      name: "MTN Request Form"
+      value: "MTN request",
+      name: "MTN request"
     },
     {
       //MTN Request Form,MTN Request Form;Other,Other;Schedule Work,Schedule Work (Công việc theo kế hoạch)
-      value: "Other",
-      name: "Other"
+      value: "Unplan",
+      name: "Unplan"
     },
     {
       //MTN Request Form,MTN Request Form;Other,Other;Schedule Work,Schedule Work (Công việc theo kế hoạch)
-      value: "Schedule Work",
-      name: "Schedule Work (Công việc theo kế hoạch)"
+      value: "Planned",
+      name: "Planned"
     }
   ];
   listClassifications : any =[
@@ -87,32 +87,91 @@ export class AssignerWorkModalComponent implements OnInit {
   ];
  listTeam:any=[];
  listWorker:any=[];
- team:any=[];
- worker:any=[];
- strTeam:any="";
- strWorker:any="";
+ team:any;
+ worker:any;
+ strTeam:any=[];
+ strWorker:any=[];
   constructor(private _route: Router,
     private activatedRoute: ActivatedRoute,
     private modalCtrl: ModalController,
     private service: GetTaskService) {
 
   }
+  getTeamMap(temStr,key){
+    if(temStr.length>0)
+     {
+       var arr=temStr.split(',');
+       var result:any=[];
+       for (let index = 0; index < arr.length; index++) {
+        const item = arr[index];
+        if(item)
+        {
+          var obj:any={};
+          obj[key]=item;
+          result.push(obj)
+        }
+       }
+       
+       return result;
+     }
+     return "";
+  }
+  getWorkerMap(temStr){
+    if(temStr.length>0)
+     {
+       var arr=temStr.split(',');
+       var result:any=[];
+       for (let index = 0; index < arr.length; index++) {
+        const item = arr[index];
+        if(item)
+        {
+          debugger;
+          var worker=this.listWorker.find(x=>x.WorkerId==item);
+          if(worker)
+          {
+            var obj:any={WorkerId:item,WorkerName:worker.WorkerName};
+          }
+          
+         
+          result.push(obj)
+        }
+       }
+       
+       return result;
+     }
+     return "";
+  }
   ngOnInit() {
+    debugger;
+    
+    if(this.CurrentItem.TeamId)
+    {
+      this.team=this.getTeamMap(this.CurrentItem.TeamId,"TeamGroupId");
+    }
+    
+     
     this.service.GetListworker().subscribe(x=>{
       this.listWorker=x.Data;
+      if(this.CurrentItem.WorkerId)
+    {
+      this.worker=this.getWorkerMap(this.CurrentItem.WorkerId);
+    }
     })
     this.service.GetListTeam().subscribe(x=>{
       this.listTeam=x.Data;
     })
+    this.service.GetListType().subscribe(x=>{
+      this.listClassifications=x.Data;
+    })
   }
   
   onChangeWorker($event){
-
+    
   }
   
  
   onChangeTeam($event){
-
+    
   }
   
  
@@ -121,7 +180,8 @@ export class AssignerWorkModalComponent implements OnInit {
     if(this.ValidForm()){
       this.strTeam=this.team.map(x=>x.TeamGroupId).join();
       this.strWorker=this.worker.map(x=>x.WorkerId).join();
-      this.CurrentItem.ClassificationName = this.listClassifications.find(x=>x.value == this.CurrentItem.Classification).name;
+      
+      this.CurrentItem.ClassificationName = this.listClassifications.find(x=>x.Classification == this.CurrentItem.Classification).ClassificationName;
        var body:any={};
        debugger;
        body.WorkNo=this.CurrentItem.WorkNo;
@@ -133,13 +193,15 @@ export class AssignerWorkModalComponent implements OnInit {
        this.service.AssignWork(body).subscribe(x=>{
          if(x.Data==1)
          {
+          this.CurrentItem.TeamId=this.strTeam;
+          this.CurrentItem.WorkerId=this.strWorker;
             this.toastService.success(this.Message.GetTask.AssignerWork);
-            this.close(true);
+            this.close({status:true,item:this.CurrentItem});
          }
          else
          {
             this.toastService.success(this.Message.GetTask.AssignerWorkError);
-            this.close(false);
+            this.close({status:false,item:{}});
          }
 
        });

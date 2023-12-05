@@ -44,6 +44,9 @@ export class ListShiftComponent extends BaseController implements OnInit {
     this.InputDate = moment(new Date()).format('MM/DD/YYYY');
 
   }
+  doRefresh(event){
+
+  }
   onSearch() {
     this.selectItem.Date = this.InputDate;
 

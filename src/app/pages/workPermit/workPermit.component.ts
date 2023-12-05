@@ -20,6 +20,7 @@ import { WorkPermitService } from "src/app/services/workPermit/work-permit.servi
 export class WorkPermitComponent extends BaseController implements OnInit {
   ListVerdorManage: any = [];
   ListWorkPermit: any = [];
+  ListBoPhan: any = [];
   constructor(private service: WorkPermitService, private route: Router, private activatedRoute: ActivatedRoute, private modalCtrl: ModalController, public httpClient: HttpClient, toastController: ToastController) {
     super();
     this.fromName = "FA_frmWorkPermit";
@@ -34,35 +35,51 @@ export class WorkPermitComponent extends BaseController implements OnInit {
     this.getListWorkPermit();
     this.getListZonemanager();
     this.getListSalemanager();
+    this.getListBoPhan();
   }
 
   onVisible(item) {
 
   }
   async onSend(item) {
-    
+     debugger;
     this.selectItem.Item = item;
-    const modal = await this.modalCtrl.create({
-      component: SendWorkPermitModalComponent,
-      componentProps: {
-        Language: this.Language,
-        selectItem: this.selectItem,
-        toastService: ToastService.Toast,
-        User: this.user,
-        Message: this.Message
-      }
-    });
-    modal.onDidDismiss().then((data) => {
-      debugger;
-      if (data.data == true) {
-        this.getListWorkPermit();
-      }
-    });
-    await modal.present();
+    if(item.Status==0)
+    {
+      this.openWorkPermit("Edit");
+    }
+    else
+    {
+      const modal = await this.modalCtrl.create({
+        component: SendWorkPermitModalComponent,
+        componentProps: {
+          Language: this.Language,
+          selectItem: this.selectItem,
+          toastService: ToastService.Toast,
+          User: this.user,
+          Message: this.Message
+        }
+      });
+      modal.onDidDismiss().then((data) => {
+        debugger;
+        if (data.data == true) {
+          this.getListWorkPermit();
+        }
+      });
+      await modal.present();
+    }
+    
   }
+ 
   getListZonemanager() {
     this.service.queryListZoneManager().subscribe((x) => {
       this.selectItem.ListZoneManager = x.Data;
+    });
+  }
+  getListBoPhan() {
+    this.service.GetBoPhans({}).subscribe((x) => {
+      debugger
+      this.selectItem.ListBoPhan = x.Data;
     });
   }
   getListSalemanager() {
@@ -85,24 +102,27 @@ export class WorkPermitComponent extends BaseController implements OnInit {
       this.selectItem.ListProjectManager = x.Data;
     });
   }
-  openWorkPermit() {
-    this.openWorkPermitModal();
+  openWorkPermit(action) {
+    this.openWorkPermitModal(action);
   }
   getListWorkPermit() {
     this.service.queryListWorkPermit().subscribe((x) => {
       this.ListWorkPermit = x.Data;
     });
   }
-  async openWorkPermitModal() {
+  async openWorkPermitModal(action) {
     console.log("WorkPermit", this.Language);
     const modal = await this.modalCtrl.create({
       component: WorkPermitModalComponent,
       componentProps: {
         Language: this.Language,
-        selectItem: this.selectItem,
+        selectItem: action=="Create"?{}:this.selectItem,
         toastService: ToastService.Toast,
         User: this.user,
-        Message: this.Message
+        Message: this.Message,
+        Action:action,
+        ListArea:this.selectItem.Areas,
+        ListBoPhan:this.selectItem.ListBoPhan
       }
     });
     modal.onDidDismiss().then((data) => {
@@ -111,6 +131,9 @@ export class WorkPermitComponent extends BaseController implements OnInit {
       }
     });
     await modal.present();
+  }
+  doRefresh(event){
+
   }
   ngAfterContentChecked() {
     if (this.routeUrl !== '/main/index/page') {

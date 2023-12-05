@@ -20,6 +20,9 @@ export class NotificationService {
   GetTotalNotification(): Observable<any> {
     return HttpService.Client.post(`${api.api.url}${api.Notification.GetTotalNotification}`,null);
   }
+  GetTotalNotificationNew(): Observable<any> {
+    return HttpService.Client.post(`${api.api.url}${api.Notification.GetTotalNotificationNew}`,null);
+  }
   GetListNotification(body: any): Observable<any> {
     return HttpService.Client.post(`${api.api.url}${api.Notification.GetListNotification}`, body);
   }
