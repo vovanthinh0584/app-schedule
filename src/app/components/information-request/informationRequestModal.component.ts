@@ -41,6 +41,7 @@ export class InformationRequestModalComponent implements OnInit {
      
    });
   }
+ 
   isManager=false;
   ngOnInit() {
     debugger

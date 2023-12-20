@@ -34,7 +34,7 @@ export class InputRequestComponent extends BaseController implements OnInit {
     this.getListZone();
     this.getReceive();
     this.getListManagement();
-    this.getListBoPhan();
+    //this.getListBoPhan();
   }
 
   ngAfterContentChecked() {

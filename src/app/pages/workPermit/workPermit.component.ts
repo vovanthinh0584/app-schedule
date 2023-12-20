@@ -35,7 +35,7 @@ export class WorkPermitComponent extends BaseController implements OnInit {
     this.getListWorkPermit();
     this.getListZonemanager();
     this.getListSalemanager();
-    this.getListBoPhan();
+    //this.getListBoPhan();
   }
 
   onVisible(item) {

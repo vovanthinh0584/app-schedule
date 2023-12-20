@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)"><ion-icon
 				name="arrow-back"></ion-icon></ion-button>
 		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
@@ -52,12 +52,12 @@
 				<ion-select-option *ngFor="let item of ListType" [value]="item.TypeID">{{item.Type}}</ion-select-option>
 			</ion-select>
 		</ion-item>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label position="stacked">{{Language.BoPhan}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.RequestData.MaBoPhan" [disabled]="true">
 				<ion-select-option *ngFor="let item of selectItem.ListBoPhan" [value]="item.MaBoPhan">{{item.TebBoPhan}}</ion-select-option>
 			</ion-select>
-		</ion-item>
+		</ion-item> -->
 		<ion-item>
 			<ion-label position="stacked">{{Language.lblDescriptionrequest}}</ion-label>
 			<span class="item-note">{{ selectItem.RequestData.
@@ -100,7 +100,7 @@
 	</ion-list>
 </ion-content>
 <ion-footer style="display: flex;justify-content: center;">
-	<ion-button color="danger" (click)="close()">{{Language.lblClose}}</ion-button>
+	<ion-button color="danger" (click)="close(false)">{{Language.lblClose}}</ion-button>
 	<ion-button (click)="onVisible()" *ngIf="isVisible==true
 	">{{Language.lblVisible}}</ion-button>
 	<ion-button (click)="onSend()" *ngIf="isSend==true">{{Language.lblSend}}</ion-button>

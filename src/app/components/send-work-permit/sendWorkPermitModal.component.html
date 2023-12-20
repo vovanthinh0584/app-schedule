@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+		<ion-button class="back-button" fill="clear" size="large" slot="start" (click)="close(false)"><ion-icon name="arrow-back"></ion-icon></ion-button>
 		<ion-title slot="start" class="modal-title">{{Language.Title}}</ion-title>
 	</ion-toolbar>
 </ion-header>
@@ -31,12 +31,12 @@
 				Area }}</span>
 		</ion-item>
 		
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label  position="stacked">{{Language.BoPhan}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.Item.MaBoPhan" [disabled]="isBoPhan">
                 <ion-select-option *ngFor="let item of selectItem.ListBoPhan" [value]="item.MaBoPhan">{{item.TenBoPhan}}</ion-select-option>
             </ion-select>
-		</ion-item>
+		</ion-item> -->
 		<ion-item>
 			<ion-label  position="stacked">{{Language.label1}}</ion-label>
 			<ion-select [(ngModel)]="selectItem.Item.ProjectManager" [disabled]="isProjectManager">
